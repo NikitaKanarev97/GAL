@@ -1,0 +1,91 @@
+/*
+ * Primitive — сырые значения. Источник: visual-direction.md §3 (палитра) и §8
+ * (радиусы, тени, сетка, шаг отступов). Компоненты примитивы не читают —
+ * только семантику из semantics.css / typography.css / layout.css.
+ *
+ * Не перенесены намеренно (§3 «Нормализовано»): #F86820 (--accent-render) и
+ * #B85830 (--accent-deep) — цели грейдинга фото, в CSS не используются.
+ */
+:root {
+  /* Нейтральные — чёрный с каплей тепла */
+  --gray-1000: #070707;
+  --gray-980: #090909;
+  --gray-940: #111111;
+  --gray-910: #171717;
+  --gray-830: #2b2b2b;
+  --gray-770: #3a3a3a;
+  --gray-400: #999999;
+  --gray-270: #bbbbbb;
+  --gray-40: #f5f5f5;
+
+  /* Металл деталей в полутоне */
+  --steel-500: #737375;
+  --steel-400: #948f8c;
+
+  /* Оранжевый — единственный насыщенный цвет вёрстки */
+  --orange-500: #ff5a00;
+  /* Добавлено на этапе 4: ховер кнопки — тот же тон, +12 % светлоты. В §3 нет. */
+  --orange-400: #ff7a33;
+
+  /* Тёплые тёмные */
+  --ember-900: #3b2921;
+  /* светлые буквы логотипа (assets/logo/svg, fill #F5EEDD) */
+  --cream-100: #f5eedd;
+  --warm-line-900: #3b2418;
+
+  /* Альфа — затемнения из §8 «Тени и свечения» */
+  --black-a100: rgba(0, 0, 0, 1);
+  --black-a96: rgba(0, 0, 0, 0.96);
+  --black-a85: rgba(0, 0, 0, 0.85);
+  --black-a65: rgba(0, 0, 0, 0.65);
+  --black-a60: rgba(0, 0, 0, 0.6);
+  --black-a18: rgba(0, 0, 0, 0.18);
+  --black-a0: rgba(0, 0, 0, 0);
+  --bg-a96: rgba(7, 7, 7, 0.96);
+  /* Добавлено на этапе 4: подложка попапа. В §8 нет, подобрано под --bg */
+  --bg-a80: rgba(7, 7, 7, 0.8);
+  --orange-a28: rgba(255, 90, 0, 0.28);
+  --orange-a12: rgba(255, 90, 0, 0.12);
+
+  /* Шрифты: переменные next/font задаются в app/layout.tsx */
+  --family-unbounded: var(--font-unbounded), 'Arial Black', sans-serif;
+  --family-manrope: var(--font-manrope), system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --family-marck: var(--font-script-face), cursive;
+
+  /* Размеры шрифта — шкала §8, px */
+  --size-78: 78px;
+  --size-44: 44px;
+  --size-40: 40px;
+  --size-30: 30px;
+  --size-24: 24px;
+  --size-20: 20px;
+  --size-17: 17px;
+  --size-16: 16px;
+  --size-14: 14px;
+  --size-13: 13px;
+  --size-12: 12px;
+
+  --weight-400: 400;
+  --weight-500: 500;
+  --weight-600: 600;
+  --weight-800: 800;
+  --weight-900: 900;
+
+  /* Шаг отступов §8: 4 · 8 · 12 · 16 · 20 · 24 · 32 · 48 · 64 · 96 */
+  --step-4: 4px;
+  --step-8: 8px;
+  --step-12: 12px;
+  --step-16: 16px;
+  --step-20: 20px;
+  --step-24: 24px;
+  --step-32: 32px;
+  --step-48: 48px;
+  --step-64: 64px;
+  --step-96: 96px;
+
+  /* Радиусы §8 */
+  --r-3: 3px;
+  --r-6: 6px;
+  --r-10: 10px;
+  --r-999: 999px;
+}

@@ -1,0 +1,28 @@
+.page {
+  display: grid;
+  gap: var(--space-5);
+  padding-block: var(--space-6) var(--section-y);
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  justify-self: start;
+  min-height: var(--tap);
+  font-weight: var(--weight-600);
+  color: var(--text-soft);
+  transition: color var(--dur-state) ease;
+}
+
+.backIcon {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+  color: var(--accent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .back:hover {
+    color: var(--accent);
+  }
+}

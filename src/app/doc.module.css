@@ -1,0 +1,70 @@
+.doc {
+  display: grid;
+  gap: var(--space-6);
+  max-width: calc(var(--text-max) + 2 * var(--gutter));
+  margin-inline: 0;
+  padding-block: var(--space-8) var(--section-y);
+  color: var(--text-soft);
+}
+
+.doc h1,
+.doc h2 {
+  color: var(--text);
+}
+
+.part {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.note {
+  padding: var(--space-3) var(--space-4);
+  border-left: var(--space-1) solid var(--accent);
+  background: var(--bg-elevated);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+@media (min-width: 992px) {
+  .doc {
+    margin-inline: auto;
+  }
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.list {
+  display: grid;
+  gap: var(--space-2);
+  padding-left: 1.2em;
+  list-style: disc;
+}
+
+.list li::marker {
+  color: var(--accent);
+}
+
+/* «Конфиденциальности» — 18 букв широкого капса: кегль по ширине, чтобы слово целиком вставало в строку, а не рвалось посередине */
+.title {
+  font-size: min(var(--fs-h3), 4.9vw);
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: var(--size-30);
+  }
+}
+
+/* «СТРАНИЦЫ» кеглем H1 шире телефона — страница уезжала вбок на 8px */
+@media (max-width: 767.98px) {
+
+  .titleLg {
+    font-size: var(--fs-h2);
+  }
+}

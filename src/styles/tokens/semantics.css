@@ -1,0 +1,58 @@
+/*
+ * Semantic — имена ровно как в visual-direction.md §3 и §8.
+ * Значение — всегда ссылка на примитив.
+ */
+:root {
+  /* Цвет — §3 */
+  --bg: var(--gray-1000);
+  --bg-elevated: var(--gray-940);
+  --bg-elevated-2: var(--gray-910);
+  --line: var(--gray-830);
+  --line-strong: var(--gray-770);
+  --line-warm: var(--warm-line-900);
+  --accent: var(--orange-500);
+  --accent-hover: var(--orange-400);
+  --accent-ember: var(--ember-900);
+  --accent-tint: var(--orange-a12);
+  --text: var(--gray-40);
+  --text-muted: var(--gray-400);
+  --text-soft: var(--gray-270);
+  --steel: var(--steel-500);
+  --steel-light: var(--steel-400);
+  --on-accent: var(--gray-980);
+  --logo-light: var(--cream-100);
+
+  /* Радиусы — §8 */
+  --radius-btn: var(--r-3);
+  --radius-tile: var(--r-6);
+  --radius-card: var(--r-10);
+  --radius-pill: var(--r-999);
+
+  /* Тени и свечения — §8 */
+  --shadow-float: 0 15px 45px var(--black-a100);
+  --shadow-card-hover: 0 12px 32px var(--black-a60);
+  --glow-accent: 0 0 24px var(--orange-a28);
+  /* то же свечение по контуру SVG — box-shadow форму шестигранника не повторяет */
+  --glow-accent-filter: drop-shadow(0 0 12px var(--orange-a28));
+
+  /* Затемнения фото — §8 */
+  --scrim-card: linear-gradient(0deg, var(--black-a85) 0%, var(--black-a0) 55%);
+  --scrim-hero: linear-gradient(90deg, var(--black-a96) 0%, var(--black-a65) 43%, var(--black-a18));
+  /* фото заходит под кнопки первого экрана: верх кадра глубоко затемнён, машина внизу открыта */
+  --scrim-hero-mobile: linear-gradient(180deg, var(--bg) 0%, var(--black-a65) 30%, var(--black-a0) 55%, var(--black-a0) 80%, var(--bg) 100%);
+  --scrim-banner: linear-gradient(90deg, var(--black-a96) 0%, var(--black-a65) 45%, var(--black-a0) 75%);
+  --scrim-banner-mobile: linear-gradient(0deg, var(--black-a96) 0%, var(--black-a65) 45%, var(--black-a0) 75%);
+  --scrim-dialog: var(--bg-a80);
+
+  /* Шапка — §8 */
+  --header-bg: var(--bg-a96);
+  --header-blur: 12px;
+  /* стекло поверх фото: вторичная кнопка первого экрана — читается и на светлой части кадра */
+  --glass-bg: var(--bg-a80);
+  --glass-blur: var(--header-blur);
+
+  /* Фокус */
+  --focus-ring-color: var(--accent);
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 3px;
+}

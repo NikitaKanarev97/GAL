@@ -1,0 +1,230 @@
+.inner {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.top {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.intro {
+  display: grid;
+  align-content: start;
+  gap: var(--space-4);
+}
+
+.text {
+  max-width: var(--text-max);
+  color: var(--text-soft);
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-soft);
+}
+
+.cta {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+@media (max-width: 767.98px) {
+  .cta {
+    justify-items: stretch;
+  }
+}
+
+.hint {
+  color: var(--text-muted);
+}
+
+.photo {
+  border-radius: var(--radius-card);
+  border: 1px solid var(--line);
+}
+
+.block {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.subhead {
+  color: var(--text-muted);
+}
+
+.list {
+  border-top: 1px solid var(--line);
+}
+
+.row {
+  border-bottom: 1px solid var(--line);
+}
+
+/* Вся строка — ссылка: название и цена слева направо, справа «Обсудить» с иконкой Telegram */
+.rowLink {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-1) var(--space-4);
+  min-height: var(--tap);
+  padding-block: var(--space-4);
+  -webkit-tap-highlight-color: transparent;
+  transition: color var(--dur-state) ease;
+}
+
+.rowLink > .rowMeta {
+  grid-column: 1;
+}
+
+.rowAction {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--accent);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-800);
+  letter-spacing: var(--tracking-button);
+  text-transform: uppercase;
+}
+
+.rowIcon {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+  transition: transform var(--dur-state) var(--ease-out);
+}
+
+.rowMain {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.rowName {
+  font-size: var(--fs-body);
+  font-weight: var(--weight-800);
+  line-height: var(--lh-tight);
+}
+
+.rowDesc {
+  color: var(--text-muted);
+}
+
+.rowMeta {
+  color: var(--accent);
+  font-weight: var(--weight-600);
+  font-size: var(--fs-small);
+}
+
+.more > .list {
+  border-top: 0;
+}
+
+.moreToggle {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  margin-top: var(--space-2);
+  color: var(--accent);
+  font-weight: var(--weight-600);
+  cursor: pointer;
+  list-style: none;
+}
+
+.moreToggle::-webkit-details-marker {
+  display: none;
+}
+
+.moreClose,
+.more[open] .moreOpen {
+  display: none;
+}
+
+.more[open] .moreClose {
+  display: inline;
+}
+
+/* Когда раскрыто, кнопка уходит под список */
+.more[open] {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.works {
+  display: grid;
+  gap: var(--col-gap);
+}
+
+.channel {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  color: var(--accent);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-600);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.channel svg {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+}
+
+@media (min-width: 768px) {
+  .works {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .rowLink {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+  }
+
+  .rowLink > .rowMeta {
+    grid-column: 2;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .rowAction {
+    grid-column: 3;
+    grid-row: 1;
+    padding-left: var(--space-4);
+  }
+
+}
+
+@media (min-width: 992px) {
+  .top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--col-gap);
+    align-items: center;
+  }
+
+  .intro {
+    padding-right: var(--space-8);
+  }
+
+  .rowDesc {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .rowLink:hover .rowName {
+    color: var(--accent);
+  }
+
+  .rowLink:hover .rowIcon {
+    transform: translateX(var(--space-1));
+  }
+}

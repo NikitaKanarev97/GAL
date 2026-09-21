@@ -1,0 +1,86 @@
+.inner {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.head {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-8);
+}
+
+.stat {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.statValue {
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-weight: var(--weight-900);
+  font-size: var(--fs-h2);
+  line-height: 1;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.statLabel {
+  color: var(--text-muted);
+}
+
+.list {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.item {
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+}
+
+.title {
+  font-weight: var(--weight-800);
+  line-height: var(--lh-tight);
+  margin-top: var(--space-2);
+}
+
+.text {
+  color: var(--text-soft);
+}
+
+@media (min-width: 768px) {
+  .list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-8) var(--col-gap);
+  }
+}
+
+@media (min-width: 992px) {
+  .head {
+    grid-template-columns: 7fr 5fr;
+    align-items: end;
+    gap: var(--col-gap);
+  }
+
+  .stats {
+    justify-content: flex-end;
+    gap: var(--space-4) var(--space-6);
+  }
+
+  .list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* три цифры в ряд, когда им хватает колонки: переносом третья падала под первые две и ряд выглядел недособранным */
+@media (min-width: 1200px) {
+  .stats {
+    flex-wrap: nowrap;
+  }
+}

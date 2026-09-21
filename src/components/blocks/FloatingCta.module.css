@@ -1,0 +1,68 @@
+.wrap {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--space-4) + env(safe-area-inset-bottom));
+  z-index: var(--z-float);
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  visibility: hidden;
+  transform: translateY(calc(100% + var(--space-6)));
+  transition:
+    transform var(--dur-state) var(--ease-in-out),
+    visibility 0s linear var(--dur-state);
+}
+
+.wrap[data-visible='true'] {
+  visibility: visible;
+  transform: none;
+  transition:
+    transform var(--dur-sheet) var(--ease-out),
+    visibility 0s;
+}
+
+/* Тёмная капсула: аватар + текст + оранжевая иконка Telegram */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: calc(var(--tap) + var(--space-2));
+  padding: var(--space-1) var(--space-4) var(--space-1) var(--space-1);
+  background: var(--bg-elevated);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-float);
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform var(--dur-press) var(--ease-out);
+}
+
+.button:active {
+  transform: scale(var(--press-scale));
+}
+
+.avatar {
+  width: calc(var(--tap) - var(--space-1));
+  height: calc(var(--tap) - var(--space-1));
+  border-radius: var(--radius-pill);
+  object-fit: cover;
+}
+
+.label {
+  font-weight: var(--weight-800);
+  font-size: var(--fs-small);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-button);
+  padding-left: var(--space-2);
+}
+
+.icon {
+  color: var(--accent);
+}
+
+@media (min-width: 992px) {
+  .wrap {
+    display: none;
+  }
+}

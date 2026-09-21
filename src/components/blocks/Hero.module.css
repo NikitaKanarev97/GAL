@@ -1,0 +1,186 @@
+/* первый экран заходит под плавающую шапку: фото от самого верха окна */
+.hero {
+  position: relative;
+  margin-top: calc(var(--header-offset) * -1);
+  display: grid;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/*
+ * Телефон: фото прижато к низу первого экрана и заходит под кнопки (затемнение сверху — --scrim-hero-mobile),
+ * чтобы машина была видна без прокрутки. Раньше фото стояло строкой под текстом и на 390×844 начиналось за краем экрана.
+ */
+.media {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  aspect-ratio: 4 / 5;
+  z-index: -1;
+}
+
+.media picture,
+.img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.img {
+  object-fit: cover;
+  object-position: 50% 60%;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--scrim-hero-mobile);
+}
+
+.content {
+  grid-row: 1;
+  display: grid;
+  align-content: start;
+  gap: var(--space-5);
+  /* снизу — место под машину на фото: около половины высоты кадра 4:5 */
+  padding-block: calc(var(--header-offset) + var(--space-6)) 62vw;
+}
+
+.title {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.eyebrow {
+  color: var(--text-soft);
+}
+
+.display {
+  display: block;
+  color: var(--text);
+}
+
+.display > span {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.line {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .line {
+    white-space: nowrap;
+  }
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.lead {
+  max-width: var(--measure-narrow);
+  color: var(--text-soft);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.actions > * {
+  flex: 1 1 auto;
+}
+
+/* «Разделы» стоит на фото: без заливки на телефоне и планшете терялась на светлой стене — стекло как у шапки */
+.actions .secondary {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+.hint {
+  color: var(--text-muted);
+}
+
+.script {
+  position: absolute;
+  right: var(--gutter);
+  bottom: calc(var(--space-9) + var(--space-2));
+  font-size: var(--fs-h3);
+  color: var(--accent);
+}
+
+.tagline {
+  position: absolute;
+  right: var(--gutter);
+  bottom: var(--space-6);
+  color: var(--text-soft);
+}
+
+@media (max-width: 767.98px) {
+  .hero {
+    min-height: 100svh;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero {
+    min-height: min(100svh, var(--hero-max-h));
+    align-items: center;
+  }
+
+  /* абсолютный grid-элемент с grid-row берёт строку за контейнер — сбрасываем */
+  .media {
+    inset: 0;
+    aspect-ratio: auto;
+  }
+
+  .img {
+    object-position: 62% 60%;
+  }
+
+  .scrim {
+    background: var(--scrim-hero);
+  }
+
+  /* над заголовком — место под надпись «Движимы страстью»: в низком окне (1280×720) без него она уходила под шапку */
+  .content {
+    --script-room: var(--space-9);
+    position: relative;
+    grid-row: 1;
+    padding-block: calc(var(--header-offset) + var(--space-8) + var(--script-room)) var(--space-10);
+  }
+
+  .content > :not(.title) {
+    max-width: var(--span-7);
+  }
+
+  .actions > * {
+    flex: 0 0 auto;
+  }
+
+  /* от верха заголовка, а не окна: контент центрируется по высоте, и в низком окне надпись наезжала на H1 */
+  .content > .script {
+    top: calc(var(--header-offset) + var(--space-8) + var(--script-room) - var(--space-4));
+    bottom: auto;
+    right: calc(var(--gutter) + var(--space-9));
+    max-width: none;
+    font-size: var(--fs-h2);
+    translate: 0 -100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .lead {
+    max-width: var(--measure-wide);
+  }
+
+  .content > .script {
+    right: var(--hero-script-inset);
+  }
+}

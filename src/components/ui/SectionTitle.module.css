@@ -1,0 +1,40 @@
+.root {
+  display: grid;
+  gap: var(--space-3);
+  max-width: var(--text-max);
+}
+
+.eyebrow {
+  color: var(--accent);
+}
+
+.title {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  font-size: var(--fs-h2);
+}
+
+/* Оранжевая черта 4 × 0.9em, наклон как у текста */
+.title::before {
+  content: '';
+  flex: none;
+  width: var(--h2-bar-width);
+  height: var(--h2-bar-height);
+  background: var(--accent);
+  /* --bar: черта вырастает при появлении заголовка */
+  transform: var(--skew-display) scaleY(var(--bar, 1));
+  transform-origin: 50% 100%;
+  /* по центру первой строки: у заголовка в несколько строк черта стоит у начала, а не посередине блока */
+  align-self: flex-start;
+  margin-top: calc((var(--lh-display) * 1em - var(--h2-bar-height)) / 2);
+}
+
+.text {
+  display: block;
+  color: var(--text);
+}
+
+.subtitle {
+  color: var(--text-muted);
+}

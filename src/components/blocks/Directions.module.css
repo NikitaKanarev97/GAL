@@ -1,0 +1,165 @@
+.section {
+  padding-block: var(--space-6) var(--section-y);
+}
+
+/* Телефон: Запчасти на всю ширину, две ниже в ряд */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--col-gap);
+}
+
+.parts {
+  grid-column: 1 / -1;
+}
+
+.card {
+  position: relative;
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    border-color var(--dur-state) ease,
+    transform var(--dur-press) var(--ease-out);
+}
+
+.card:active {
+  transform: scale(var(--press-scale));
+}
+
+.photo {
+  height: 100%;
+}
+
+.img {
+  transition: transform var(--dur-state) var(--ease-out);
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--scrim-card);
+}
+
+.body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  padding-right: calc(var(--space-4) + var(--arrow-circle));
+}
+
+/* min(…, vw) срабатывает только уже ~350px: на 320 «Запчасти» и «custom» шире карточки и рвутся посреди слова */
+.title {
+  font-size: min(var(--fs-h3), 5.8vw);
+  color: var(--text);
+}
+
+.parts .title {
+  font-size: min(var(--fs-h2), 8.4vw);
+}
+
+.text {
+  color: var(--text-soft);
+  line-height: var(--lh-tight);
+}
+
+/* Оранжевая стрелка в круге — parts.jpg */
+.arrow {
+  position: absolute;
+  right: var(--space-3);
+  bottom: var(--space-3);
+  display: grid;
+  place-items: center;
+  width: var(--arrow-circle);
+  height: var(--arrow-circle);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-pill);
+  color: var(--accent);
+  transition:
+    background-color var(--dur-state) ease,
+    color var(--dur-state) ease;
+}
+
+.arrow svg {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+}
+
+.service .body,
+.custom .body {
+  padding: var(--space-3);
+  padding-bottom: calc(var(--arrow-circle) + var(--space-4));
+}
+
+.service .arrow,
+.custom .arrow {
+  left: var(--space-3);
+  right: auto;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  /* bloomblex Cases-card-in: соседние карточки уходят в тень */
+  .item {
+    transition: opacity var(--dur-hover) var(--ease-out);
+  }
+
+  .grid:has(.card:hover) .item:not(:has(.card:hover)) {
+    opacity: var(--dim-neighbour);
+  }
+
+  .img {
+    transition: transform var(--dur-zoom) var(--ease-out);
+  }
+
+  .card:hover .img {
+    transform: scale(var(--hover-zoom));
+  }
+
+  .card:hover {
+    border-color: var(--line-strong);
+  }
+
+  .card:hover .arrow {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .parts {
+    grid-column: span 2;
+  }
+
+  .service .body,
+  .custom .body {
+    padding: var(--space-5);
+    padding-bottom: calc(var(--arrow-circle) + var(--space-6));
+  }
+
+  .service .arrow,
+  .custom .arrow {
+    left: var(--space-5);
+    bottom: var(--space-5);
+  }
+
+  .parts .body {
+    padding: var(--space-6);
+    padding-right: calc(var(--space-6) + var(--arrow-circle));
+  }
+
+  .parts .arrow {
+    right: var(--space-5);
+    bottom: var(--space-5);
+  }
+}

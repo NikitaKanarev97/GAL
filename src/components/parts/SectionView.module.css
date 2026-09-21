@@ -1,0 +1,334 @@
+.root {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.head {
+  display: grid;
+  gap: var(--space-3);
+  max-width: var(--text-max);
+}
+
+.title {
+  color: var(--text);
+}
+
+/* название раздела из CMS одним словом («Электроника») на 320px рвалось посреди слова — кегль ужимается по ширине экрана */
+@media (max-width: 767.98px) {
+  .title {
+    font-size: min(var(--fs-h2), 9vw);
+  }
+}
+
+.description {
+  color: var(--text-soft);
+}
+
+/* откуда взялся кузов + сброс выбора */
+.bodyNote {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--space-3);
+  color: var(--text-soft);
+}
+
+.bodyReset {
+  min-height: var(--tap);
+  color: var(--accent);
+  font-weight: var(--weight-600);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.notice {
+  padding: var(--space-3) var(--space-4);
+  border-left: var(--space-1) solid var(--accent);
+  background: var(--bg-elevated);
+  color: var(--text-soft);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--text-muted);
+}
+
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* Чёрная сетка с разделителями 1px — Shopify Supply. Линии — у карточек,
+   чтобы пустые ячейки последнего ряда не заливались цветом линии */
+/* до 360px — одна колонка: в двух по 140px длинные названия обрезались, а «Узнать цену» ломалась на две строки */
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--bg);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.card:not(.last)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  pointer-events: none;
+  z-index: 1;
+  transition: border-color var(--dur-state) ease;
+}
+
+.card:not(.last):focus-within::after {
+  border-color: var(--accent);
+}
+
+.media {
+  position: relative;
+  overflow: hidden;
+}
+
+.media img {
+  transition: transform var(--dur-zoom) var(--ease-out);
+}
+
+.placeholder {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 1;
+  background: var(--bg-elevated-2);
+  color: var(--steel-light);
+}
+
+.placeholderIcon {
+  width: var(--icon-lg);
+  height: var(--icon-lg);
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+.fits {
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+  top: var(--space-2);
+  left: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  background: var(--accent);
+  color: var(--on-accent);
+  border-radius: var(--radius-btn);
+  font-weight: var(--weight-800);
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 1;
+  padding: var(--space-3);
+}
+
+.name {
+  font-size: var(--fs-body);
+  font-weight: var(--weight-800);
+  line-height: var(--lh-tight);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+
+.bodies {
+  color: var(--text-muted);
+  line-height: var(--lh-tight);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.price {
+  margin-top: auto;
+  padding-top: var(--space-1);
+  font-weight: var(--weight-800);
+  font-size: var(--fs-body);
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.priceOnRequest {
+  color: var(--text-soft);
+  font-weight: var(--weight-600);
+}
+
+.cardButton {
+  padding-inline: var(--space-2);
+}
+
+/* вся карточка — зона нажатия кнопки: растянутая ссылка поверх карточки */
+.cardButton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/*
+ * «Нет нужной?» на телефоне и планшете — полоса на всю ширину сетки: тёплый фон, оранжевая черта слева,
+ * текст и кнопка по левому краю (кнопка по ширине текста, не растянутая). На десктопе — ячейка сетки (ниже).
+ */
+.last {
+  grid-column: 1 / -1;
+  background: var(--accent-ember);
+  box-shadow: inset var(--space-1) 0 0 var(--accent);
+}
+
+.lastBody {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-5);
+  height: 100%;
+  padding: var(--space-6) var(--space-5);
+  color: var(--text-soft);
+}
+
+.lastText {
+  display: grid;
+  gap: var(--space-2);
+  max-width: var(--measure);
+}
+
+/* Капсы Unbounded: переносим только по словам */
+.lastTitle {
+  overflow-wrap: normal;
+  font-family: var(--font-display);
+  font-weight: var(--weight-800);
+  font-size: var(--fs-h3);
+  line-height: var(--lh-display);
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.last .lastButton {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.empty {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-4);
+  padding: var(--space-7) var(--space-5);
+  background: var(--accent-ember);
+  border: 1px solid var(--line-warm);
+  border-radius: var(--radius-card);
+  color: var(--text-soft);
+}
+
+.emptyIcon {
+  color: var(--accent);
+  filter: var(--glow-accent-filter);
+}
+
+.emptyIcon svg {
+  width: var(--icon-lg);
+  height: var(--icon-lg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:not(.last):hover::after {
+    border-color: var(--accent);
+  }
+
+  /* наведение на карточку = наведение на её кнопку */
+  .card:not(.last):hover .cardButton {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-accent);
+  }
+
+  .card:not(.last):hover .cardButton svg {
+    color: var(--on-accent);
+  }
+
+  .card:not(.last):hover .media img {
+    transform: scale(var(--hover-zoom));
+  }
+
+  .bodyReset:hover {
+    color: var(--accent-hover);
+  }
+}
+
+@media (min-width: 360px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cardBody {
+    padding: var(--space-4);
+  }
+
+  /* планшет: текст слева, кнопка справа в одну строку */
+  .lastBody {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    padding: var(--space-6) var(--space-7);
+  }
+
+  .last .lastButton {
+    flex: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  /* десктоп: обычная ячейка сетки — закрывает пустое место ряда */
+  .last {
+    grid-column: auto;
+    box-shadow: none;
+  }
+
+  .lastBody {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-end;
+    gap: var(--space-3);
+    padding: var(--space-4);
+  }
+
+  .lastText {
+    gap: var(--space-3);
+  }
+
+  .last .lastButton {
+    justify-content: center;
+    text-align: center;
+  }
+}

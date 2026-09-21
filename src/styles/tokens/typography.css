@@ -1,0 +1,120 @@
+/*
+ * Типографика — visual-direction.md §8.
+ * Шкала: десктоп / телефон. Переключение на 992px — там же, где короткие тексты
+ * content.md («Короткий — телефон, до 991px»).
+ * Классы не несут цвет: цвет задаёт компонент семантикой.
+ */
+:root {
+  --font-display: var(--family-unbounded);
+  --font-text: var(--family-manrope);
+  --font-script: var(--family-marck);
+
+  /* Нормализовано на этапе 4: 6vw из прототипа рассчитан на Arial. Unbounded шире,
+     «ПРОСТО ЗАПЧАСТИ» при 6vw закрывает машину — 4.6vw держит строку в левых ~60 %.
+     Нижняя граница 10.5vw — только уже 380px: на 320 «ЗАПЧАСТИ.» при 40px шире колонки и рвётся посреди слова. */
+  --fs-h1: clamp(min(var(--size-40), 10.5vw), 4.6vw, var(--size-78));
+  --fs-h2: var(--size-30);
+  --fs-h3: var(--size-20);
+  --fs-body: var(--size-16);
+  --fs-small: var(--size-13);
+  --fs-eyebrow: var(--size-12);
+  --fs-counter: clamp(var(--size-44), 9vw, var(--size-78));
+  --fs-preloader: clamp(72px, 17vw, 210px);
+  --fs-marquee: clamp(28px, 5vw, 64px);
+
+  --lh-display: 1.12;
+  --lh-body: 1.55;
+  --lh-tight: 1.25;
+
+  --tracking-display: -0.01em;
+  --tracking-button: 0.04em;
+  --tracking-eyebrow: 0.08em;
+
+  --skew-display: skewX(-10deg);
+  --rotate-script: rotate(-8deg);
+
+  /* Оранжевая черта у H2: 4 × 0.9em */
+  --h2-bar-width: var(--step-4);
+  --h2-bar-height: 0.9em;
+}
+
+@media (min-width: 992px) {
+  :root {
+    --fs-h2: var(--size-44);
+    --fs-h3: var(--size-24);
+    --fs-body: var(--size-17);
+    --fs-small: var(--size-14);
+    --fs-eyebrow: var(--size-13);
+  }
+}
+
+/* Display: Unbounded 800–900, капс, наклон −10°, у шрифта нет italic */
+.t-display {
+  font-family: var(--font-display);
+  font-weight: var(--weight-800);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-display);
+  line-height: var(--lh-display);
+  transform: var(--skew-display);
+  transform-origin: 0 100%;
+}
+
+.t-h1 {
+  font-size: var(--fs-h1);
+  font-weight: var(--weight-900);
+}
+
+.t-h2 {
+  font-size: var(--fs-h2);
+}
+
+.t-h3 {
+  font-size: var(--fs-h3);
+}
+
+.t-body {
+  font-family: var(--font-text);
+  font-size: var(--fs-body);
+  font-weight: var(--weight-400);
+  line-height: var(--lh-body);
+}
+
+.t-small {
+  font-family: var(--font-text);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-400);
+  line-height: var(--lh-body);
+}
+
+.t-eyebrow {
+  font-family: var(--font-text);
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--weight-500);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  line-height: var(--lh-tight);
+}
+
+.t-button {
+  font-family: var(--font-text);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-800);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-button);
+  line-height: var(--lh-tight);
+}
+
+.t-script {
+  font-family: var(--font-script);
+  font-weight: var(--weight-400);
+  transform: var(--rotate-script);
+}
+
+/* Цифры одометра: Unbounded 900 без наклона, табличные */
+.t-counter {
+  font-family: var(--font-display);
+  font-weight: var(--weight-900);
+  font-size: var(--fs-counter);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}

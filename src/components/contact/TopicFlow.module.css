@@ -1,0 +1,161 @@
+.root {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: var(--tap);
+  margin-block: calc(var(--space-2) * -1);
+}
+
+/* в шапке листа (телефон): без отрицательных отступов строки в теле */
+.navInHeader {
+  margin-block: 0;
+}
+
+.indicator {
+  color: var(--text-muted);
+}
+
+.step {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.heading {
+  color: var(--text);
+}
+
+.sub {
+  color: var(--text-muted);
+}
+
+/* Плитки-радиокнопки: 2×2 везде — structure.md §4 */
+.topics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+.topic {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: var(--space-1);
+  min-height: calc(var(--tap) * 2.2);
+  padding: var(--space-3);
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-tile);
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    border-color var(--dur-state) ease,
+    background-color var(--dur-state) ease,
+    transform var(--dur-press) var(--ease-out);
+}
+
+.topic:active {
+  transform: scale(var(--press-scale));
+}
+
+.topic[aria-checked='true'] {
+  border-color: var(--accent);
+  background: var(--bg-elevated-2);
+}
+
+.topicTitle {
+  overflow-wrap: normal;
+  hyphens: auto;
+  font-weight: var(--weight-800);
+  font-size: var(--fs-body);
+  line-height: var(--lh-tight);
+}
+
+.topicHint {
+  color: var(--text-muted);
+  line-height: var(--lh-tight);
+}
+
+.radio {
+  display: grid;
+  margin-bottom: var(--space-3);
+  place-items: center;
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  color: var(--on-accent);
+  transition:
+    background-color var(--dur-state) ease,
+    border-color var(--dur-state) ease;
+}
+
+.radio svg {
+  width: 70%;
+  height: 70%;
+  opacity: 0;
+}
+
+.topic[aria-checked='true'] .radio {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.topic[aria-checked='true'] .radio svg {
+  opacity: 1;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.preview {
+  padding: var(--space-4);
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-left: var(--space-1) solid var(--accent);
+  border-radius: var(--radius-tile);
+  font-size: var(--fs-body);
+  white-space: pre-line;
+  user-select: all;
+}
+
+.bodyLine {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-soft);
+}
+
+.inlineLink {
+  min-height: var(--tap);
+  color: var(--accent);
+  font-weight: var(--weight-600);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .topic:hover {
+    border-color: var(--line-strong);
+    background: var(--bg-elevated-2);
+  }
+
+  .topic[aria-checked='true']:hover {
+    border-color: var(--accent);
+  }
+}
+
+@media (min-width: 992px) {
+  .topic {
+    padding: var(--space-5);
+  }
+}

@@ -1,0 +1,95 @@
+/*
+ * Угол лент зависит от ширины: при одном угле на всех экранах узкая лента почти целиком закрывала тёмную —
+ * расхождение у края = полширины × (tg a + tg b). Телефон и планшет — круче, чтобы по краям ленты расходились как на десктопе.
+ */
+.root {
+  --tilt-front: -9deg;
+  --tilt-back: 8deg;
+  position: relative;
+  display: grid;
+  padding-block: var(--space-9);
+  overflow: clip;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ленты лежат в одной ячейке и пересекаются */
+.band {
+  grid-area: 1 / 1;
+  width: 110%;
+  margin-left: -5%;
+  padding-block: var(--space-3);
+  overflow: hidden;
+}
+
+.front {
+  z-index: 1;
+  background: var(--accent);
+  color: var(--on-accent);
+  transform: rotate(var(--tilt-front));
+  box-shadow: var(--shadow-float);
+}
+
+.back {
+  background: var(--bg-elevated);
+  border-block: 1px solid var(--line);
+  color: var(--text-muted);
+  transform: rotate(var(--tilt-back));
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.list {
+  display: flex;
+  flex: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding-right: var(--space-5);
+  font-family: var(--font-display);
+  font-weight: var(--weight-900);
+  font-size: var(--fs-marquee);
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.item > span:first-child {
+  display: block;
+  transform: var(--skew-display);
+}
+
+.back .item {
+  font-weight: var(--weight-800);
+  font-size: calc(var(--fs-marquee) * 0.7);
+}
+
+/* разделитель — шестигранник, как у иконок-медалей */
+.sep {
+  width: 0.55em;
+  aspect-ratio: 1;
+  background: currentColor;
+  clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+  opacity: 0.85;
+}
+
+@media (min-width: 768px) {
+  .root {
+    --tilt-front: -5deg;
+    --tilt-back: 4.5deg;
+  }
+}
+
+@media (min-width: 992px) {
+  .root {
+    --tilt-front: -3deg;
+    --tilt-back: 2.5deg;
+  }
+}

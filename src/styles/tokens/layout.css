@@ -1,0 +1,115 @@
+/*
+ * Сетка, отступы, размеры — visual-direction.md §8.
+ *
+ * Брейкпоинты (в @media переменные не работают, поэтому это единственные
+ * литералы вне токенов; других брейкпоинтов в проекте нет):
+ *   768px  — планшет: 8 колонок
+ *   992px  — десктоп: 12 колонок, длинные тексты, крупная шкала
+ * Исключение: 379.98px в Header.module.css — ужатая шапка на 320–379, сетку не меняет.
+ */
+:root {
+  --space-1: var(--step-4);
+  --space-2: var(--step-8);
+  --space-3: var(--step-12);
+  --space-4: var(--step-16);
+  --space-5: var(--step-20);
+  --space-6: var(--step-24);
+  --space-7: var(--step-32);
+  --space-8: var(--step-48);
+  --space-9: var(--step-64);
+  --space-10: var(--step-96);
+
+  --container: 1240px;
+  /* span 7 в сетке 1240 — §8 */
+  --span-7: 715px;
+  --span-4: 400px;
+  --span-3: 295px;
+  --hero-max-h: 1080px;
+  --hero-script-inset: 22%;
+
+  /* Длина строки текста */
+  --measure-narrow: 38ch;
+  --measure: 44ch;
+  --measure-wide: 52ch;
+
+  /* Колонка подписей в списке контактов */
+  --label-col: 180px;
+
+  /* Гигантские G A L финального блока */
+  --giant-size: 32vw;
+  --giant-max: 400px;
+
+  /* Одометр 5000+: узкая высокая ячейка */
+  --odometer-cell-w: 0.9em;
+  --odometer-cell-h: 1.3em;
+
+  /* Иконка внутри шестигранника, индекс числа позиций, приближение фото при наведении */
+  --badge-icon-ratio: 44%;
+  --sup-size: 0.65em;
+  --hover-zoom: 1.04;
+  --gutter: var(--step-16);
+  --cols: 4;
+  --col-gap: var(--step-12);
+  --section-y: 56px;
+
+  /* Плавающая шапка: высота панели, отступ от края окна, сколько места она занимает сверху */
+  --header-h: 60px;
+  --header-gap: var(--step-8);
+  --header-offset: calc(var(--header-h) + 2 * var(--header-gap));
+
+  /* Минимальная тап-зона */
+  --tap: 44px;
+
+  --icon-sm: 20px;
+  --icon-md: 24px;
+  --icon-lg: 48px;
+  --badge-size: 64px;
+  --avatar-size: 32px;
+  --arrow-circle: 44px;
+
+  /* Ширины мест из assets-plan.md §3 */
+  --dialog-max: 1080px;
+  --picker-max: 640px;
+  --text-max: 60ch;
+
+  --z-header: 50;
+  --z-float: 60;
+  --z-toast: 70;
+  --z-preloader: 100;
+
+  /* Движение — research.md §3 / structure.md §5. Здесь — CSS-переходы;
+     сценарии GSAP — src/components/motion. */
+  --ease-out: cubic-bezier(0.215, 0.61, 0.355, 1); /* power3.out */
+  --ease-in-out: cubic-bezier(0.455, 0.03, 0.515, 0.955); /* power2.inOut */
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1); /* лист попапа, как в iOS */
+  --dur-press: 160ms;
+  --dur-state: 200ms;
+  --dur-hover: 400ms;
+  --dur-zoom: 900ms;
+  --dur-sheet: 450ms;
+  /* приглушение соседних карточек при наведении */
+  --dim-neighbour: 0.4;
+  --press-scale: 0.97;
+
+  /* Прелоадер: машина едет по дороге */
+  --preloader-car-w: clamp(120px, 16vw, 210px);
+  --preloader-car-h: calc(var(--preloader-car-w) * 0.35);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --cols: 8;
+    --col-gap: var(--step-16);
+  }
+}
+
+@media (min-width: 992px) {
+  :root {
+    --gutter: var(--step-24);
+    --cols: 12;
+    --col-gap: var(--step-20);
+    --section-y: var(--step-96);
+    --header-h: 64px;
+    --header-gap: var(--step-12);
+  }
+}

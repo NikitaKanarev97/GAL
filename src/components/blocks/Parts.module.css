@@ -1,0 +1,222 @@
+.inner {
+  display: grid;
+  gap: var(--space-7);
+}
+
+/* Сетка разделов: телефон 2, планшет 3, десктоп 4 — content-model.md §1 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--col-gap);
+}
+
+/* Плитка — categories.jpg: деталь на чёрном, подпись снизу */
+.tile {
+  position: relative;
+  display: grid;
+  height: 100%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-tile);
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    border-color var(--dur-state) ease,
+    box-shadow var(--dur-state) ease,
+    transform var(--dur-press) var(--ease-out);
+}
+
+.tile:active {
+  transform: scale(var(--press-scale));
+}
+
+.photo {
+  background: var(--bg);
+}
+
+.img {
+  transition: transform var(--dur-state) var(--ease-out);
+}
+
+.placeholder {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 1;
+  background: var(--bg);
+  color: var(--accent);
+}
+
+.placeholderIcon {
+  width: var(--icon-lg);
+  height: var(--icon-lg);
+  filter: var(--glow-accent-filter);
+}
+
+.caption {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  border-top: 1px solid var(--line);
+}
+
+.name {
+  font-weight: var(--weight-800);
+  font-size: var(--fs-body);
+  line-height: var(--lh-tight);
+  white-space: nowrap;
+}
+
+/* Число позиций оранжевым верхним индексом — «Оптика⁵» */
+.count {
+  margin-left: var(--space-1);
+  font-size: var(--sup-size);
+  color: var(--accent);
+  vertical-align: super;
+  line-height: 0;
+}
+
+.onOrder {
+  color: var(--text-muted);
+  line-height: var(--lh-tight);
+}
+
+/* Плашка 5000+ */
+.counter {
+  position: relative;
+  display: grid;
+  border: 1px solid var(--line-warm);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.counterBg {
+  position: absolute !important;
+  inset: 0;
+  z-index: -2;
+}
+
+.counterScrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--scrim-banner-mobile);
+}
+
+.counterBody {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-5);
+  padding: var(--space-8) var(--space-5) var(--space-6);
+}
+
+.number {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.odometer {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-1);
+}
+
+/* Узкая высокая ячейка — одометр (motion/scenes/sections.ts) прокручивает ленту цифр внутри .digit */
+.cell {
+  display: grid;
+  place-items: center;
+  min-width: var(--odometer-cell-w);
+  height: var(--odometer-cell-h);
+  padding-inline: var(--space-1);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-tile);
+  color: var(--accent);
+  overflow: hidden;
+  position: relative;
+}
+
+.digit {
+  display: block;
+}
+
+/* во время прокрутки .digit — лента: ячейка показывает одну строку высотой в ячейку */
+.digit[data-rolling] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--odometer-cell-h);
+}
+
+.digit[data-rolling] > :global(span) {
+  display: grid;
+  place-items: center;
+  height: var(--odometer-cell-h);
+}
+
+.suffix {
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  padding-inline: var(--space-1);
+}
+
+.counterLabel {
+  color: var(--text);
+}
+
+.noNumber {
+  color: var(--text);
+}
+
+.counterText {
+  max-width: var(--measure);
+  color: var(--text-soft);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tile:hover {
+    border-color: var(--line-strong);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .tile:hover .img {
+    transform: scale(var(--hover-zoom));
+  }
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .counterScrim {
+    background: var(--scrim-banner);
+  }
+
+  .counterBody {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: var(--space-5) var(--space-8);
+    padding: var(--space-8);
+  }
+
+  .counterBody > :nth-child(n + 2) {
+    grid-column: 2;
+  }
+
+  .number {
+    grid-row: span 2;
+  }
+}
+
+@media (min-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .caption {
+    padding: var(--space-4) var(--space-5) var(--space-5);
+  }
+}

@@ -1,0 +1,75 @@
+.page {
+  display: grid;
+  gap: var(--space-8);
+  padding-block: var(--space-8) var(--section-y);
+}
+
+.block {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.block > h2 {
+  color: var(--text-muted);
+}
+
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--space-3);
+}
+
+.swatch {
+  display: grid;
+  gap: var(--space-2);
+  font-size: var(--fs-eyebrow);
+}
+
+.chip {
+  height: var(--space-9);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-tile);
+}
+
+.icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.iconCell {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: var(--space-3);
+  min-width: calc(var(--badge-size) * 1.8);
+  padding: var(--space-4);
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-tile);
+  font-size: var(--fs-eyebrow);
+  color: var(--text-muted);
+}
+
+.icon {
+  width: var(--icon-lg);
+  height: var(--icon-lg);
+  color: var(--accent);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.radius {
+  display: grid;
+  place-items: center;
+  width: calc(var(--space-10) * 1.6);
+  height: var(--space-10);
+  background: var(--bg-elevated-2);
+  border: 1px solid var(--line-strong);
+  font-size: var(--fs-eyebrow);
+}

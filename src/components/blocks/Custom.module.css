@@ -1,0 +1,219 @@
+/* лента на пине выходит за контейнер до краёв окна — горизонтального скролла страницы не даём */
+.root {
+  overflow-x: clip;
+}
+
+.inner {
+  display: grid;
+  gap: var(--space-8);
+}
+
+/* Баннер — custom-wide.jpg: кожа справа, тёмная сторона под заголовок, тёплая рамка */
+.banner {
+  position: relative;
+  display: grid;
+  border: 1px solid var(--line-warm);
+  border-radius: var(--radius-card);
+  background: var(--bg);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Телефон: фото 4:5 в потоке, заголовок заходит на его низ, текст — ниже на тёмном */
+.bannerMedia {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  z-index: -1;
+}
+
+.bannerMedia picture,
+.bannerImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bannerImg {
+  object-fit: cover;
+  object-position: 70% 30%;
+}
+
+.bannerScrim {
+  position: absolute;
+  inset: 0;
+  background: var(--scrim-banner-mobile);
+}
+
+.bannerBody {
+  display: grid;
+  justify-items: start;
+  align-content: end;
+  gap: var(--space-4);
+  margin-top: calc(var(--space-10) * -1.5);
+  padding: 0 var(--space-5) var(--space-6);
+}
+
+.brand {
+  font-size: var(--fs-h2);
+  color: var(--accent);
+}
+
+.title {
+  color: var(--text);
+  font-size: var(--fs-h3);
+}
+
+.text {
+  max-width: var(--measure);
+  color: var(--text-soft);
+}
+
+.prices {
+  color: var(--text-muted);
+}
+
+.social {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  color: var(--text);
+  font-weight: var(--weight-600);
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 0.25em;
+}
+
+.socialIcon {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+  color: var(--accent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .social:hover {
+    color: var(--accent);
+  }
+}
+
+.cta {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.hint {
+  color: var(--text-muted);
+}
+
+.tag {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-6);
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--line-warm);
+  background: var(--bg);
+}
+
+.material {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--text-soft);
+}
+
+.works {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.subhead {
+  color: var(--text-muted);
+}
+
+.grid,
+.ribbon {
+  display: grid;
+  gap: var(--space-7);
+}
+
+@media (min-width: 768px) {
+  .bannerScrim {
+    background: var(--scrim-banner);
+  }
+
+  .bannerMedia {
+    position: absolute;
+    inset: 0;
+    aspect-ratio: auto;
+  }
+
+  .bannerBody {
+    margin-top: 0;
+    aspect-ratio: 21 / 9;
+    align-content: center;
+    padding: var(--space-8);
+  }
+
+  .bannerBody > * {
+    max-width: 55%;
+  }
+
+  .title {
+    font-size: var(--fs-h2);
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--col-gap);
+  }
+
+  .ribbon {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-7) var(--col-gap);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .bannerBody {
+    aspect-ratio: auto;
+    min-height: calc(var(--tap) * 10);
+  }
+}
+
+/* Десктоп: горизонтальная лента. Без JS — прокрутка со снапом; с анимацией — пин, лента едет за скроллом */
+@media (min-width: 992px) {
+  .ribbonViewport {
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    scroll-padding-inline: var(--gutter);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-color: var(--line-strong) transparent;
+    padding-bottom: var(--space-4);
+  }
+
+  .ribbon {
+    display: flex;
+    gap: var(--col-gap);
+  }
+
+  .slide {
+    flex: 0 0 calc((100% - var(--col-gap)) / 2.4);
+    scroll-snap-align: start;
+  }
+
+  .ribbonViewport[data-pinned] {
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  /* фото едет внутри рамки навстречу ленте (--shift задаёт сцена) */
+  .ribbonViewport[data-pinned] :global([data-anim='frame']) img:not([data-comparison-image]) {
+    transform: translateX(var(--shift, 0%)) scale(1.2);
+  }
+}

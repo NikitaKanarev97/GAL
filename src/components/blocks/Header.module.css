@@ -1,0 +1,189 @@
+.skip {
+  position: fixed;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: calc(var(--z-toast) + 1);
+  padding: var(--space-3) var(--space-4);
+  background: var(--accent);
+  color: var(--on-accent);
+  border-radius: var(--radius-btn);
+  font-weight: var(--weight-800);
+}
+
+.skip:not(:focus-visible) {
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/*
+ * Плавающая шапка: панель с отступом от края окна, радиус карточки (10), блюр и тень.
+ * Лежит поверх страницы; место под неё резервирует main (globals.css, --header-offset).
+ */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-header);
+  padding-top: var(--header-gap);
+  pointer-events: none;
+}
+
+.panel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  height: var(--header-h);
+  /* поля панели одинаковые: подложка бургера при нажатии не упирается в правую рамку */
+  padding-inline: var(--space-4);
+  background: var(--header-bg);
+  backdrop-filter: blur(var(--header-blur));
+  -webkit-backdrop-filter: blur(var(--header-blur));
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-float);
+  pointer-events: auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  min-height: var(--tap);
+  flex: none;
+}
+
+.logoImg {
+  width: auto;
+  height: calc(var(--space-7) + var(--space-1));
+}
+
+.nav {
+  display: none;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: auto;
+}
+
+.cta {
+  padding-inline: var(--space-4);
+}
+
+.burger {
+  display: grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border-radius: var(--radius-btn);
+  color: var(--text);
+}
+
+/* рамка фокуса — внутри кнопки, чтобы не наезжала на рамку шапки */
+.burger:focus-visible {
+  outline-offset: calc(var(--focus-ring-width) * -1);
+}
+
+.menu ul {
+  display: grid;
+}
+
+.menuLink {
+  display: flex;
+  align-items: center;
+  min-height: calc(var(--tap) + var(--space-3));
+  font-size: var(--fs-h3);
+  border-bottom: 1px solid var(--line);
+}
+
+.menuFooter {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: center;
+  margin-top: var(--space-7);
+}
+
+.nick {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  color: var(--accent);
+  font-weight: var(--weight-600);
+}
+
+/* Узкие телефоны (320–379): логотип, кнопка и бургер не помещаются — на 360 бургер вылезал за рамку шапки.
+   Локальное исключение из сетки брейкпоинтов layout.css: касается только состава шапки. */
+@media (max-width: 379.98px) {
+  .panel {
+    gap: var(--space-3);
+    padding-inline: var(--space-3);
+  }
+
+  .actions {
+    gap: var(--space-1);
+  }
+
+  .cta {
+    padding-inline: var(--space-3);
+  }
+
+  .cta svg {
+    display: none;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .burger:hover {
+    background: var(--bg-elevated-2);
+  }
+}
+
+@media (min-width: 992px) {
+  .nav {
+    display: block;
+    margin-inline: auto;
+  }
+
+  .nav ul {
+    display: flex;
+    gap: var(--space-1);
+  }
+
+  .navLink {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap);
+    padding-inline: var(--space-3);
+    font-size: var(--fs-small);
+    font-weight: var(--weight-600);
+    color: var(--text-soft);
+    transition: color var(--dur-state) ease;
+  }
+
+  .navLink:hover {
+    color: var(--accent);
+  }
+
+  .actions {
+    margin-left: 0;
+  }
+
+  .panel {
+    gap: var(--space-6);
+    padding-inline: var(--space-5) var(--space-2);
+  }
+
+  .cta {
+    padding-inline: var(--space-6);
+  }
+
+  .burger {
+    display: none;
+  }
+}

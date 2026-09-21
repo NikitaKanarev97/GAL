@@ -1,0 +1,69 @@
+.root {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.title {
+  font-weight: var(--weight-800);
+  font-size: var(--fs-body);
+}
+
+/* Свёрнутая строка: вопрос слева, «Показать варианты» справа */
+.toggle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-3);
+  min-height: var(--tap);
+  text-align: left;
+}
+
+.toggleHint {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--accent);
+  font-weight: var(--weight-600);
+  font-size: var(--fs-small);
+}
+
+.toggleIcon {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+  transition: transform var(--dur-state) var(--ease-out);
+}
+
+.toggle[aria-expanded='true'] .toggleIcon {
+  transform: rotate(45deg);
+}
+
+.options {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.options[hidden] {
+  display: none;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  color: var(--accent);
+  font-weight: var(--weight-600);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.note {
+  color: var(--text-muted);
+}

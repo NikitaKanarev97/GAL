@@ -1,0 +1,216 @@
+/* Плитка кузова — index.html: тёмная плитка, активная — оранжевая рамка и нижняя черта */
+.tile {
+  position: relative;
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: var(--space-1);
+  width: 100%;
+  min-width: calc(var(--tap) * 2.2);
+  min-height: calc(var(--tap) * 1.6);
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-tile);
+  text-align: left;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    border-color var(--dur-state) ease,
+    background-color var(--dur-state) ease,
+    transform var(--dur-press) var(--ease-out);
+}
+
+.tile:active {
+  transform: scale(var(--press-scale));
+}
+
+.tile[aria-pressed='true'] {
+  border-color: var(--accent);
+  background: var(--bg-elevated-2);
+}
+
+.code {
+  font-family: var(--font-display);
+  font-weight: var(--weight-800);
+  font-size: var(--fs-h3);
+  line-height: 1;
+  letter-spacing: var(--tracking-display);
+  white-space: nowrap;
+}
+
+.years {
+  font-size: var(--fs-eyebrow);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.other {
+  min-width: calc(var(--tap) * 3);
+}
+
+.otherTitle {
+  font-weight: var(--weight-800);
+  font-size: var(--fs-small);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-button);
+  white-space: nowrap;
+}
+
+.bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--space-1);
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-state) var(--ease-out);
+}
+
+.tile[aria-pressed='true'] .bar {
+  transform: scaleX(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tile:hover {
+    border-color: var(--line-strong);
+    background: var(--bg-elevated-2);
+  }
+
+  .tile[aria-pressed='true']:hover {
+    border-color: var(--accent);
+  }
+}
+
+/* Вкладки. min-width: 0 — ряд с прокруткой не распирает grid-родителя */
+.tabs {
+  min-width: 0;
+}
+
+.tablist {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
+  padding-bottom: var(--space-1);
+}
+
+.tablist::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  flex: none;
+  min-height: var(--tap);
+  padding: 0 var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-600);
+  color: var(--text-muted);
+  white-space: nowrap;
+  transition:
+    color var(--dur-state) ease,
+    border-color var(--dur-state) ease,
+    background-color var(--dur-state) ease;
+}
+
+.tab[aria-selected='true'] {
+  color: var(--on-accent);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.panel {
+  margin-top: var(--space-3);
+}
+
+.row {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  margin-inline: calc(var(--gutter) * -1);
+  padding: var(--space-1) var(--gutter);
+  scrollbar-width: none;
+}
+
+.row::-webkit-scrollbar {
+  display: none;
+}
+
+.row > li {
+  flex: none;
+  scroll-snap-align: start;
+}
+
+.groups {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .tablist,
+  .row {
+    flex-wrap: wrap;
+    margin-inline: 0;
+    padding-inline: 0;
+    overflow: visible;
+  }
+
+  .tabsOnlyMobile {
+    display: none;
+  }
+
+  .groups {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6) var(--space-7);
+  }
+
+  .group {
+    display: grid;
+    gap: var(--space-3);
+    align-content: start;
+  }
+
+  .groupLabel {
+    color: var(--text-muted);
+  }
+
+  .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+}
+
+/*
+ * Десктоп: плитки тянутся на всю ширину контейнера — вес группы по числу кузовов (--n из BodyPicker).
+ * Раньше кузова занимали левую половину блока, правая стояла пустой.
+ */
+@media (min-width: 992px) {
+  /* группа не уже своего содержимого: не влезают в ряд — переносятся, а не вылезают за экран (на 992–1024 уезжало на 23px) */
+  .group {
+    flex: var(--n, 1) 1 0;
+  }
+
+  .wrap > li {
+    flex: 1 1 0;
+  }
+
+  .groups .tile {
+    min-height: calc(var(--tap) * 2);
+    padding-inline: var(--space-5);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tab:hover:not([aria-selected='true']) {
+    color: var(--text);
+    border-color: var(--line-strong);
+  }
+}

@@ -1,0 +1,21 @@
+.inner {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1) var(--space-2);
+  min-height: var(--tap);
+  color: var(--text-soft);
+}
+
+.reset {
+  min-height: var(--tap);
+  color: var(--accent);
+  font-weight: var(--weight-600);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}

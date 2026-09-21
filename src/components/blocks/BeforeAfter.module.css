@@ -1,0 +1,110 @@
+.frame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--bg-elevated);
+  touch-action: pan-y;
+  cursor: ew-resize;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.img {
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.before {
+  position: absolute;
+  inset: 0;
+}
+
+.label {
+  position: absolute;
+  top: var(--space-3);
+  padding: var(--space-1) var(--space-2);
+  background: var(--scrim-dialog);
+  border-radius: var(--radius-btn);
+  color: var(--text);
+  pointer-events: none;
+}
+
+.labelBefore {
+  left: var(--space-3);
+}
+
+.labelAfter {
+  right: var(--space-3);
+}
+
+.handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--accent);
+  pointer-events: none;
+}
+
+.knob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--tap);
+  height: var(--tap);
+  margin: calc(var(--tap) / -2) 0 0 calc(var(--tap) / -2);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-pill);
+  background: var(--bg);
+  box-shadow: var(--glow-accent);
+}
+
+.knob::before,
+.knob::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 0;
+  height: 0;
+  margin-top: calc(var(--space-1) * -1);
+  border-block: var(--space-1) solid transparent;
+}
+
+.knob::before {
+  left: var(--space-2);
+  border-right: var(--space-1) solid var(--accent);
+}
+
+.knob::after {
+  right: var(--space-2);
+  border-left: var(--space-1) solid var(--accent);
+}
+
+.hint {
+  position: absolute;
+  left: 50%;
+  bottom: var(--space-3);
+  transform: translateX(-50%);
+  padding: var(--space-1) var(--space-3);
+  background: var(--scrim-dialog);
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Ползунок для клавиатуры и скринридера: невидим, фокус рисуется на рамке */
+.range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.frame:has(.range:focus-visible) {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: calc(var(--focus-ring-width) * -1);
+}

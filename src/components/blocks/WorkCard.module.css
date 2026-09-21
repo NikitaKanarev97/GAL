@@ -1,0 +1,93 @@
+.card {
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+}
+
+.media {
+  position: relative;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.caption {
+  position: relative;
+  display: grid;
+  gap: var(--space-1);
+}
+
+.caption:has(.counter) {
+  padding-right: calc(var(--tap) * 1.5);
+}
+
+.counter {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--text-muted);
+}
+
+.title {
+  font-size: var(--fs-body);
+  font-weight: var(--weight-800);
+  line-height: var(--lh-tight);
+}
+
+.spec {
+  color: var(--text-muted);
+}
+
+.more {
+  justify-self: start;
+  min-height: var(--tap);
+  margin-top: calc(var(--space-2) * -1);
+  color: var(--accent);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-600);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.detail {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.detailHead {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.detailTitle {
+  color: var(--text);
+}
+
+.description {
+  max-width: var(--text-max);
+  color: var(--text-soft);
+}
+
+.figure {
+  display: grid;
+  gap: var(--space-2);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.gallery {
+  display: grid;
+  gap: var(--col-gap);
+}
+
+.gallery :global([data-anim='frame']) {
+  border-radius: var(--radius-card);
+}
+
+@media (min-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+}

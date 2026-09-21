@@ -1,0 +1,109 @@
+.layout {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.aside {
+  display: grid;
+  align-content: start;
+  gap: var(--space-6);
+}
+
+.flow {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.steps {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.stepHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.branch {
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--line-warm);
+  border-radius: var(--radius-btn);
+  color: var(--accent);
+}
+
+.note {
+  padding: var(--space-3) var(--space-4);
+  border-left: var(--space-1) solid var(--accent);
+  background: var(--bg-elevated);
+  color: var(--text-soft);
+}
+
+/* Карточки features из прототипа: тёмные, оранжевые номера 01–04 */
+.step {
+  position: sticky;
+  top: calc(var(--header-offset) + var(--i) * var(--space-3));
+  display: grid;
+  gap: var(--space-3);
+  min-height: calc(var(--tap) * 4.5);
+  padding: var(--space-6);
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card-hover);
+  transform-origin: 50% 0%;
+}
+
+/* затемнение карточки, ушедшей под следующую */
+.step::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: var(--bg);
+  opacity: var(--dim, 0);
+  pointer-events: none;
+}
+
+.number {
+  font-family: var(--font-display);
+  font-weight: var(--weight-900);
+  font-size: var(--fs-h2);
+  line-height: 1;
+  color: var(--accent);
+  transform: var(--skew-display);
+  transform-origin: 0 100%;
+}
+
+.stepTitle {
+  font-weight: var(--weight-800);
+  line-height: var(--lh-tight);
+}
+
+.stepText {
+  color: var(--text-soft);
+}
+
+@media (min-width: 992px) {
+  .layout {
+    grid-template-columns: 5fr 7fr;
+    gap: var(--col-gap);
+    align-items: start;
+  }
+
+  .aside {
+    position: sticky;
+    top: calc(var(--header-offset) + var(--space-6));
+    padding-right: var(--space-8);
+  }
+
+  .steps {
+    gap: var(--space-8);
+  }
+
+  .step {
+    top: calc(var(--header-offset) + var(--space-6) + var(--i) * var(--space-5));
+    padding: var(--space-7);
+  }
+}
