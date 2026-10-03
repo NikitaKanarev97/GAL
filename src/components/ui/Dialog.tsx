@@ -44,12 +44,16 @@ if (typeof window !== 'undefined') {
   window.addEventListener('keydown', () => (lastInput = 'keyboard'), true)
 }
 
+/** фокус пришёл не с клавиатуры — рамку не рисуем, пока элемент его не потеряет */
+function quietFocus(target: HTMLElement) {
+  if (lastInput !== 'pointer') return
+  target.setAttribute('data-quiet-focus', '')
+  target.addEventListener('blur', () => target.removeAttribute('data-quiet-focus'), { once: true })
+}
+
 function returnFocusTo(target: HTMLElement | null) {
   if (!target) return
-  if (lastInput === 'pointer') {
-    target.setAttribute('data-quiet-focus', '')
-    target.addEventListener('blur', () => target.removeAttribute('data-quiet-focus'), { once: true })
-  }
+  quietFocus(target)
   target.focus({ preventScroll: true })
 }
 
@@ -74,6 +78,10 @@ export function Dialog({ open, onClose, label, closeLabel = 'Закрыть', si
     if (!open || !dialog) return
     const previous = document.activeElement as HTMLElement | null
     if (!dialog.open) dialog.showModal()
+    // showModal сам ставит фокус на первую кнопку — крестик. Safari считает такой фокус видимым и после касания:
+    // на листе проявлялся спрятанный крестик с оранжевой рамкой
+    const autofocused = document.activeElement
+    if (autofocused instanceof HTMLElement && dialog.contains(autofocused)) quietFocus(autofocused)
     window.dispatchEvent(new Event(DIALOG_EVENT))
     const unlock = lockScroll()
 

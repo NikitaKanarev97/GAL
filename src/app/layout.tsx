@@ -23,6 +23,8 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: new URL(process.env.SITE_URL ?? 'http://localhost:3000'),
     title,
+    // Подпись под иконкой закладки на экране «Домой» (иконка — src/app/apple-icon.png)
+    appleWebApp: { title: 'GAL' },
     description:
       'Б/у оригинальные запчасти для BMW в наличии и под заказ: подбор по VIN, цены от. Ремонт в Gal service, перешив салонов в Gal custom. Пишите нам.',
     openGraph: {

@@ -1,0 +1,1177 @@
+{
+  "bmw_bodies": [
+    {
+      "code": "E34",
+      "series": "5",
+      "sort": 1,
+      "years_from": 1988,
+      "years_to": 1996,
+      "status": "published"
+    },
+    {
+      "code": "E39",
+      "series": "5",
+      "sort": 2,
+      "years_from": 1995,
+      "years_to": 2003,
+      "status": "published"
+    },
+    {
+      "code": "E32",
+      "series": "7",
+      "sort": 1,
+      "years_from": 1986,
+      "years_to": 1994,
+      "status": "published"
+    },
+    {
+      "code": "E38",
+      "series": "7",
+      "sort": 2,
+      "years_from": 1994,
+      "years_to": 2001,
+      "status": "published"
+    },
+    {
+      "code": "E28",
+      "series": "5",
+      "sort": 3,
+      "years_from": 1981,
+      "years_to": 1988,
+      "status": "draft"
+    },
+    {
+      "code": "E60",
+      "series": "5",
+      "sort": 4,
+      "years_from": 2003,
+      "years_to": 2010,
+      "status": "draft"
+    },
+    {
+      "code": "F10",
+      "series": "5",
+      "sort": 5,
+      "years_from": 2009,
+      "years_to": 2017,
+      "status": "draft"
+    },
+    {
+      "code": "G30",
+      "series": "5",
+      "sort": 6,
+      "years_from": 2016,
+      "years_to": 2023,
+      "status": "draft"
+    },
+    {
+      "code": "E30",
+      "series": "3",
+      "sort": 1,
+      "years_from": 1982,
+      "years_to": 1994,
+      "status": "draft"
+    },
+    {
+      "code": "F30",
+      "series": "3",
+      "sort": 2,
+      "years_from": 2011,
+      "years_to": 2019,
+      "status": "draft"
+    },
+    {
+      "code": "G20",
+      "series": "3",
+      "sort": 3,
+      "years_from": 2018,
+      "years_to": null,
+      "status": "draft"
+    },
+    {
+      "code": "E53",
+      "series": "X",
+      "sort": 1,
+      "years_from": 1999,
+      "years_to": 2006,
+      "status": "draft"
+    },
+    {
+      "code": "E70",
+      "series": "X",
+      "sort": 2,
+      "years_from": 2006,
+      "years_to": 2013,
+      "status": "draft"
+    }
+  ],
+  "part_sections": [
+    {
+      "slug": "engine",
+      "name": "Двигатель",
+      "description": "Двигатели и навесное: ГБЦ, VANOS, турбины, генераторы, стартеры, помпы, радиаторы. Подбираем по коду мотора — M30, M50, M60, M62 и другим.",
+      "description_short": "Двигатели и навесное. Подбор по коду мотора.",
+      "icon": "engine",
+      "seo_title": "Двигатель BMW под заказ — ГБЦ, VANOS, турбины | GAL",
+      "seo_description": "Двигатели и навесное для BMW под заказ. Подбор по коду мотора, кузову или VIN, цены от. Свяжитесь с нами в Telegram.",
+      "status": "published",
+      "sort": 1,
+      "cover": {
+        "path": "assets/parts/parts-cover-engine@2x.jpg",
+        "title": "parts-cover-engine"
+      }
+    },
+    {
+      "slug": "transmission",
+      "name": "КПП",
+      "description": "Автоматы и механика, раздатки xDrive, редукторы, карданы, гидроблоки. Подбираем по коду коробки с шильдика или по VIN.",
+      "description_short": "АКПП, МКПП, раздатки, редукторы. Подбор по коду коробки.",
+      "icon": "transmission",
+      "seo_title": "КПП BMW под заказ — АКПП, раздатки, редукторы | GAL",
+      "seo_description": "Автоматы, механика, раздатки и редукторы для BMW под заказ. Подбор по коду коробки или VIN, цены от. Свяжитесь с нами в Telegram.",
+      "status": "published",
+      "sort": 2,
+      "cover": {
+        "path": "assets/parts/parts-cover-transmission@2x.jpg",
+        "title": "parts-cover-transmission"
+      }
+    },
+    {
+      "slug": "suspension",
+      "name": "Подвеска",
+      "description": "Рычаги, стойки, амортизаторы, пневмобаллоны, ступицы, подрамники, рулевые рейки. Подскажем, что лучше менять парой.",
+      "description_short": "Рычаги, стойки, пневма, рулевые рейки.",
+      "icon": "suspension",
+      "seo_title": "Подвеска BMW под заказ — рычаги, пневма | GAL",
+      "seo_description": "Рычаги, стойки, пневмобаллоны и рулевые рейки для BMW под заказ. Подбор по кузову или VIN, цены от. Свяжитесь с нами в Telegram.",
+      "status": "published",
+      "sort": 3,
+      "cover": {
+        "path": "assets/parts/parts-cover-suspension@2x.jpg",
+        "title": "parts-cover-suspension"
+      }
+    },
+    {
+      "slug": "lighting",
+      "name": "Оптика",
+      "description": "Фары, задние фонари, противотуманки, повторители, блоки розжига и «ангельские глазки». Проверим, подойдёт ли деталь к рестайлингу вашего кузова, до заказа.",
+      "description_short": "Фары, фонари, ПТФ, блоки розжига. Совместимость проверим до заказа.",
+      "icon": "lighting",
+      "seo_title": "Оптика BMW под заказ — фары, фонари, ПТФ | GAL",
+      "seo_description": "Фары, задние фонари и блоки розжига для BMW под заказ. Подбор по кузову, VIN или фото, цены от. Свяжитесь с нами в Telegram.",
+      "status": "published",
+      "sort": 4,
+      "cover": {
+        "path": "assets/parts/parts-cover-lighting@2x.jpg",
+        "title": "parts-cover-lighting"
+      }
+    },
+    {
+      "slug": "body",
+      "name": "Кузов",
+      "description": "Капоты, крылья, бамперы, двери, крышки багажника, зеркала, решётки радиатора. Комплектацию и код краски уточним до заказа.",
+      "description_short": "Капоты, бамперы, двери, зеркала, решётки.",
+      "icon": "body",
+      "seo_title": "Кузов BMW под заказ — капоты, бамперы, двери | GAL",
+      "seo_description": "Капоты, крылья, бамперы и двери для BMW под заказ. Подбор по кузову и комплектации, цены от. Свяжитесь с нами в Telegram.",
+      "status": "published",
+      "sort": 5,
+      "cover": {
+        "path": "assets/parts/parts-cover-body@2x.jpg",
+        "title": "parts-cover-body"
+      }
+    },
+    {
+      "slug": "electronics",
+      "name": "Электроника",
+      "description": "Блоки управления, мониторы и контроллеры iDrive, приборные панели, датчики, проводка. Совместимость сверяем по номеру блока.",
+      "description_short": "Блоки, iDrive, приборки, датчики.",
+      "icon": "electronics",
+      "seo_title": "Электроника BMW под заказ — блоки, iDrive | GAL",
+      "seo_description": "Блоки управления, iDrive и приборные панели для BMW под заказ. Подбор по номеру блока или VIN, цены от. Свяжитесь с нами в Telegram.",
+      "status": "published",
+      "sort": 6,
+      "cover": {
+        "path": "assets/parts/parts-cover-electronics@2x.jpg",
+        "title": "parts-cover-electronics"
+      }
+    },
+    {
+      "slug": "interior",
+      "name": "Салон",
+      "description": "Сиденья, рули, торпедо, дверные карты, потолки, консоли и отделка. Если салон нужно перешить — это в Gal custom.",
+      "description_short": "Сиденья, рули, торпедо, отделка.",
+      "icon": "interior",
+      "seo_title": "Салон BMW под заказ — сиденья, рули, торпедо | GAL",
+      "seo_description": "Сиденья, рули, торпедо и отделка салона для BMW под заказ. Подбор по кузову или VIN, цены от. Свяжитесь с нами в Telegram.",
+      "status": "published",
+      "sort": 7,
+      "cover": {
+        "path": "assets/parts/parts-cover-interior@2x.jpg",
+        "title": "parts-cover-interior"
+      }
+    }
+  ],
+  "part_positions": [
+    {
+      "section": "engine",
+      "name": "ГБЦ в сборе",
+      "spec_note": "M52",
+      "price_from": 60000,
+      "sort": 1,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E34",
+        "E39"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/engine-01-cylinder-head@2x.jpg",
+        "title": "engine-01-cylinder-head"
+      }
+    },
+    {
+      "section": "engine",
+      "name": "Двигатель M62 в сборе",
+      "spec_note": "V8",
+      "price_from": 200000,
+      "sort": 2,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E38",
+        "E39"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/engine-02-m62-engine@2x.jpg",
+        "title": "engine-02-m62-engine"
+      }
+    },
+    {
+      "section": "engine",
+      "name": "Генератор",
+      "spec_note": "M60",
+      "price_from": 9500,
+      "sort": 3,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E32",
+        "E34",
+        "E38"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/engine-03-alternator@2x.jpg",
+        "title": "engine-03-alternator"
+      }
+    },
+    {
+      "section": "engine",
+      "name": "Компрессор кондиционера",
+      "spec_note": null,
+      "price_from": 11000,
+      "sort": 4,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E38"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/engine-04-ac-compressor@2x.jpg",
+        "title": "engine-04-ac-compressor"
+      }
+    },
+    {
+      "section": "engine",
+      "name": "Помпа",
+      "spec_note": "M50 · M52",
+      "price_from": 4000,
+      "sort": 5,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E34",
+        "E39"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/engine-05-water-pump@2x.jpg",
+        "title": "engine-05-water-pump"
+      }
+    },
+    {
+      "section": "transmission",
+      "name": "АКПП ZF 5HP",
+      "spec_note": "M62",
+      "price_from": 60000,
+      "sort": 1,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E38",
+        "E39"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/transmission-01-zf-5hp-auto@2x.jpg",
+        "title": "transmission-01-zf-5hp-auto"
+      }
+    },
+    {
+      "section": "transmission",
+      "name": "МКПП Getrag",
+      "spec_note": "M50",
+      "price_from": 45000,
+      "sort": 2,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E34"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/transmission-02-getrag-manual@2x.jpg",
+        "title": "transmission-02-getrag-manual"
+      }
+    },
+    {
+      "section": "transmission",
+      "name": "Кардан",
+      "spec_note": null,
+      "price_from": 15000,
+      "sort": 3,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E39"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/transmission-03-driveshaft@2x.jpg",
+        "title": "transmission-03-driveshaft"
+      }
+    },
+    {
+      "section": "transmission",
+      "name": "Редуктор задний",
+      "spec_note": null,
+      "price_from": 15000,
+      "sort": 4,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E39"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/transmission-04-rear-differential@2x.jpg",
+        "title": "transmission-04-rear-differential"
+      }
+    },
+    {
+      "section": "transmission",
+      "name": "Кулиса КПП",
+      "spec_note": "МКПП",
+      "price_from": 6500,
+      "sort": 5,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E34",
+        "E39"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/transmission-05-shifter-linkage@2x.jpg",
+        "title": "transmission-05-shifter-linkage"
+      }
+    },
+    {
+      "section": "suspension",
+      "name": "Пневмостойка задняя",
+      "spec_note": "самовыравнивание",
+      "price_from": 12000,
+      "sort": 1,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E38"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/suspension-01-rear-air-strut@2x.jpg",
+        "title": "suspension-01-rear-air-strut"
+      }
+    },
+    {
+      "section": "suspension",
+      "name": "Рулевая рейка",
+      "spec_note": "Servotronic",
+      "price_from": 18000,
+      "sort": 2,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E39"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/suspension-02-steering-rack@2x.jpg",
+        "title": "suspension-02-steering-rack"
+      }
+    },
+    {
+      "section": "suspension",
+      "name": "Рычаг передний нижний",
+      "spec_note": null,
+      "price_from": 8900,
+      "sort": 3,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E34"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/suspension-03-front-lower-arm@2x.jpg",
+        "title": "suspension-03-front-lower-arm"
+      }
+    },
+    {
+      "section": "suspension",
+      "name": "Амортизатор передний",
+      "spec_note": null,
+      "price_from": 7200,
+      "sort": 4,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E32",
+        "E34"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/suspension-04-front-shock@2x.jpg",
+        "title": "suspension-04-front-shock"
+      }
+    },
+    {
+      "section": "suspension",
+      "name": "Ступица задняя",
+      "spec_note": null,
+      "price_from": 6500,
+      "sort": 5,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E38",
+        "E39"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/suspension-05-rear-hub@2x.jpg",
+        "title": "suspension-05-rear-hub"
+      }
+    },
+    {
+      "section": "lighting",
+      "name": "Фара передняя левая",
+      "spec_note": "рестайлинг · ксенон",
+      "price_from": 12500,
+      "sort": 1,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E39"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/lighting-01-left-xenon-headlight@2x.jpg",
+        "title": "lighting-01-left-xenon-headlight"
+      }
+    },
+    {
+      "section": "lighting",
+      "name": "Фары «ангельские глазки», пара",
+      "spec_note": null,
+      "price_from": 45000,
+      "sort": 2,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E34"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/lighting-02-angel-eyes-pair@2x.jpg",
+        "title": "lighting-02-angel-eyes-pair"
+      }
+    },
+    {
+      "section": "lighting",
+      "name": "Фонарь задний правый",
+      "spec_note": "рестайлинг",
+      "price_from": 8000,
+      "sort": 3,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E38"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/lighting-03-right-tail-light@2x.jpg",
+        "title": "lighting-03-right-tail-light"
+      }
+    },
+    {
+      "section": "lighting",
+      "name": "Блок розжига ксенона",
+      "spec_note": null,
+      "price_from": 4500,
+      "sort": 4,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E38",
+        "E39"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/lighting-04-xenon-ballast@2x.jpg",
+        "title": "lighting-04-xenon-ballast"
+      }
+    },
+    {
+      "section": "lighting",
+      "name": "Противотуманная фара левая",
+      "spec_note": null,
+      "price_from": null,
+      "sort": 5,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E34"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/lighting-05-left-fog-light@2x.jpg",
+        "title": "lighting-05-left-fog-light"
+      }
+    },
+    {
+      "section": "body",
+      "name": "Решётка радиатора «ноздри»",
+      "spec_note": "пара · хром",
+      "price_from": 9800,
+      "sort": 1,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E34"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/body-01-kidney-grilles@2x.jpg",
+        "title": "body-01-kidney-grilles"
+      }
+    },
+    {
+      "section": "body",
+      "name": "Бампер передний M-пакет",
+      "spec_note": "под парктроники",
+      "price_from": 25000,
+      "sort": 2,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E39"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/body-02-m-front-bumper@2x.jpg",
+        "title": "body-02-m-front-bumper"
+      }
+    },
+    {
+      "section": "body",
+      "name": "Капот",
+      "spec_note": "без окраски",
+      "price_from": 15000,
+      "sort": 3,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E39"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/body-03-hood@2x.jpg",
+        "title": "body-03-hood"
+      }
+    },
+    {
+      "section": "body",
+      "name": "Зеркало левое",
+      "spec_note": "складное, с памятью",
+      "price_from": 14000,
+      "sort": 4,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E38"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/body-04-left-mirror@2x.jpg",
+        "title": "body-04-left-mirror"
+      }
+    },
+    {
+      "section": "body",
+      "name": "Крышка багажника",
+      "spec_note": "седан",
+      "price_from": 10000,
+      "sort": 5,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E34"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/body-05-trunk-lid@2x.jpg",
+        "title": "body-05-trunk-lid"
+      }
+    },
+    {
+      "section": "electronics",
+      "name": "Блок управления двигателем DME",
+      "spec_note": "M50",
+      "price_from": 15000,
+      "sort": 1,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E34"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/electronics-01-dme-module@2x.jpg",
+        "title": "electronics-01-dme-module"
+      }
+    },
+    {
+      "section": "electronics",
+      "name": "Монитор бортового компьютера",
+      "spec_note": "16:9",
+      "price_from": 12000,
+      "sort": 2,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E38",
+        "E39"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/electronics-02-board-computer@2x.jpg",
+        "title": "electronics-02-board-computer"
+      }
+    },
+    {
+      "section": "electronics",
+      "name": "Приборная панель",
+      "spec_note": "рестайлинг",
+      "price_from": 9000,
+      "sort": 3,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E39"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/electronics-03-instrument-cluster@2x.jpg",
+        "title": "electronics-03-instrument-cluster"
+      }
+    },
+    {
+      "section": "electronics",
+      "name": "Блок комфорта",
+      "spec_note": null,
+      "price_from": 7000,
+      "sort": 4,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E38"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/electronics-04-comfort-module@2x.jpg",
+        "title": "electronics-04-comfort-module"
+      }
+    },
+    {
+      "section": "electronics",
+      "name": "Датчик ABS передний",
+      "spec_note": null,
+      "price_from": 2500,
+      "sort": 5,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E34",
+        "E39"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/electronics-05-front-abs-sensor@2x.jpg",
+        "title": "electronics-05-front-abs-sensor"
+      }
+    },
+    {
+      "section": "interior",
+      "name": "Руль M-Tech II",
+      "spec_note": "кожа",
+      "price_from": 18000,
+      "sort": 1,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E34"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/interior-01-m-tech-wheel@2x.jpg",
+        "title": "interior-01-m-tech-wheel"
+      }
+    },
+    {
+      "section": "interior",
+      "name": "Сиденья Sport, пара",
+      "spec_note": "кожа",
+      "price_from": 60000,
+      "sort": 2,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E39"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/interior-02-sport-seats@2x.jpg",
+        "title": "interior-02-sport-seats"
+      }
+    },
+    {
+      "section": "interior",
+      "name": "Торпедо",
+      "spec_note": null,
+      "price_from": 25000,
+      "sort": 3,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E38"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/interior-03-dashboard@2x.jpg",
+        "title": "interior-03-dashboard"
+      }
+    },
+    {
+      "section": "interior",
+      "name": "Дверные карты, комплект",
+      "spec_note": null,
+      "price_from": 20000,
+      "sort": 4,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E32"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/interior-04-door-cards@2x.jpg",
+        "title": "interior-04-door-cards"
+      }
+    },
+    {
+      "section": "interior",
+      "name": "Потолок",
+      "spec_note": null,
+      "price_from": null,
+      "sort": 5,
+      "status": "published",
+      "is_demo": true,
+      "bodies": [
+        "E34"
+      ],
+      "photo": {
+        "path": "assets/parts/positions/interior-05-headliner@2x.jpg",
+        "title": "interior-05-headliner"
+      }
+    }
+  ],
+  "services": [
+    {
+      "name": "ТО",
+      "description": null,
+      "price_from": 2500,
+      "duration": null,
+      "sort": 1,
+      "status": "published",
+      "is_demo": false
+    },
+    {
+      "name": "Замена двигателя",
+      "description": null,
+      "price_from": 50000,
+      "duration": null,
+      "sort": 2,
+      "status": "published",
+      "is_demo": false
+    }
+  ],
+  "works": [
+    {
+      "direction": "service",
+      "sort": 1,
+      "title": "Свап S62",
+      "car": "BMW E39",
+      "year": 2025,
+      "description": "Поставили мотор от M5, переделали проводку и выхлоп. Машина прошла диагностику без ошибок.",
+      "status": "published",
+      "is_demo": true,
+      "post_url": null,
+      "cover": {
+        "path": "assets/service/service-work-01-swap-s62-e39@2x.jpg",
+        "title": "service-work-01-swap-s62-e39"
+      },
+      "pairs": [],
+      "photos": []
+    },
+    {
+      "direction": "service",
+      "sort": 2,
+      "title": "Пневмоподвеска по кругу",
+      "car": "BMW E70",
+      "year": 2025,
+      "description": "Заменили баллоны, компрессор и блок клапанов — машина перестала садиться за ночь.",
+      "status": "published",
+      "is_demo": true,
+      "post_url": null,
+      "cover": {
+        "path": "assets/service/service-work-02-air-suspension-e70@2x.jpg",
+        "title": "service-work-02-air-suspension-e70"
+      },
+      "pairs": [],
+      "photos": []
+    },
+    {
+      "direction": "custom",
+      "sort": 1,
+      "title": "Перетяжка руля M-Sport",
+      "car": "BMW E60",
+      "year": null,
+      "description": "Перетянули руль чёрной кожей с красной строчкой. В шторке — фото клиента до и после работы; в галерее — дополнительные ракурсы.",
+      "status": "published",
+      "is_demo": false,
+      "post_url": null,
+      "cover": null,
+      "pairs": [
+        {
+          "after_alignment": {
+            "x": 1.8,
+            "y": 6.5,
+            "scale": 1.16
+          },
+          "caption": null,
+          "sort": 1,
+          "before": {
+            "path": "assets/before-after/1b.jpg",
+            "title": "real-wheel-before-front-reference"
+          },
+          "after": {
+            "path": "assets/before-after/1b (2).jpg",
+            "title": "real-wheel-after-front-reference"
+          }
+        }
+      ],
+      "photos": [
+        {
+          "path": "assets/before-after/1b.jpg",
+          "title": "real-wheel-before-front-reference"
+        },
+        {
+          "path": "assets/before-after/1b (2).jpg",
+          "title": "real-wheel-after-front-reference"
+        },
+        {
+          "path": "assets/before-after/1a.jpg",
+          "title": "real-wheel-before-reference"
+        },
+        {
+          "path": "assets/before-after/1a-2.jpg",
+          "title": "real-wheel-after-reference"
+        }
+      ]
+    },
+    {
+      "direction": "custom",
+      "sort": 2,
+      "title": "Перетяжка стоек салона",
+      "car": "Стойки салона",
+      "year": null,
+      "description": "Перетянули светлые стойки тёмным материалом. В галерее — настоящие фото до работы и после неё.",
+      "status": "published",
+      "is_demo": false,
+      "post_url": null,
+      "cover": null,
+      "pairs": [
+        {
+          "caption": null,
+          "sort": 1,
+          "after_alignment": null,
+          "before": {
+            "path": "assets/custom/custom-work-06-pillar-before-wide.png",
+            "title": "custom-work-06-pillar-before-wide"
+          },
+          "after": {
+            "path": "assets/custom/custom-work-06-pillar-after-wide.png",
+            "title": "custom-work-06-pillar-after-wide"
+          }
+        }
+      ],
+      "photos": [
+        {
+          "path": "assets/before-after/2b.jpg",
+          "title": "real-pillar-before-reference"
+        },
+        {
+          "path": "assets/before-after/2a.jpg",
+          "title": "real-pillar-after-reference"
+        }
+      ]
+    },
+    {
+      "direction": "custom",
+      "sort": 3,
+      "title": "Обивка сиденья",
+      "car": "Пример отделки",
+      "year": null,
+      "description": "Пример замены изношенной обивки сиденья на чёрную кожу с тонкой строчкой.",
+      "status": "published",
+      "is_demo": true,
+      "post_url": null,
+      "cover": null,
+      "pairs": [
+        {
+          "caption": null,
+          "sort": 1,
+          "after_alignment": null,
+          "before": {
+            "path": "assets/custom/custom-work-07-seat-before.png",
+            "title": "custom-work-07-seat-before"
+          },
+          "after": {
+            "path": "assets/custom/custom-work-07-seat-after.png",
+            "title": "custom-work-07-seat-after"
+          }
+        }
+      ],
+      "photos": []
+    },
+    {
+      "direction": "custom",
+      "sort": 4,
+      "title": "Обивка дверной карты",
+      "car": "Пример отделки",
+      "year": null,
+      "description": "Пример обновления вставки и подлокотника дверной карты с сохранением пластика и фурнитуры.",
+      "status": "published",
+      "is_demo": true,
+      "post_url": null,
+      "cover": null,
+      "pairs": [
+        {
+          "caption": null,
+          "sort": 1,
+          "after_alignment": null,
+          "before": {
+            "path": "assets/custom/custom-work-08-door-before.png",
+            "title": "custom-work-08-door-before"
+          },
+          "after": {
+            "path": "assets/custom/custom-work-08-door-after.png",
+            "title": "custom-work-08-door-after"
+          }
+        }
+      ],
+      "photos": []
+    }
+  ],
+  "faq": [
+    {
+      "question": "Точно подойдёт на мою машину?",
+      "answer": "Перед продажей подбираем деталь по VIN вашей машины. Пришлите VIN и название детали — так надёжнее всего.",
+      "sort": 1,
+      "status": "published",
+      "is_demo": false
+    },
+    {
+      "question": "Сколько ждать деталь?",
+      "answer": "Если деталь на складе — забирайте сами или отправим в течение 2 дней после оплаты. Из-за рубежа — 45–90 дней. Точный срок назовём до оплаты.",
+      "sort": 2,
+      "status": "published",
+      "is_demo": false
+    },
+    {
+      "question": "Детали оригинальные?",
+      "answer": "Да, это б/у оригинал, снятый с машин: со своего разбора или из-за границы. Новых деталей и аналогов нет. Перед продажей деталь проверяем, моем и готовим.",
+      "sort": 3,
+      "status": "published",
+      "is_demo": false
+    },
+    {
+      "question": "Как платить?",
+      "answer": "На сайте оплаты нет. Самовывоз — оплата на месте. Отправка — оплата сразу, через Авито Доставку — при получении. Деталь из-за рубежа — предоплата 60% после подбора.",
+      "sort": 4,
+      "status": "published",
+      "is_demo": false
+    },
+    {
+      "question": "Как доставляете?",
+      "answer": "Отправляем в любую точку России — СДЭК, Яндекс Доставкой, ПЭК, Авито Доставкой или другой транспортной компанией. Небольшие детали до ПВЗ Яндекс Маркета везём за наш счёт: при заказе от 3 000 ₽ — до 300 ₽ доставки, от 10 000 ₽ — до 500 ₽. Крупные детали — по тарифу ТК, сумму назовём до оплаты. Самовывоз — Московская обл., г. Королёв, ул. Южная, 7а, ГСК «Берёзка».",
+      "sort": 5,
+      "status": "published",
+      "is_demo": false
+    },
+    {
+      "question": "Что если деталь не подошла или с браком?",
+      "answer": "Деталь с браком заменим или вернём деньги. Совместимость проверяем по VIN до оплаты, а если ошиблись мы — тоже вернём деньги или заменим деталь.",
+      "sort": 6,
+      "status": "published",
+      "is_demo": false
+    },
+    {
+      "question": "Можно поставить деталь у вас?",
+      "answer": "Да, в Gal service в Мизиново. На нашу деталь с установкой у нас — гарантия 2 недели. Вашу деталь тоже поставим, но без гарантии.",
+      "sort": 7,
+      "status": "published",
+      "is_demo": false
+    },
+    {
+      "question": "Нашли дешевле?",
+      "answer": "Пришлите скриншот цены в Telegram — предложим вариант выгоднее.",
+      "sort": 8,
+      "status": "published",
+      "is_demo": false
+    }
+  ],
+  "stats": [
+    {
+      "value": 1000,
+      "suffix": "+",
+      "label": "довольных клиентов",
+      "sort": 1,
+      "status": "published",
+      "is_demo": false
+    },
+    {
+      "value": 70,
+      "suffix": "+",
+      "label": "отзывов на Авито",
+      "sort": 2,
+      "status": "published",
+      "is_demo": false
+    },
+    {
+      "value": 4,
+      "suffix": null,
+      "label": "года разбираем BMW",
+      "sort": 3,
+      "status": "published",
+      "is_demo": false
+    },
+    {
+      "value": 50,
+      "suffix": "+",
+      "label": "машин разобрали",
+      "sort": 4,
+      "status": "published",
+      "is_demo": false
+    },
+    {
+      "value": 4000,
+      "suffix": "+",
+      "label": "подписчиков на YouTube",
+      "sort": 5,
+      "status": "published",
+      "is_demo": false
+    }
+  ],
+  "site_settings": {
+    "telegram_username": "ikononov77",
+    "contact_name": "Иван",
+    "contact_name_dative": "Ивану",
+    "ivan_photo_consent": true,
+    "intro": "Напишите VIN и какая деталь нужна — подберём её под вашу машину и назовём цену до оплаты. Ремонт и салон — тоже к нам.",
+    "intro_short": "VIN и деталь — подберём и назовём цену.",
+    "response_time": null,
+    "phone": "+79160033434",
+    "phone_calls": true,
+    "whatsapp": true,
+    "email": null,
+    "city_prepositional": "в Подмосковье",
+    "timezone": "Europe/Moscow",
+    "legal_form": "ИП",
+    "legal_name": "Кононов Иван Сергеевич",
+    "inn": "773015489440",
+    "ogrn": null,
+    "parts_counter_value": 5000,
+    "parts_counter_suffix": "+",
+    "parts_counter_label": "деталей в наличии и под заказ",
+    "ivan_photo": {
+      "path": "assets/contacts/gal-at-work@2x.webp",
+      "title": "gal-at-work",
+      "focal": [
+        0.5,
+        0.3
+      ]
+    },
+    "service_image": null,
+    "custom_banner": null,
+    "socials": [
+      {
+        "type": "instagram",
+        "label": "Instagram разбора",
+        "handle": "gen_auto_lab",
+        "url": "https://instagram.com/gen_auto_lab",
+        "show_in_custom": false
+      },
+      {
+        "type": "instagram",
+        "label": "Instagram ателье",
+        "handle": "gal_custom",
+        "url": "https://instagram.com/gal_custom",
+        "show_in_custom": true
+      },
+      {
+        "type": "telegram_channel",
+        "label": "Telegram-канал",
+        "handle": "GenAutoLab",
+        "url": "https://t.me/GenAutoLab",
+        "show_in_custom": false
+      },
+      {
+        "type": "youtube",
+        "label": "YouTube",
+        "handle": "gal_auto",
+        "url": "https://youtube.com/@gal_auto",
+        "show_in_custom": false
+      }
+    ],
+    "locations": [
+      {
+        "kind": "workshop",
+        "name": "Разбор и мастерская",
+        "city": "Мизиново",
+        "city_prepositional": "в Мизиново",
+        "address": "Московская обл., Лосино-Петровский г. о., д. Мизиново, Орловский проезд, вл. 5",
+        "purpose": "разбор, Gal service, Gal custom",
+        "hours": "12:00–00:00",
+        "visit_allowed": true,
+        "yandex_maps_url": "https://yandex.ru/maps/-/CTx6fAM3",
+        "twogis_url": null,
+        "yandex_rating": 4.8
+      },
+      {
+        "kind": "pickup",
+        "name": "Пункт выдачи",
+        "city": "Королёв",
+        "city_prepositional": "в Королёве",
+        "address": "Московская обл., г. Королёв, ул. Южная, 7а, ГСК «Берёзка»",
+        "purpose": "самовывоз, оплата на месте",
+        "hours": "12:00–00:00",
+        "visit_allowed": true,
+        "yandex_maps_url": null,
+        "twogis_url": null,
+        "yandex_rating": null
+      }
+    ]
+  }
+}

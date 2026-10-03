@@ -15,6 +15,9 @@ type Props = {
   value: BodyChoice
   onChange: (choice: BodyChoice) => void
   layout?: 'auto' | 'tabs'
+  /** Перешив салона берут на любые марки — там плитка «Другая марка» */
+  otherTitle?: string
+  otherHint?: string
 }
 
 function groupBySeries(bodies: BmwBody[]) {
@@ -23,7 +26,14 @@ function groupBySeries(bodies: BmwBody[]) {
   return [...groups.entries()]
 }
 
-export function BodyPicker({ bodies, value, onChange, layout = 'auto' }: Props) {
+export function BodyPicker({
+  bodies,
+  value,
+  onChange,
+  layout = 'auto',
+  otherTitle = 'Другая BMW',
+  otherHint = 'модель напишете в сообщении',
+}: Props) {
   const groups = groupBySeries(bodies)
   const selectedCode = value?.kind === 'body' ? value.code : null
   const initialTab = bodies.find((b) => b.code === selectedCode)?.series ?? groups[0]?.[0]
@@ -62,8 +72,8 @@ export function BodyPicker({ bodies, value, onChange, layout = 'auto' }: Props) 
         aria-pressed={value?.kind === 'other'}
         onClick={() => onChange(value?.kind === 'other' ? null : { kind: 'other' })}
       >
-        <span className={styles.otherTitle}>Другая BMW</span>
-        <span className={`${styles.years} only-desktop`}>модель напишете в сообщении</span>
+        <span className={styles.otherTitle}>{otherTitle}</span>
+        <span className={`${styles.years} only-desktop`}>{otherHint}</span>
         <span className={styles.bar} aria-hidden="true" />
       </button>
     </li>

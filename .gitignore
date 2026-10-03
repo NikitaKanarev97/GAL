@@ -81,3 +81,10 @@ next-env.d.ts
 !/assets/service/service-work-01-swap-s62-e39@2x.jpg
 !/assets/service/service-work-02-air-suspension-e70@2x.jpg
 !/assets/service/service-workshop@2x.jpg
+
+# Доступы клиента — только локально
+reg.ru.txt
+GAL — шпаргалка.docx
+cms-login.txt
+
+.playwright-mcp/

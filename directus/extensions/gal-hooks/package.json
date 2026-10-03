@@ -1,0 +1,13 @@
+{
+  "name": "directus-extension-gal-hooks",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "GAL: чистка текста, проверки из content-model.md, уменьшение больших фото при загрузке",
+  "directus:extension": {
+    "type": "hook",
+    "path": "dist/index.js",
+    "source": "dist/index.js",
+    "host": "^11.0.0"
+  }
+}

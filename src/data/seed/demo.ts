@@ -54,7 +54,7 @@ export const part_sections: PartSection[] = (
     slug: 'lighting',
     name: 'Оптика',
     description:
-      'Фары, задние фонари, противотуманки, повторители, блоки розжига и кольца «ангельских глазок». Проверим, подойдёт ли деталь к рестайлингу вашего кузова, до заказа.',
+      'Фары, задние фонари, противотуманки, повторители, блоки розжига и «ангельские глазки». Проверим, подойдёт ли деталь к рестайлингу вашего кузова, до заказа.',
     description_short: 'Фары, фонари, ПТФ, блоки розжига. Совместимость проверим до заказа.',
     cover: files.coverLighting,
     icon: 'lighting',
@@ -205,7 +205,7 @@ export const part_positions: PartPosition[] = Object.entries(positionRows).flatM
 export const services: Service[] = (
   [
     ['ТО', null, 2500, null],
-    ['Замена двигателя', null, 50000, null],
+    ['Замена двигателя', null, 21000, null],
   ] as const
 ).map(([name, description, price_from, duration], i) => ({
   id: `service-${i + 1}`,
@@ -269,10 +269,10 @@ export const works: Work[] = [
     id: 'custom-pillar-recolor',
     direction: 'custom',
     sort: 2,
-    title: 'Перекрас стоек салона',
+    title: 'Перетяжка стоек салона',
     car: 'Стойки салона',
     year: null,
-    description: 'Перекрасили светлую обивку стоек в тёмный цвет. В галерее — настоящие фото до работы и после неё.',
+    description: 'Перетянули светлые стойки тёмным материалом. В галерее — настоящие фото до работы и после неё.',
     cover: null,
     pairs: [
       {
@@ -358,9 +358,11 @@ export const faq: Faq[] = (
   is_demo: false,
 }))
 
-// Цифры — ответ 4; YouTube-канал @gal_auto (ссылка от Вани 2026-09-16)
+// Цифры — ответ 4; YouTube-канал @gal_auto (ссылка от Вани 2026-09-16); клиенты и отзывы на Авито — правка Вани 2026-10-04
 export const stats: Stat[] = (
   [
+    [1000, '+', 'довольных клиентов', 'published'],
+    [70, '+', 'отзывов на Авито', 'published'],
     [4, null, 'года разбираем BMW', 'published'],
     [50, '+', 'машин разобрали', 'published'],
     [4000, '+', 'подписчиков на YouTube', 'published'],

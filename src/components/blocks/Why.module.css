@@ -9,9 +9,9 @@
 }
 
 .stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4) var(--space-8);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5) var(--space-6);
 }
 
 .stat {
@@ -55,6 +55,10 @@
 }
 
 @media (min-width: 768px) {
+  .stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-8) var(--col-gap);
@@ -62,15 +66,10 @@
 }
 
 @media (min-width: 992px) {
-  .head {
-    grid-template-columns: 7fr 5fr;
-    align-items: end;
-    gap: var(--col-gap);
-  }
-
+  /* пять цифр не влезают в правую колонку рядом с заголовком — встают строкой под ним */
   .stats {
-    justify-content: flex-end;
-    gap: var(--space-4) var(--space-6);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: var(--space-4) var(--col-gap);
   }
 
   .list {
@@ -78,9 +77,9 @@
   }
 }
 
-/* три цифры в ряд, когда им хватает колонки: переносом третья падала под первые две и ряд выглядел недособранным */
-@media (min-width: 1200px) {
-  .stats {
-    flex-wrap: nowrap;
+/* до 1200px колонка в пятую часть ряда — «1000+» в полный h2 упирается в соседа */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .statValue {
+    font-size: var(--size-40);
   }
 }

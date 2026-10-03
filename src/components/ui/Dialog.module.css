@@ -99,8 +99,10 @@
   min-width: 0;
 }
 
-/* на листе крестик скрыт, но остаётся для клавиатуры и скринридера: проявляется при фокусе с клавиатуры */
-.close:not(:focus-visible) {
+/* на листе крестик скрыт, но остаётся для клавиатуры и скринридера: проявляется при фокусе с клавиатуры.
+   data-quiet-focus — фокус от открытия касанием, Safari помечает его видимым (ui/Dialog) */
+.close:not(:focus-visible),
+.close[data-quiet-focus] {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -141,7 +143,8 @@
 
 /* Десктоп: панель по центру с крестиком */
 @media (min-width: 992px) {
-  .close:not(:focus-visible) {
+  .close:not(:focus-visible),
+  .close[data-quiet-focus] {
     position: static;
     width: var(--tap);
     height: var(--tap);

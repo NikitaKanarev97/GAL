@@ -30,7 +30,7 @@ type Step = 'topic' | 'body' | 'message'
 const TOPICS: { value: Topic; title: string; hint: string; hintShort: string }[] = [
   { value: 'parts', title: 'Запчасть', hint: 'Деталь в наличии или под заказ', hintShort: 'В наличии или под заказ' },
   { value: 'repair', title: 'Ремонт', hint: 'Ремонт или установка в Gal service', hintShort: 'В Gal service' },
-  { value: 'custom', title: 'Перешив салона', hint: 'Руль, сиденья, потолок, торпедо в Gal custom', hintShort: 'В Gal custom' },
+  { value: 'custom', title: 'Перешив салона', hint: 'Руль, сиденья, потолок, торпедо — любые марки', hintShort: 'Любые марки' },
   { value: 'other', title: 'Другое', hint: 'Вопрос не из этого списка', hintShort: 'Другой вопрос' },
 ]
 
@@ -118,6 +118,9 @@ export function TopicFlow({ preset, mode }: Props) {
   }
 
   const ctx = { topic: topic ?? 'other', section: preset.section, position: preset.position }
+  // перешив салона — на любые марки, не только BMW
+  const anyCar = ctx.topic === 'custom'
+  const otherLabel = anyCar ? 'Другая марка' : 'Другая BMW'
   const message = buildMessage(ctx, body, code)
 
   // встроенный блок стоит внутри секции «Свяжитесь с нами» (h2) — его шаги на уровень ниже
@@ -220,12 +223,28 @@ export function TopicFlow({ preset, mode }: Props) {
 
       {step === 'body' ? (
         <section aria-labelledby={`${uid}-title`} className={styles.step}>
-          {heading('Какая BMW?')}
+          {heading(anyCar ? 'Какая машина?' : 'Какая BMW?')}
           <p className={`t-small ${styles.sub}`}>
-            <span className="only-desktop">Кузов попадёт в сообщение — не придётся объяснять</span>
-            <span className="only-mobile">Кузов попадёт в сообщение</span>
+            {anyCar ? (
+              <>
+                <span className="only-desktop">Перешиваем салоны любых марок — не BMW, выберите «Другая марка»</span>
+                <span className="only-mobile">Перешиваем любые марки</span>
+              </>
+            ) : (
+              <>
+                <span className="only-desktop">Кузов попадёт в сообщение — не придётся объяснять</span>
+                <span className="only-mobile">Кузов попадёт в сообщение</span>
+              </>
+            )}
           </p>
-          <BodyPicker bodies={bodies} value={body} onChange={setBody} layout="tabs" />
+          <BodyPicker
+            bodies={bodies}
+            value={body}
+            onChange={setBody}
+            layout="tabs"
+            otherTitle={otherLabel}
+            otherHint={anyCar ? 'марку напишете в сообщении' : undefined}
+          />
           <div className={styles.actions}>
             <Button
               onClick={() => {
@@ -263,7 +282,7 @@ export function TopicFlow({ preset, mode }: Props) {
           </p>
           {body !== null && bodies.length > 0 ? (
             <p className={`t-small ${styles.bodyLine}`}>
-              <span>{body.kind === 'body' ? `BMW ${body.code}` : 'Другая BMW'}</span>
+              <span>{body.kind === 'body' ? `BMW ${body.code}` : otherLabel}</span>
               <span aria-hidden="true">·</span>
               <button
                 type="button"

@@ -1,0 +1,6488 @@
+version: 1
+directus: 11.17.4
+vendor: sqlite
+collections:
+  - collection: bmw_bodies
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: bmw_bodies
+      color: null
+      display_template: '{{code}} · {{series}} серия'
+      group: folder_parts
+      hidden: false
+      icon: directions_car
+      item_duplication_fields: null
+      note: Кузова для выбора «Какая у вас BMW?» и строки кузовов у позиций
+      preview_url: null
+      singleton: false
+      sort: 3
+      sort_field: sort
+      translations:
+        - language: ru-RU
+          plural: Кузова BMW
+          singular: Кузов BMW
+          translation: Кузова BMW
+      unarchive_value: draft
+      versioning: false
+    schema:
+      name: bmw_bodies
+  - collection: faq
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: faq
+      color: null
+      display_template: '{{question}}'
+      group: folder_site
+      hidden: false
+      icon: help
+      item_duplication_fields: null
+      note: Блок «Вопросы». Длинный список — самые важные поставьте выше
+      preview_url: null
+      singleton: false
+      sort: 1
+      sort_field: sort
+      translations:
+        - language: ru-RU
+          plural: Вопросы
+          singular: Вопрос
+          translation: Вопросы
+      unarchive_value: draft
+      versioning: false
+    schema:
+      name: faq
+  - collection: folder_parts
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: folder_parts
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: inventory_2
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: 1
+      sort_field: null
+      translations:
+        - language: ru-RU
+          plural: Запчасти
+          singular: Запчасти
+          translation: Запчасти
+      unarchive_value: null
+      versioning: false
+  - collection: folder_site
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: folder_site
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: language
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: 3
+      sort_field: null
+      translations:
+        - language: ru-RU
+          plural: Сайт
+          singular: Сайт
+          translation: Сайт
+      unarchive_value: null
+      versioning: false
+  - collection: folder_work
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: folder_work
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: construction
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: 2
+      sort_field: null
+      translations:
+        - language: ru-RU
+          plural: Service и Custom
+          singular: Service и Custom
+          translation: Service и Custom
+      unarchive_value: null
+      versioning: false
+  - collection: part_positions
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: part_positions
+      color: null
+      display_template: '{{name}} · {{section.name}}'
+      group: folder_parts
+      hidden: false
+      icon: settings_input_component
+      item_duplication_fields: null
+      note: По 5–10 ходовых деталей на раздел
+      preview_url: null
+      singleton: false
+      sort: 2
+      sort_field: sort
+      translations:
+        - language: ru-RU
+          plural: Ходовые позиции
+          singular: Позиция
+          translation: Ходовые позиции
+      unarchive_value: draft
+      versioning: false
+    schema:
+      name: part_positions
+  - collection: part_positions_bmw_bodies
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: part_positions_bmw_bodies
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: null
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: part_positions_bmw_bodies
+  - collection: part_sections
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: part_sections
+      color: null
+      display_template: '{{name}}'
+      group: folder_parts
+      hidden: false
+      icon: category
+      item_duplication_fields: null
+      note: Плитки блока «Запчасти» и страницы /parts/…
+      preview_url: null
+      singleton: false
+      sort: 1
+      sort_field: sort
+      translations:
+        - language: ru-RU
+          plural: Разделы запчастей
+          singular: Раздел запчастей
+          translation: Разделы запчастей
+      unarchive_value: draft
+      versioning: false
+    schema:
+      name: part_sections
+  - collection: services
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: services
+      color: null
+      display_template: '{{name}}'
+      group: folder_work
+      hidden: false
+      icon: handyman
+      item_duplication_fields: null
+      note: Список услуг в блоке Gal service
+      preview_url: null
+      singleton: false
+      sort: 1
+      sort_field: sort
+      translations:
+        - language: ru-RU
+          plural: Услуги Gal service
+          singular: Услуга
+          translation: Услуги Gal service
+      unarchive_value: draft
+      versioning: false
+    schema:
+      name: services
+  - collection: site_settings
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: site_settings
+      color: null
+      display_template: null
+      group: folder_site
+      hidden: false
+      icon: tune
+      item_duplication_fields: null
+      note: Контакты, адреса, реквизиты, плашка «5000+» и фото блоков
+      preview_url: null
+      singleton: true
+      sort: 3
+      sort_field: null
+      translations:
+        - language: ru-RU
+          plural: Настройки сайта
+          singular: Настройки сайта
+          translation: Настройки сайта
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: site_settings
+  - collection: stats
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: stats
+      color: null
+      display_template: '{{value}}{{suffix}} {{label}}'
+      group: folder_site
+      hidden: false
+      icon: pin
+      item_duplication_fields: null
+      note: Только настоящие цифры — сайт покажет их как факт. Выводятся первые 4
+      preview_url: null
+      singleton: false
+      sort: 2
+      sort_field: sort
+      translations:
+        - language: ru-RU
+          plural: Цифры
+          singular: Цифра
+          translation: Цифры
+      unarchive_value: draft
+      versioning: false
+    schema:
+      name: stats
+  - collection: work_pairs
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: work_pairs
+      color: null
+      display_template: '{{caption}}'
+      group: null
+      hidden: true
+      icon: compare
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: sort
+      translations:
+        - language: ru-RU
+          plural: Пары «до/после»
+          singular: Пара «до/после»
+          translation: Пары «до/после»
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: work_pairs
+  - collection: works
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: works
+      color: null
+      display_template: '{{title}} · {{car}}'
+      group: folder_work
+      hidden: false
+      icon: photo_library
+      item_duplication_fields: null
+      note: Проекты Service (первые 3) и лента Gal custom (первые 12)
+      preview_url: null
+      singleton: false
+      sort: 2
+      sort_field: sort
+      translations:
+        - language: ru-RU
+          plural: Работы
+          singular: Работа
+          translation: Работы
+      unarchive_value: draft
+      versioning: false
+    schema:
+      name: works
+  - collection: works_files
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: works_files
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: null
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: works_files
+fields:
+  - collection: bmw_bodies
+    field: id
+    type: integer
+    meta:
+      collection: bmw_bodies
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: bmw_bodies
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: bmw_bodies
+    field: code
+    type: string
+    meta:
+      collection: bmw_bodies
+      conditions: null
+      display: null
+      display_options: null
+      field: code
+      group: null
+      hidden: false
+      interface: input
+      note: >-
+        Например: E39. На сайте — плитка кузова, сообщение и строка кузовов у
+        позиций
+      options:
+        softLength: 8
+        trim: true
+      readonly: false
+      required: true
+      searchable: true
+      sort: 1
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Код кузова
+      validation:
+        _and:
+          - code:
+              _regex: ^[A-Z0-9][A-Z0-9 ]{1,7}$
+      validation_message: >-
+        Код — заглавными латинскими буквами и цифрами, до 8 символов: E39, G30,
+        E46 M3
+      width: half
+    schema:
+      name: code
+      table: bmw_bodies
+      data_type: varchar
+      default_value: null
+      max_length: 8
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: bmw_bodies
+    field: series
+    type: string
+    meta:
+      collection: bmw_bodies
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: 1 серия
+            value: '1'
+          - text: 2 серия
+            value: '2'
+          - text: 3 серия
+            value: '3'
+          - text: 4 серия
+            value: '4'
+          - text: 5 серия
+            value: '5'
+          - text: 6 серия
+            value: '6'
+          - text: 7 серия
+            value: '7'
+          - text: 8 серия
+            value: '8'
+          - text: X
+            value: X
+          - text: Z
+            value: Z
+          - text: M
+            value: M
+      field: series
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: Вкладка на сайте
+      options:
+        choices:
+          - text: 1 серия
+            value: '1'
+          - text: 2 серия
+            value: '2'
+          - text: 3 серия
+            value: '3'
+          - text: 4 серия
+            value: '4'
+          - text: 5 серия
+            value: '5'
+          - text: 6 серия
+            value: '6'
+          - text: 7 серия
+            value: '7'
+          - text: 8 серия
+            value: '8'
+          - text: X
+            value: X
+          - text: Z
+            value: Z
+          - text: M
+            value: M
+      readonly: false
+      required: true
+      searchable: true
+      sort: 2
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Серия
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: series
+      table: bmw_bodies
+      data_type: varchar
+      default_value: null
+      max_length: 2
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: bmw_bodies
+    field: years_from
+    type: integer
+    meta:
+      collection: bmw_bodies
+      conditions: null
+      display: null
+      display_options: null
+      field: years_from
+      group: null
+      hidden: false
+      interface: input
+      note: 'Например: 1995. Можно оставить пустым'
+      options:
+        max: 2027
+        min: 1960
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Год начала
+      validation:
+        _or:
+          - years_from:
+              _null: true
+          - _and:
+              - years_from:
+                  _gte: 1960
+              - years_from:
+                  _lte: 2027
+      validation_message: Год от 1960 до 2027
+      width: half
+    schema:
+      name: years_from
+      table: bmw_bodies
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: bmw_bodies
+    field: years_to
+    type: integer
+    meta:
+      collection: bmw_bodies
+      conditions: null
+      display: null
+      display_options: null
+      field: years_to
+      group: null
+      hidden: false
+      interface: input
+      note: 'Например: 2003. Пусто при заполненном начале — «н. в.»'
+      options:
+        max: 2027
+        min: 1960
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Год окончания
+      validation:
+        _or:
+          - years_to:
+              _null: true
+          - _and:
+              - years_to:
+                  _gte: 1960
+              - years_to:
+                  _lte: 2027
+      validation_message: Год от 1960 до 2027
+      width: half
+    schema:
+      name: years_to
+      table: bmw_bodies
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: bmw_bodies
+    field: status
+    type: string
+    meta:
+      collection: bmw_bodies
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - background: '#2ECDA7'
+            foreground: '#FFFFFF'
+            text: Опубликовано
+            value: published
+          - background: '#D3DAE4'
+            foreground: '#18222F'
+            text: Черновик
+            value: draft
+          - background: '#6B7A8F'
+            foreground: '#FFFFFF'
+            text: Архив
+            value: archived
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: >-
+        На сайт идёт только «Опубликовано». «Черновик» и «Архив» — скрыть, не
+        удаляя
+      options:
+        choices:
+          - color: '#2ECDA7'
+            text: Опубликовано
+            value: published
+          - color: '#A2B5CD'
+            text: Черновик
+            value: draft
+          - color: '#6B7A8F'
+            text: Архив
+            value: archived
+      readonly: false
+      required: true
+      searchable: true
+      sort: 5
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Статус
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: status
+      table: bmw_bodies
+      data_type: varchar
+      default_value: published
+      max_length: 16
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: bmw_bodies
+    field: sort
+    type: integer
+    meta:
+      collection: bmw_bodies
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: Порядок внутри серии
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 6
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Порядок
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: bmw_bodies
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: bmw_bodies
+    field: date_created
+    type: dateTime
+    meta:
+      collection: bmw_bodies
+      conditions: null
+      display: null
+      display_options: null
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 7
+      special:
+        - date-created
+      translations:
+        - language: ru-RU
+          translation: Создано
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: date_created
+      table: bmw_bodies
+      data_type: datetime
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: bmw_bodies
+    field: date_updated
+    type: dateTime
+    meta:
+      collection: bmw_bodies
+      conditions: null
+      display: null
+      display_options: null
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 8
+      special:
+        - date-updated
+      translations:
+        - language: ru-RU
+          translation: Изменено
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: date_updated
+      table: bmw_bodies
+      data_type: datetime
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: faq
+    field: id
+    type: integer
+    meta:
+      collection: faq
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: faq
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: faq
+    field: question
+    type: string
+    meta:
+      collection: faq
+      conditions: null
+      display: null
+      display_options: null
+      field: question
+      group: null
+      hidden: false
+      interface: input
+      note: 'Например: Сколько ждать деталь?'
+      options:
+        softLength: 90
+        trim: true
+      readonly: false
+      required: true
+      searchable: true
+      sort: 1
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Вопрос
+      validation:
+        _and:
+          - question:
+              _regex: ^.{7,89}\?$
+      validation_message: От 8 до 90 символов и знак «?» в конце — на сайте это строка вопроса
+      width: full
+    schema:
+      name: question
+      table: faq
+      data_type: varchar
+      default_value: null
+      max_length: 90
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: faq
+    field: answer
+    type: text
+    meta:
+      collection: faq
+      conditions: null
+      display: null
+      display_options: null
+      field: answer
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: Абзацы — через пустую строку, до трёх. Ссылки покажутся текстом
+      options:
+        softLength: 600
+      readonly: false
+      required: true
+      searchable: true
+      sort: 2
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Ответ
+      validation:
+        _and:
+          - answer:
+              _regex: ^[\s\S]{20,600}$
+      validation_message: От 20 до 600 символов — на сайте это раскрытый ответ
+      width: full
+    schema:
+      name: answer
+      table: faq
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: faq
+    field: status
+    type: string
+    meta:
+      collection: faq
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - background: '#2ECDA7'
+            foreground: '#FFFFFF'
+            text: Опубликовано
+            value: published
+          - background: '#D3DAE4'
+            foreground: '#18222F'
+            text: Черновик
+            value: draft
+          - background: '#6B7A8F'
+            foreground: '#FFFFFF'
+            text: Архив
+            value: archived
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: >-
+        На сайт идёт только «Опубликовано». «Черновик» и «Архив» — скрыть, не
+        удаляя
+      options:
+        choices:
+          - color: '#2ECDA7'
+            text: Опубликовано
+            value: published
+          - color: '#A2B5CD'
+            text: Черновик
+            value: draft
+          - color: '#6B7A8F'
+            text: Архив
+            value: archived
+      readonly: false
+      required: true
+      searchable: true
+      sort: 3
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Статус
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: status
+      table: faq
+      data_type: varchar
+      default_value: published
+      max_length: 16
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: faq
+    field: sort
+    type: integer
+    meta:
+      collection: faq
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: Длинный список — самые важные поставьте выше
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Порядок
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: faq
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: faq
+    field: is_demo
+    type: boolean
+    meta:
+      collection: faq
+      conditions: null
+      display: boolean
+      display_options: null
+      field: is_demo
+      group: null
+      hidden: false
+      interface: boolean
+      note: >-
+        Отмечено — запись придумана для показа. Перед запуском таких
+        опубликованных записей быть не должно
+      options:
+        label: Демо-запись — заменить до запуска
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special:
+        - cast-boolean
+      translations:
+        - language: ru-RU
+          translation: Демо-запись
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: is_demo
+      table: faq
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: faq
+    field: date_created
+    type: dateTime
+    meta:
+      collection: faq
+      conditions: null
+      display: null
+      display_options: null
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 6
+      special:
+        - date-created
+      translations:
+        - language: ru-RU
+          translation: Создано
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: date_created
+      table: faq
+      data_type: datetime
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: faq
+    field: date_updated
+    type: dateTime
+    meta:
+      collection: faq
+      conditions: null
+      display: null
+      display_options: null
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 7
+      special:
+        - date-updated
+      translations:
+        - language: ru-RU
+          translation: Изменено
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: date_updated
+      table: faq
+      data_type: datetime
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: part_positions
+    field: id
+    type: integer
+    meta:
+      collection: part_positions
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: part_positions
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: part_positions
+    field: section
+    type: integer
+    meta:
+      collection: part_positions
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{name}}'
+      field: section
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: Больше 12 позиций в разделе — на телефоне долго листать
+      options:
+        enableCreate: false
+        template: '{{name}}'
+      readonly: false
+      required: true
+      searchable: true
+      sort: 1
+      special:
+        - m2o
+      translations:
+        - language: ru-RU
+          translation: Раздел
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: section
+      table: part_positions
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: part_sections
+      foreign_key_column: id
+  - collection: part_positions
+    field: name
+    type: string
+    meta:
+      collection: part_positions
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: >-
+        Например: Фара передняя левая. На сайте — карточка в разделе и сообщение
+        Ивану
+      options:
+        softLength: 48
+        trim: true
+      readonly: false
+      required: true
+      searchable: true
+      sort: 2
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Название
+      validation:
+        _and:
+          - name:
+              _regex: ^.{3,48}$
+      validation_message: От 3 до 48 символов — на сайте это карточка позиции (до 2 строк)
+      width: full
+    schema:
+      name: name
+      table: part_positions
+      data_type: varchar
+      default_value: null
+      max_length: 48
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: part_positions
+    field: bodies
+    type: alias
+    meta:
+      collection: part_positions
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{bmw_bodies_id.code}}'
+      field: bodies
+      group: null
+      hidden: false
+      interface: list-m2m
+      note: 'Например: E39. Можно оставить пустым: строки кузовов не будет'
+      options:
+        enableCreate: false
+        template: '{{bmw_bodies_id.code}}'
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special:
+        - m2m
+      translations:
+        - language: ru-RU
+          translation: Кузова
+      validation: null
+      validation_message: null
+      width: full
+  - collection: part_positions
+    field: spec_note
+    type: string
+    meta:
+      collection: part_positions
+      conditions: null
+      display: null
+      display_options: null
+      field: spec_note
+      group: null
+      hidden: false
+      interface: input
+      note: 'Например: рестайлинг · ксенон. Можно оставить пустым'
+      options:
+        softLength: 32
+        trim: true
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Уточнение
+      validation:
+        _or:
+          - spec_note:
+              _null: true
+          - spec_note:
+              _regex: ^.{1,32}$
+      validation_message: Не длиннее 32 символов — на сайте это строка после кузовов
+      width: half
+    schema:
+      name: spec_note
+      table: part_positions
+      data_type: varchar
+      default_value: null
+      max_length: 32
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: part_positions
+    field: price_from
+    type: integer
+    meta:
+      collection: part_positions
+      conditions: null
+      display: formatted-value
+      display_options:
+        format: true
+        suffix: ' ₽'
+      field: price_from
+      group: null
+      hidden: false
+      interface: input
+      note: >-
+        В рублях, без пробелов: 12000. На сайте: «от 12 000 ₽». Пусто — «цена по
+        запросу»
+      options:
+        max: 9999999
+        min: 1
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Цена от, ₽
+      validation:
+        _or:
+          - price_from:
+              _null: true
+          - _and:
+              - price_from:
+                  _gte: 1
+              - price_from:
+                  _lte: 9999999
+      validation_message: Цена от 1 до 9 999 999 ₽ — ноль не сохранится, на сайте было бы «от 0 ₽»
+      width: half
+    schema:
+      name: price_from
+      table: part_positions
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: part_positions
+    field: photo
+    type: uuid
+    meta:
+      collection: part_positions
+      conditions: null
+      display: image
+      display_options: null
+      field: photo
+      group: null
+      hidden: false
+      interface: file-image
+      note: >-
+        Квадрат 1:1, от 600×600, лучше 1000×1000 — деталь на чёрном. С iPhone —
+        сохраните как JPG. Можно оставить пустым: будет иконка раздела
+      options:
+        crop: false
+      readonly: false
+      required: false
+      searchable: true
+      sort: 6
+      special:
+        - file
+      translations:
+        - language: ru-RU
+          translation: Фото
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: photo
+      table: part_positions
+      data_type: char
+      default_value: null
+      max_length: 36
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: part_positions
+    field: status
+    type: string
+    meta:
+      collection: part_positions
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - background: '#2ECDA7'
+            foreground: '#FFFFFF'
+            text: Опубликовано
+            value: published
+          - background: '#D3DAE4'
+            foreground: '#18222F'
+            text: Черновик
+            value: draft
+          - background: '#6B7A8F'
+            foreground: '#FFFFFF'
+            text: Архив
+            value: archived
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: >-
+        На сайт идёт только «Опубликовано». «Черновик» и «Архив» — скрыть, не
+        удаляя
+      options:
+        choices:
+          - color: '#2ECDA7'
+            text: Опубликовано
+            value: published
+          - color: '#A2B5CD'
+            text: Черновик
+            value: draft
+          - color: '#6B7A8F'
+            text: Архив
+            value: archived
+      readonly: false
+      required: true
+      searchable: true
+      sort: 7
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Статус
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: status
+      table: part_positions
+      data_type: varchar
+      default_value: published
+      max_length: 16
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: part_positions
+    field: sort
+    type: integer
+    meta:
+      collection: part_positions
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: Порядок в сетке раздела
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 8
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Порядок
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: part_positions
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: part_positions
+    field: is_demo
+    type: boolean
+    meta:
+      collection: part_positions
+      conditions: null
+      display: boolean
+      display_options: null
+      field: is_demo
+      group: null
+      hidden: false
+      interface: boolean
+      note: >-
+        Отмечено — запись придумана для показа. Перед запуском таких
+        опубликованных записей быть не должно
+      options:
+        label: Демо-запись — заменить до запуска
+      readonly: false
+      required: false
+      searchable: true
+      sort: 9
+      special:
+        - cast-boolean
+      translations:
+        - language: ru-RU
+          translation: Демо-запись
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: is_demo
+      table: part_positions
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: part_positions
+    field: date_created
+    type: dateTime
+    meta:
+      collection: part_positions
+      conditions: null
+      display: null
+      display_options: null
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 10
+      special:
+        - date-created
+      translations:
+        - language: ru-RU
+          translation: Создано
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: date_created
+      table: part_positions
+      data_type: datetime
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: part_positions
+    field: date_updated
+    type: dateTime
+    meta:
+      collection: part_positions
+      conditions: null
+      display: null
+      display_options: null
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 11
+      special:
+        - date-updated
+      translations:
+        - language: ru-RU
+          translation: Изменено
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: date_updated
+      table: part_positions
+      data_type: datetime
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: part_positions_bmw_bodies
+    field: id
+    type: integer
+    meta:
+      collection: part_positions_bmw_bodies
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: part_positions_bmw_bodies
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: part_positions_bmw_bodies
+    field: part_positions_id
+    type: integer
+    meta:
+      collection: part_positions_bmw_bodies
+      conditions: null
+      display: null
+      display_options: null
+      field: part_positions_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: part_positions_id
+      table: part_positions_bmw_bodies
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: part_positions
+      foreign_key_column: id
+  - collection: part_positions_bmw_bodies
+    field: bmw_bodies_id
+    type: integer
+    meta:
+      collection: part_positions_bmw_bodies
+      conditions: null
+      display: null
+      display_options: null
+      field: bmw_bodies_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: bmw_bodies_id
+      table: part_positions_bmw_bodies
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: bmw_bodies
+      foreign_key_column: id
+  - collection: part_sections
+    field: id
+    type: integer
+    meta:
+      collection: part_sections
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: part_sections
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: part_sections
+    field: name
+    type: string
+    meta:
+      collection: part_sections
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: 'Например: Оптика. На сайте — плитка, заголовок попапа и сообщение Ивану'
+      options:
+        softLength: 14
+        trim: true
+      readonly: false
+      required: true
+      searchable: true
+      sort: 1
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Название
+      validation:
+        _and:
+          - name:
+              _regex: ^.{2,14}$
+      validation_message: От 2 до 14 символов — на сайте это плитка раздела и заголовок попапа
+      width: half
+    schema:
+      name: name
+      table: part_sections
+      data_type: varchar
+      default_value: null
+      max_length: 14
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: part_sections
+    field: slug
+    type: string
+    meta:
+      collection: part_sections
+      conditions: null
+      display: null
+      display_options: null
+      field: slug
+      group: null
+      hidden: false
+      interface: input
+      note: >-
+        Например: lighting → адрес /parts/lighting. После создания меняю только
+        я — на старый адрес ведут ссылки
+      options:
+        softLength: 31
+        trim: true
+      readonly: false
+      required: true
+      searchable: true
+      sort: 2
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Адрес
+      validation:
+        _and:
+          - slug:
+              _regex: ^[a-z][a-z0-9-]{1,30}$
+      validation_message: 'Латиница строчными, цифры и дефис: lighting'
+      width: half
+    schema:
+      name: slug
+      table: part_sections
+      data_type: varchar
+      default_value: null
+      max_length: 31
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: part_sections
+    field: description
+    type: text
+    meta:
+      collection: part_sections
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: >-
+        Например: Фары, задние фонари, противотуманки… На сайте — попап раздела
+        на компьютере
+      options:
+        softLength: 160
+      readonly: false
+      required: true
+      searchable: true
+      sort: 3
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Описание
+      validation:
+        _and:
+          - description:
+              _regex: ^[\s\S]{40,160}$
+      validation_message: От 40 до 160 символов — на сайте это описание в попапе раздела
+      width: full
+    schema:
+      name: description
+      table: part_sections
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: part_sections
+    field: description_short
+    type: string
+    meta:
+      collection: part_sections
+      conditions: null
+      display: null
+      display_options: null
+      field: description_short
+      group: null
+      hidden: false
+      interface: input
+      note: >-
+        Например: Фары, фонари, ПТФ, блоки розжига. Можно оставить пустым: на
+        телефоне покажем полное описание
+      options:
+        softLength: 80
+        trim: true
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Описание для телефона
+      validation:
+        _or:
+          - description_short:
+              _null: true
+          - description_short:
+              _regex: ^.{1,80}$
+      validation_message: Не длиннее 80 символов — на сайте это попап на телефоне
+      width: full
+    schema:
+      name: description_short
+      table: part_sections
+      data_type: varchar
+      default_value: null
+      max_length: 80
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: part_sections
+    field: cover
+    type: uuid
+    meta:
+      collection: part_sections
+      conditions: null
+      display: image
+      display_options: null
+      field: cover
+      group: null
+      hidden: false
+      interface: file-image
+      note: >-
+        Квадрат 1:1, от 800×800, лучше 1200×1200 — деталь на чёрном. С iPhone —
+        сохраните как JPG. Можно оставить пустым: будет иконка раздела
+      options:
+        crop: false
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special:
+        - file
+      translations:
+        - language: ru-RU
+          translation: Обложка
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: cover
+      table: part_sections
+      data_type: char
+      default_value: null
+      max_length: 36
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: part_sections
+    field: icon
+    type: string
+    meta:
+      collection: part_sections
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: Двигатель
+            value: engine
+          - text: КПП
+            value: transmission
+          - text: Подвеска
+            value: suspension
+          - text: Оптика
+            value: lighting
+          - text: Кузов
+            value: body
+          - text: Электроника
+            value: electronics
+          - text: Салон
+            value: interior
+          - text: Общая
+            value: generic
+      field: icon
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: Показывается, пока нет обложки и у позиций без фото
+      options:
+        choices:
+          - text: Двигатель
+            value: engine
+          - text: КПП
+            value: transmission
+          - text: Подвеска
+            value: suspension
+          - text: Оптика
+            value: lighting
+          - text: Кузов
+            value: body
+          - text: Электроника
+            value: electronics
+          - text: Салон
+            value: interior
+          - text: Общая
+            value: generic
+      readonly: false
+      required: true
+      searchable: true
+      sort: 6
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Иконка
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: icon
+      table: part_sections
+      data_type: varchar
+      default_value: generic
+      max_length: 32
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: part_sections
+    field: seo_title
+    type: string
+    meta:
+      collection: part_sections
+      conditions: null
+      display: null
+      display_options: null
+      field: seo_title
+      group: null
+      hidden: false
+      interface: input
+      note: >-
+        Например: Оптика BMW под заказ — фары, фонари, ПТФ | GAL. Можно оставить
+        пустым: «{Название} BMW под заказ | GAL»
+      options:
+        softLength: 60
+        trim: true
+      readonly: false
+      required: false
+      searchable: true
+      sort: 7
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Заголовок для поиска
+      validation:
+        _or:
+          - seo_title:
+              _null: true
+          - seo_title:
+              _regex: ^.{1,60}$
+      validation_message: Не длиннее 60 символов — на сайте это заголовок страницы в поиске
+      width: full
+    schema:
+      name: seo_title
+      table: part_sections
+      data_type: varchar
+      default_value: null
+      max_length: 60
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: part_sections
+    field: seo_description
+    type: string
+    meta:
+      collection: part_sections
+      conditions: null
+      display: null
+      display_options: null
+      field: seo_description
+      group: null
+      hidden: false
+      interface: input
+      note: 'Можно оставить пустым: соберём из описания раздела'
+      options:
+        softLength: 160
+        trim: true
+      readonly: false
+      required: false
+      searchable: true
+      sort: 8
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Описание для поиска
+      validation:
+        _or:
+          - seo_description:
+              _null: true
+          - seo_description:
+              _regex: ^.{1,160}$
+      validation_message: Не длиннее 160 символов — на сайте это описание в поиске
+      width: full
+    schema:
+      name: seo_description
+      table: part_sections
+      data_type: varchar
+      default_value: null
+      max_length: 160
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: part_sections
+    field: status
+    type: string
+    meta:
+      collection: part_sections
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - background: '#2ECDA7'
+            foreground: '#FFFFFF'
+            text: Опубликовано
+            value: published
+          - background: '#D3DAE4'
+            foreground: '#18222F'
+            text: Черновик
+            value: draft
+          - background: '#6B7A8F'
+            foreground: '#FFFFFF'
+            text: Архив
+            value: archived
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: >-
+        На сайт идёт только «Опубликовано». «Черновик» и «Архив» — скрыть, не
+        удаляя
+      options:
+        choices:
+          - color: '#2ECDA7'
+            text: Опубликовано
+            value: published
+          - color: '#A2B5CD'
+            text: Черновик
+            value: draft
+          - color: '#6B7A8F'
+            text: Архив
+            value: archived
+      readonly: false
+      required: true
+      searchable: true
+      sort: 9
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Статус
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: status
+      table: part_sections
+      data_type: varchar
+      default_value: published
+      max_length: 16
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: part_sections
+    field: sort
+    type: integer
+    meta:
+      collection: part_sections
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: Порядок плиток
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 10
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Порядок
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: part_sections
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: part_sections
+    field: date_created
+    type: dateTime
+    meta:
+      collection: part_sections
+      conditions: null
+      display: null
+      display_options: null
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 11
+      special:
+        - date-created
+      translations:
+        - language: ru-RU
+          translation: Создано
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: date_created
+      table: part_sections
+      data_type: datetime
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: part_sections
+    field: date_updated
+    type: dateTime
+    meta:
+      collection: part_sections
+      conditions: null
+      display: null
+      display_options: null
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 12
+      special:
+        - date-updated
+      translations:
+        - language: ru-RU
+          translation: Изменено
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: date_updated
+      table: part_sections
+      data_type: datetime
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: services
+    field: id
+    type: integer
+    meta:
+      collection: services
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: services
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: services
+    field: name
+    type: string
+    meta:
+      collection: services
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: 'Например: Замена двигателя'
+      options:
+        softLength: 40
+        trim: true
+      readonly: false
+      required: true
+      searchable: true
+      sort: 1
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Название
+      validation:
+        _and:
+          - name:
+              _regex: ^.{2,40}$
+      validation_message: От 2 до 40 символов — на сайте это строка услуги
+      width: full
+    schema:
+      name: name
+      table: services
+      data_type: varchar
+      default_value: null
+      max_length: 40
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: services
+    field: description
+    type: string
+    meta:
+      collection: services
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input
+      note: 'Например: Подбор мотора, установка, запуск. Можно оставить пустым'
+      options:
+        softLength: 120
+        trim: true
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Описание
+      validation:
+        _or:
+          - description:
+              _null: true
+          - description:
+              _regex: ^.{1,120}$
+      validation_message: Не длиннее 120 символов — на сайте это строка под названием
+      width: full
+    schema:
+      name: description
+      table: services
+      data_type: varchar
+      default_value: null
+      max_length: 120
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: services
+    field: price_from
+    type: integer
+    meta:
+      collection: services
+      conditions: null
+      display: formatted-value
+      display_options:
+        format: true
+        suffix: ' ₽'
+      field: price_from
+      group: null
+      hidden: false
+      interface: input
+      note: 'В рублях: 50000. На сайте: «от 50 000 ₽». Можно оставить пустым'
+      options:
+        max: 9999999
+        min: 1
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Цена от, ₽
+      validation:
+        _or:
+          - price_from:
+              _null: true
+          - _and:
+              - price_from:
+                  _gte: 1
+              - price_from:
+                  _lte: 9999999
+      validation_message: Цена от 1 до 9 999 999 ₽
+      width: half
+    schema:
+      name: price_from
+      table: services
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: services
+    field: duration
+    type: string
+    meta:
+      collection: services
+      conditions: null
+      display: null
+      display_options: null
+      field: duration
+      group: null
+      hidden: false
+      interface: input
+      note: 'Например: 1–2 дня. Можно оставить пустым'
+      options:
+        softLength: 24
+        trim: true
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Срок
+      validation:
+        _or:
+          - duration:
+              _null: true
+          - duration:
+              _regex: ^.{1,24}$
+      validation_message: Не длиннее 24 символов — на сайте это после цены
+      width: half
+    schema:
+      name: duration
+      table: services
+      data_type: varchar
+      default_value: null
+      max_length: 24
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: services
+    field: status
+    type: string
+    meta:
+      collection: services
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - background: '#2ECDA7'
+            foreground: '#FFFFFF'
+            text: Опубликовано
+            value: published
+          - background: '#D3DAE4'
+            foreground: '#18222F'
+            text: Черновик
+            value: draft
+          - background: '#6B7A8F'
+            foreground: '#FFFFFF'
+            text: Архив
+            value: archived
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: >-
+        На сайт идёт только «Опубликовано». «Черновик» и «Архив» — скрыть, не
+        удаляя
+      options:
+        choices:
+          - color: '#2ECDA7'
+            text: Опубликовано
+            value: published
+          - color: '#A2B5CD'
+            text: Черновик
+            value: draft
+          - color: '#6B7A8F'
+            text: Архив
+            value: archived
+      readonly: false
+      required: true
+      searchable: true
+      sort: 5
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Статус
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: status
+      table: services
+      data_type: varchar
+      default_value: published
+      max_length: 16
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: services
+    field: sort
+    type: integer
+    meta:
+      collection: services
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: Порядок в списке
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 6
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Порядок
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: services
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: services
+    field: is_demo
+    type: boolean
+    meta:
+      collection: services
+      conditions: null
+      display: boolean
+      display_options: null
+      field: is_demo
+      group: null
+      hidden: false
+      interface: boolean
+      note: >-
+        Отмечено — запись придумана для показа. Перед запуском таких
+        опубликованных записей быть не должно
+      options:
+        label: Демо-запись — заменить до запуска
+      readonly: false
+      required: false
+      searchable: true
+      sort: 7
+      special:
+        - cast-boolean
+      translations:
+        - language: ru-RU
+          translation: Демо-запись
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: is_demo
+      table: services
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: services
+    field: date_created
+    type: dateTime
+    meta:
+      collection: services
+      conditions: null
+      display: null
+      display_options: null
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 8
+      special:
+        - date-created
+      translations:
+        - language: ru-RU
+          translation: Создано
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: date_created
+      table: services
+      data_type: datetime
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: services
+    field: date_updated
+    type: dateTime
+    meta:
+      collection: services
+      conditions: null
+      display: null
+      display_options: null
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 9
+      special:
+        - date-updated
+      translations:
+        - language: ru-RU
+          translation: Изменено
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: date_updated
+      table: services
+      data_type: datetime
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: id
+    type: integer
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: site_settings
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: group_contact
+    type: alias
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: group_contact
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options:
+        headerIcon: null
+        start: open
+      readonly: false
+      required: false
+      searchable: true
+      sort: 1
+      special:
+        - alias
+        - no-data
+        - group
+      translations:
+        - language: ru-RU
+          translation: Контакт
+      validation: null
+      validation_message: null
+      width: full
+  - collection: site_settings
+    field: telegram_username
+    type: string
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: telegram_username
+      group: group_contact
+      hidden: false
+      interface: input
+      note: >-
+        Без @: ikononov77. На этот ник ведут все кнопки заявки. Меняю только я —
+        опечатка отключит заявки
+      options:
+        softLength: 32
+        trim: true
+      readonly: false
+      required: true
+      searchable: true
+      sort: 2
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Telegram для заявок
+      validation:
+        _and:
+          - telegram_username:
+              _regex: ^[A-Za-z][A-Za-z0-9_]{4,31}$
+      validation_message: 'Ник Telegram без @: латиница, цифры и _, от 5 символов'
+      width: half
+    schema:
+      name: telegram_username
+      table: site_settings
+      data_type: varchar
+      default_value: null
+      max_length: 32
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: contact_name
+    type: string
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: contact_name
+      group: group_contact
+      hidden: false
+      interface: input
+      note: Иван. На сайте не выводится
+      options:
+        softLength: 16
+        trim: true
+      readonly: false
+      required: true
+      searchable: true
+      sort: 3
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Имя
+      validation:
+        _and:
+          - contact_name:
+              _regex: ^.{2,16}$
+      validation_message: От 2 до 16 символов — на сайте это внутренняя карточка обращения
+      width: half
+    schema:
+      name: contact_name
+      table: site_settings
+      data_type: varchar
+      default_value: null
+      max_length: 16
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: contact_name_dative
+    type: string
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: contact_name_dative
+      group: group_contact
+      hidden: false
+      interface: input
+      note: Ивану. На сайте не выводится
+      options:
+        softLength: 18
+        trim: true
+      readonly: false
+      required: true
+      searchable: true
+      sort: 4
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Имя — кому?
+      validation:
+        _and:
+          - contact_name_dative:
+              _regex: ^.{2,18}$
+      validation_message: От 2 до 18 символов — на сайте это внутренняя карточка обращения
+      width: half
+    schema:
+      name: contact_name_dative
+      table: site_settings
+      data_type: varchar
+      default_value: null
+      max_length: 18
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: ivan_photo
+    type: uuid
+    meta:
+      collection: site_settings
+      conditions: null
+      display: image
+      display_options: null
+      field: ivan_photo
+      group: group_contact
+      hidden: false
+      interface: file-image
+      note: >-
+        4:5, от 720×900. С iPhone — сохраните как JPG. Показывается, только если
+        отмечено согласие ниже
+      options:
+        crop: false
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special:
+        - file
+      translations:
+        - language: ru-RU
+          translation: Фото в блоке «Контакты»
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: ivan_photo
+      table: site_settings
+      data_type: char
+      default_value: null
+      max_length: 36
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: site_settings
+    field: ivan_photo_consent
+    type: boolean
+    meta:
+      collection: site_settings
+      conditions: null
+      display: boolean
+      display_options: null
+      field: ivan_photo_consent
+      group: group_contact
+      hidden: false
+      interface: boolean
+      note: null
+      options:
+        label: Человек на фото согласен, чтобы его показывали на сайте
+      readonly: false
+      required: false
+      searchable: true
+      sort: 6
+      special:
+        - cast-boolean
+      translations:
+        - language: ru-RU
+          translation: Согласие на фото
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: ivan_photo_consent
+      table: site_settings
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: intro
+    type: text
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: intro
+      group: group_contact
+      hidden: false
+      interface: input-multiline
+      note: 'Можно оставить пустым: будет текст из вёрстки'
+      options:
+        softLength: 160
+      readonly: false
+      required: false
+      searchable: true
+      sort: 7
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Текст финального блока
+      validation:
+        _or:
+          - intro:
+              _null: true
+          - intro:
+              _regex: ^[\s\S]{1,160}$
+      validation_message: Не длиннее 160 символов — на сайте это текст финального блока
+      width: full
+    schema:
+      name: intro
+      table: site_settings
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: intro_short
+    type: string
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: intro_short
+      group: group_contact
+      hidden: false
+      interface: input
+      note: Можно оставить пустым
+      options:
+        softLength: 80
+        trim: true
+      readonly: false
+      required: false
+      searchable: true
+      sort: 8
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Текст финального блока — телефон
+      validation:
+        _or:
+          - intro_short:
+              _null: true
+          - intro_short:
+              _regex: ^.{1,80}$
+      validation_message: Не длиннее 80 символов — на сайте это финальный блок на телефоне
+      width: full
+    schema:
+      name: intro_short
+      table: site_settings
+      data_type: varchar
+      default_value: null
+      max_length: 80
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: response_time
+    type: string
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: response_time
+      group: group_contact
+      hidden: false
+      interface: input
+      note: Можно оставить пустым — строки не будет
+      options:
+        softLength: 48
+        trim: true
+      readonly: false
+      required: false
+      searchable: true
+      sort: 9
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Когда отвечаем
+      validation:
+        _or:
+          - response_time:
+              _null: true
+          - response_time:
+              _regex: ^.{1,48}$
+      validation_message: Не длиннее 48 символов — на сайте это строка под текстом блока
+      width: full
+    schema:
+      name: response_time
+      table: site_settings
+      data_type: varchar
+      default_value: null
+      max_length: 48
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: group_links
+    type: alias
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: group_links
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options:
+        headerIcon: null
+        start: closed
+      readonly: false
+      required: false
+      searchable: true
+      sort: 10
+      special:
+        - alias
+        - no-data
+        - group
+      translations:
+        - language: ru-RU
+          translation: Связь
+      validation: null
+      validation_message: null
+      width: full
+  - collection: site_settings
+    field: phone
+    type: string
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: phone
+      group: group_links
+      hidden: false
+      interface: input
+      note: 'Например: +79160033434. Можно оставить пустым'
+      options:
+        softLength: 16
+        trim: true
+      readonly: false
+      required: false
+      searchable: true
+      sort: 11
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Телефон
+      validation:
+        _or:
+          - phone:
+              _null: true
+          - phone:
+              _regex: ^\+\d{10,15}$
+      validation_message: Телефон в формате +79160033434 — плюс и цифры, без пробелов
+      width: half
+    schema:
+      name: phone
+      table: site_settings
+      data_type: varchar
+      default_value: null
+      max_length: 16
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: phone_calls
+    type: boolean
+    meta:
+      collection: site_settings
+      conditions: null
+      display: boolean
+      display_options: null
+      field: phone_calls
+      group: group_links
+      hidden: false
+      interface: boolean
+      note: null
+      options:
+        label: Можно звонить (иначе — «только сообщения»)
+      readonly: false
+      required: false
+      searchable: true
+      sort: 12
+      special:
+        - cast-boolean
+      translations:
+        - language: ru-RU
+          translation: Принимаем звонки
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: phone_calls
+      table: site_settings
+      data_type: boolean
+      default_value: true
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: whatsapp
+    type: boolean
+    meta:
+      collection: site_settings
+      conditions: null
+      display: boolean
+      display_options: null
+      field: whatsapp
+      group: group_links
+      hidden: false
+      interface: boolean
+      note: null
+      options:
+        label: Показать «Написать в WhatsApp» — нужен телефон
+      readonly: false
+      required: false
+      searchable: true
+      sort: 13
+      special:
+        - cast-boolean
+      translations:
+        - language: ru-RU
+          translation: WhatsApp
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: whatsapp
+      table: site_settings
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: socials
+    type: json
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: socials
+      group: group_links
+      hidden: false
+      interface: list
+      note: До 6. Порядок — перетаскиванием. Без ссылки соцсеть не заводится
+      options:
+        addLabel: Добавить соцсеть
+        fields:
+          - field: type
+            meta:
+              interface: select-dropdown
+              options:
+                choices:
+                  - text: Instagram
+                    value: instagram
+                  - text: Telegram-канал
+                    value: telegram_channel
+                  - text: YouTube
+                    value: youtube
+                  - text: ВКонтакте
+                    value: vk
+              required: true
+              width: half
+            name: Соцсеть
+            type: string
+          - field: label
+            meta:
+              interface: input
+              note: 'Например: Instagram ателье'
+              options:
+                softLength: 32
+              required: true
+              width: half
+            name: Подпись
+            type: string
+          - field: handle
+            meta:
+              interface: input
+              note: 'Без @: gal_custom'
+              options:
+                softLength: 32
+              required: true
+              width: half
+            name: Ник
+            type: string
+          - field: url
+            meta:
+              interface: input
+              note: https://instagram.com/gal_custom
+              options:
+                iconLeft: link
+              required: true
+              width: half
+            name: Ссылка
+            type: string
+          - field: show_in_custom
+            meta:
+              interface: boolean
+              options:
+                label: Ссылка под текстом блока Gal custom
+              width: full
+            name: Показать в блоке Gal custom
+            type: boolean
+        limit: 6
+        template: '{{label}} · {{handle}}'
+      readonly: false
+      required: false
+      searchable: true
+      sort: 14
+      special:
+        - cast-json
+      translations:
+        - language: ru-RU
+          translation: Соцсети
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: socials
+      table: site_settings
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: email
+    type: string
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: email
+      group: group_links
+      hidden: false
+      interface: input
+      note: Можно оставить пустым
+      options:
+        softLength: 100
+        trim: true
+      readonly: false
+      required: false
+      searchable: true
+      sort: 15
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Почта
+      validation:
+        _or:
+          - email:
+              _null: true
+          - email:
+              _regex: ^[^\s@]+@[^\s@]+\.[^\s@]+$
+      validation_message: Похоже, в адресе почты ошибка
+      width: half
+    schema:
+      name: email
+      table: site_settings
+      data_type: varchar
+      default_value: null
+      max_length: 100
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: group_place
+    type: alias
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: group_place
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options:
+        headerIcon: null
+        start: closed
+      readonly: false
+      required: false
+      searchable: true
+      sort: 16
+      special:
+        - alias
+        - no-data
+        - group
+      translations:
+        - language: ru-RU
+          translation: Место
+      validation: null
+      validation_message: null
+      width: full
+  - collection: site_settings
+    field: city_prepositional
+    type: string
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: city_prepositional
+      group: group_place
+      hidden: false
+      interface: input
+      note: в Подмосковье. Можно оставить пустым
+      options:
+        softLength: 36
+        trim: true
+      readonly: false
+      required: false
+      searchable: true
+      sort: 17
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Город в заголовке
+      validation:
+        _or:
+          - city_prepositional:
+              _null: true
+          - city_prepositional:
+              _regex: ^.{1,36}$
+      validation_message: Не длиннее 36 символов — на сайте это заголовок главной в поиске
+      width: half
+    schema:
+      name: city_prepositional
+      table: site_settings
+      data_type: varchar
+      default_value: null
+      max_length: 36
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: locations
+    type: json
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: locations
+      group: group_place
+      hidden: false
+      interface: list
+      note: 'До 4: разбор и мастерская, пункт выдачи'
+      options:
+        addLabel: Добавить адрес
+        fields:
+          - field: kind
+            meta:
+              interface: select-dropdown
+              options:
+                choices:
+                  - text: Разбор и мастерская
+                    value: workshop
+                  - text: Пункт выдачи
+                    value: pickup
+              required: true
+              width: half
+            name: Тип
+            type: string
+          - field: name
+            meta:
+              interface: input
+              note: 'Например: Пункт выдачи'
+              options:
+                softLength: 32
+              required: true
+              width: half
+            name: Название
+            type: string
+          - field: city
+            meta:
+              interface: input
+              note: Королёв
+              options:
+                softLength: 32
+              required: true
+              width: half
+            name: Город
+            type: string
+          - field: city_prepositional
+            meta:
+              interface: input
+              note: в Королёве. Для «Заберите в Королёве»
+              options:
+                softLength: 36
+              width: half
+            name: Город — где?
+            type: string
+          - field: address
+            meta:
+              interface: input
+              options:
+                softLength: 120
+              required: true
+              width: full
+            name: Адрес
+            type: string
+          - field: purpose
+            meta:
+              interface: input
+              note: самовывоз, оплата на месте
+              options:
+                softLength: 60
+              width: half
+            name: Что здесь
+            type: string
+          - field: hours
+            meta:
+              interface: input
+              note: 12:00–00:00
+              options:
+                softLength: 60
+              width: half
+            name: Часы работы
+            type: string
+          - field: visit_allowed
+            meta:
+              interface: boolean
+              options:
+                label: Только по предварительной записи
+              width: half
+            name: Приезд
+            type: boolean
+          - field: yandex_rating
+            meta:
+              interface: input
+              note: 4.8 — от 1 до 5
+              width: half
+            name: Рейтинг на Яндекс Картах
+            type: float
+          - field: yandex_maps_url
+            meta:
+              interface: input
+              options:
+                iconLeft: link
+              width: half
+            name: Яндекс Карты
+            type: string
+          - field: twogis_url
+            meta:
+              interface: input
+              options:
+                iconLeft: link
+              width: half
+            name: 2ГИС
+            type: string
+        limit: 4
+        template: '{{name}} · {{city}}'
+      readonly: false
+      required: false
+      searchable: true
+      sort: 18
+      special:
+        - cast-json
+      translations:
+        - language: ru-RU
+          translation: Адреса
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: locations
+      table: site_settings
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: timezone
+    type: string
+    meta:
+      collection: site_settings
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: Москва
+            value: Europe/Moscow
+          - text: Калининград
+            value: Europe/Kaliningrad
+          - text: Самара
+            value: Europe/Samara
+          - text: Екатеринбург
+            value: Asia/Yekaterinburg
+      field: timezone
+      group: group_place
+      hidden: false
+      interface: select-dropdown
+      note: Время в карточке заявки
+      options:
+        choices:
+          - text: Москва
+            value: Europe/Moscow
+          - text: Калининград
+            value: Europe/Kaliningrad
+          - text: Самара
+            value: Europe/Samara
+          - text: Екатеринбург
+            value: Asia/Yekaterinburg
+      readonly: false
+      required: true
+      searchable: true
+      sort: 19
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Часовой пояс
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: timezone
+      table: site_settings
+      data_type: varchar
+      default_value: Europe/Moscow
+      max_length: 40
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: group_legal
+    type: alias
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: group_legal
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options:
+        headerIcon: null
+        start: closed
+      readonly: false
+      required: false
+      searchable: true
+      sort: 20
+      special:
+        - alias
+        - no-data
+        - group
+      translations:
+        - language: ru-RU
+          translation: Реквизиты
+      validation: null
+      validation_message: null
+      width: full
+  - collection: site_settings
+    field: legal_form
+    type: string
+    meta:
+      collection: site_settings
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: ИП
+            value: ИП
+          - text: Самозанятый
+            value: самозанятый
+          - text: ООО
+            value: ООО
+      field: legal_form
+      group: group_legal
+      hidden: false
+      interface: select-dropdown
+      note: 'Без реквизитов сайт не запускаем: нужны для политики конфиденциальности'
+      options:
+        choices:
+          - text: ИП
+            value: ИП
+          - text: Самозанятый
+            value: самозанятый
+          - text: ООО
+            value: ООО
+      readonly: false
+      required: false
+      searchable: true
+      sort: 21
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Форма
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: legal_form
+      table: site_settings
+      data_type: varchar
+      default_value: null
+      max_length: 16
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: legal_name
+    type: string
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: legal_name
+      group: group_legal
+      hidden: false
+      interface: input
+      note: ИП Иванов Иван Иванович
+      options:
+        softLength: 100
+        trim: true
+      readonly: false
+      required: false
+      searchable: true
+      sort: 22
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Название / ФИО
+      validation:
+        _or:
+          - legal_name:
+              _null: true
+          - legal_name:
+              _regex: ^.{1,100}$
+      validation_message: Не длиннее 100 символов — на сайте это футер и /privacy
+      width: full
+    schema:
+      name: legal_name
+      table: site_settings
+      data_type: varchar
+      default_value: null
+      max_length: 100
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: inn
+    type: string
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: inn
+      group: group_legal
+      hidden: false
+      interface: input
+      note: null
+      options:
+        softLength: 12
+        trim: true
+      readonly: false
+      required: false
+      searchable: true
+      sort: 23
+      special: null
+      translations:
+        - language: ru-RU
+          translation: ИНН
+      validation:
+        _or:
+          - inn:
+              _null: true
+          - inn:
+              _regex: ^(\d{10}|\d{12})$
+      validation_message: ИНН — 10 или 12 цифр
+      width: half
+    schema:
+      name: inn
+      table: site_settings
+      data_type: varchar
+      default_value: null
+      max_length: 12
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: ogrn
+    type: string
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: ogrn
+      group: group_legal
+      hidden: false
+      interface: input
+      note: null
+      options:
+        softLength: 15
+        trim: true
+      readonly: false
+      required: false
+      searchable: true
+      sort: 24
+      special: null
+      translations:
+        - language: ru-RU
+          translation: ОГРН / ОГРНИП
+      validation:
+        _or:
+          - ogrn:
+              _null: true
+          - ogrn:
+              _regex: ^(\d{13}|\d{15})$
+      validation_message: ОГРН — 13 цифр, ОГРНИП — 15
+      width: half
+    schema:
+      name: ogrn
+      table: site_settings
+      data_type: varchar
+      default_value: null
+      max_length: 15
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: group_media
+    type: alias
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: group_media
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options:
+        headerIcon: null
+        start: closed
+      readonly: false
+      required: false
+      searchable: true
+      sort: 25
+      special:
+        - alias
+        - no-data
+        - group
+      translations:
+        - language: ru-RU
+          translation: Плашка «5000+» и фото блоков
+      validation: null
+      validation_message: null
+      width: full
+  - collection: site_settings
+    field: parts_counter_value
+    type: integer
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: parts_counter_value
+      group: group_media
+      hidden: false
+      interface: input
+      note: 5000. Пусто — «Любая деталь — в наличии или под заказ» без числа
+      options:
+        max: 9999999
+        min: 1
+      readonly: false
+      required: false
+      searchable: true
+      sort: 26
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Число на плашке
+      validation:
+        _or:
+          - parts_counter_value:
+              _null: true
+          - _and:
+              - parts_counter_value:
+                  _gte: 1
+              - parts_counter_value:
+                  _lte: 9999999
+      validation_message: "От 1 до 9\_999\_999"
+      width: half
+    schema:
+      name: parts_counter_value
+      table: site_settings
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: parts_counter_suffix
+    type: string
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: parts_counter_suffix
+      group: group_media
+      hidden: false
+      interface: input
+      note: +
+      options:
+        softLength: 2
+        trim: true
+      readonly: false
+      required: false
+      searchable: true
+      sort: 27
+      special: null
+      translations:
+        - language: ru-RU
+          translation: После числа
+      validation:
+        _or:
+          - parts_counter_suffix:
+              _null: true
+          - parts_counter_suffix:
+              _regex: ^.{1,2}$
+      validation_message: Не длиннее 2 символов — на сайте это знак после числа
+      width: half
+    schema:
+      name: parts_counter_suffix
+      table: site_settings
+      data_type: varchar
+      default_value: null
+      max_length: 2
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: parts_counter_label
+    type: string
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: parts_counter_label
+      group: group_media
+      hidden: false
+      interface: input
+      note: деталей в наличии и под заказ
+      options:
+        softLength: 32
+        trim: true
+      readonly: false
+      required: false
+      searchable: true
+      sort: 28
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Подпись под числом
+      validation:
+        _or:
+          - parts_counter_label:
+              _null: true
+          - parts_counter_label:
+              _regex: ^.{1,32}$
+      validation_message: Не длиннее 32 символов — на сайте это подпись под числом
+      width: full
+    schema:
+      name: parts_counter_label
+      table: site_settings
+      data_type: varchar
+      default_value: null
+      max_length: 32
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
+    field: service_image
+    type: uuid
+    meta:
+      collection: site_settings
+      conditions: null
+      display: image
+      display_options: null
+      field: service_image
+      group: group_media
+      hidden: false
+      interface: file-image
+      note: 3:2, от 1500×1000. Пусто — фото из вёрстки
+      options:
+        crop: false
+      readonly: false
+      required: false
+      searchable: true
+      sort: 29
+      special:
+        - file
+      translations:
+        - language: ru-RU
+          translation: Фото блока Gal service
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: service_image
+      table: site_settings
+      data_type: char
+      default_value: null
+      max_length: 36
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: site_settings
+    field: custom_banner
+    type: uuid
+    meta:
+      collection: site_settings
+      conditions: null
+      display: image
+      display_options: null
+      field: custom_banner
+      group: group_media
+      hidden: false
+      interface: file-image
+      note: >-
+        21:9, от 2100×900; на телефоне — кадр 4:5 по фокус-точке. Пусто — фото
+        из вёрстки
+      options:
+        crop: false
+      readonly: false
+      required: false
+      searchable: true
+      sort: 30
+      special:
+        - file
+      translations:
+        - language: ru-RU
+          translation: Баннер Gal custom
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: custom_banner
+      table: site_settings
+      data_type: char
+      default_value: null
+      max_length: 36
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: stats
+    field: id
+    type: integer
+    meta:
+      collection: stats
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: stats
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: stats
+    field: value
+    type: integer
+    meta:
+      collection: stats
+      conditions: null
+      display: null
+      display_options: null
+      field: value
+      group: null
+      hidden: false
+      interface: input
+      note: 'Например: 400'
+      options:
+        max: 999999
+        min: 1
+      readonly: false
+      required: true
+      searchable: true
+      sort: 1
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Число
+      validation:
+        _and:
+          - value:
+              _gte: 1
+          - value:
+              _lte: 999999
+      validation_message: "От 1 до 999\_999"
+      width: half
+    schema:
+      name: value
+      table: stats
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: stats
+    field: suffix
+    type: string
+    meta:
+      collection: stats
+      conditions: null
+      display: null
+      display_options: null
+      field: suffix
+      group: null
+      hidden: false
+      interface: input
+      note: 'Например: +. Можно оставить пустым'
+      options:
+        softLength: 4
+        trim: true
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations:
+        - language: ru-RU
+          translation: После числа
+      validation:
+        _or:
+          - suffix:
+              _null: true
+          - suffix:
+              _regex: ^.{1,4}$
+      validation_message: Не длиннее 4 символов — на сайте это знак после числа
+      width: half
+    schema:
+      name: suffix
+      table: stats
+      data_type: varchar
+      default_value: null
+      max_length: 4
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: stats
+    field: label
+    type: string
+    meta:
+      collection: stats
+      conditions: null
+      display: null
+      display_options: null
+      field: label
+      group: null
+      hidden: false
+      interface: input
+      note: 'Например: машин разобрали'
+      options:
+        softLength: 40
+        trim: true
+      readonly: false
+      required: true
+      searchable: true
+      sort: 3
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Подпись
+      validation:
+        _and:
+          - label:
+              _regex: ^.{3,40}$
+      validation_message: От 3 до 40 символов — на сайте это подпись под числом
+      width: full
+    schema:
+      name: label
+      table: stats
+      data_type: varchar
+      default_value: null
+      max_length: 40
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: stats
+    field: status
+    type: string
+    meta:
+      collection: stats
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - background: '#2ECDA7'
+            foreground: '#FFFFFF'
+            text: Опубликовано
+            value: published
+          - background: '#D3DAE4'
+            foreground: '#18222F'
+            text: Черновик
+            value: draft
+          - background: '#6B7A8F'
+            foreground: '#FFFFFF'
+            text: Архив
+            value: archived
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: >-
+        На сайт идёт только «Опубликовано». «Черновик» и «Архив» — скрыть, не
+        удаляя
+      options:
+        choices:
+          - color: '#2ECDA7'
+            text: Опубликовано
+            value: published
+          - color: '#A2B5CD'
+            text: Черновик
+            value: draft
+          - color: '#6B7A8F'
+            text: Архив
+            value: archived
+      readonly: false
+      required: true
+      searchable: true
+      sort: 4
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Статус
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: status
+      table: stats
+      data_type: varchar
+      default_value: published
+      max_length: 16
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: stats
+    field: sort
+    type: integer
+    meta:
+      collection: stats
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: Порядок
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Порядок
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: stats
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: stats
+    field: is_demo
+    type: boolean
+    meta:
+      collection: stats
+      conditions: null
+      display: boolean
+      display_options: null
+      field: is_demo
+      group: null
+      hidden: false
+      interface: boolean
+      note: >-
+        Отмечено — запись придумана для показа. Перед запуском таких
+        опубликованных записей быть не должно
+      options:
+        label: Демо-запись — заменить до запуска
+      readonly: false
+      required: false
+      searchable: true
+      sort: 6
+      special:
+        - cast-boolean
+      translations:
+        - language: ru-RU
+          translation: Демо-запись
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: is_demo
+      table: stats
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: stats
+    field: date_created
+    type: dateTime
+    meta:
+      collection: stats
+      conditions: null
+      display: null
+      display_options: null
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 7
+      special:
+        - date-created
+      translations:
+        - language: ru-RU
+          translation: Создано
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: date_created
+      table: stats
+      data_type: datetime
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: stats
+    field: date_updated
+    type: dateTime
+    meta:
+      collection: stats
+      conditions: null
+      display: null
+      display_options: null
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 8
+      special:
+        - date-updated
+      translations:
+        - language: ru-RU
+          translation: Изменено
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: date_updated
+      table: stats
+      data_type: datetime
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: work_pairs
+    field: id
+    type: integer
+    meta:
+      collection: work_pairs
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: work_pairs
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: work_pairs
+    field: work
+    type: integer
+    meta:
+      collection: work_pairs
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{title}}'
+      field: work
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        enableCreate: false
+        template: '{{title}}'
+      readonly: false
+      required: false
+      searchable: true
+      sort: 1
+      special:
+        - m2o
+      translations:
+        - language: ru-RU
+          translation: Работа
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: work
+      table: work_pairs
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: works
+      foreign_key_column: id
+  - collection: work_pairs
+    field: before
+    type: uuid
+    meta:
+      collection: work_pairs
+      conditions: null
+      display: image
+      display_options: null
+      field: before
+      group: null
+      hidden: false
+      interface: file-image
+      note: 4:3, от 1200×900
+      options:
+        crop: false
+      readonly: false
+      required: true
+      searchable: true
+      sort: 2
+      special:
+        - file
+      translations:
+        - language: ru-RU
+          translation: До
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: before
+      table: work_pairs
+      data_type: char
+      default_value: null
+      max_length: 36
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: work_pairs
+    field: after
+    type: uuid
+    meta:
+      collection: work_pairs
+      conditions: null
+      display: image
+      display_options: null
+      field: after
+      group: null
+      hidden: false
+      interface: file-image
+      note: 4:3, от 1200×900, тот же ракурс
+      options:
+        crop: false
+      readonly: false
+      required: true
+      searchable: true
+      sort: 3
+      special:
+        - file
+      translations:
+        - language: ru-RU
+          translation: После
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: after
+      table: work_pairs
+      data_type: char
+      default_value: null
+      max_length: 36
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: work_pairs
+    field: caption
+    type: string
+    meta:
+      collection: work_pairs
+      conditions: null
+      display: null
+      display_options: null
+      field: caption
+      group: null
+      hidden: false
+      interface: input
+      note: Можно оставить пустым
+      options:
+        softLength: 60
+        trim: true
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Подпись
+      validation:
+        _or:
+          - caption:
+              _null: true
+          - caption:
+              _regex: ^.{1,60}$
+      validation_message: Не длиннее 60 символов — на сайте это подпись под шторкой
+      width: full
+    schema:
+      name: caption
+      table: work_pairs
+      data_type: varchar
+      default_value: null
+      max_length: 60
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: work_pairs
+    field: after_alignment
+    type: json
+    meta:
+      collection: work_pairs
+      conditions: null
+      display: null
+      display_options: null
+      field: after_alignment
+      group: null
+      hidden: true
+      interface: input-code
+      note: >-
+        Техническое: сдвиг и масштаб второго снимка, если сняты с разных
+        ракурсов. Заполняю я, трогать не нужно
+      options:
+        language: JSON
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special:
+        - cast-json
+      translations:
+        - language: ru-RU
+          translation: Подгонка кадра «после»
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: after_alignment
+      table: work_pairs
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: work_pairs
+    field: sort
+    type: integer
+    meta:
+      collection: work_pairs
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: work_pairs
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: works
+    field: id
+    type: integer
+    meta:
+      collection: works
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: works
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: works
+    field: direction
+    type: string
+    meta:
+      collection: works
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: Gal service
+            value: service
+          - text: Gal custom
+            value: custom
+      field: direction
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: В каком блоке показать
+      options:
+        choices:
+          - text: Gal service
+            value: service
+          - text: Gal custom
+            value: custom
+      readonly: false
+      required: true
+      searchable: true
+      sort: 1
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Направление
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: direction
+      table: works
+      data_type: varchar
+      default_value: null
+      max_length: 32
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: works
+    field: title
+    type: string
+    meta:
+      collection: works
+      conditions: null
+      display: null
+      display_options: null
+      field: title
+      group: null
+      hidden: false
+      interface: input
+      note: 'Например: Руль и салон'
+      options:
+        softLength: 40
+        trim: true
+      readonly: false
+      required: true
+      searchable: true
+      sort: 2
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Что сделали
+      validation:
+        _and:
+          - title:
+              _regex: ^.{3,40}$
+      validation_message: От 3 до 40 символов — на сайте это подпись работы, первая строка
+      width: full
+    schema:
+      name: title
+      table: works
+      data_type: varchar
+      default_value: null
+      max_length: 40
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: works
+    field: car
+    type: string
+    meta:
+      collection: works
+      conditions: null
+      display: null
+      display_options: null
+      field: car
+      group: null
+      hidden: false
+      interface: input
+      note: 'Например: BMW E39'
+      options:
+        softLength: 32
+        trim: true
+      readonly: false
+      required: true
+      searchable: true
+      sort: 3
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Машина
+      validation:
+        _and:
+          - car:
+              _regex: ^.{3,32}$
+      validation_message: От 3 до 32 символов — на сайте это подпись работы, вторая строка
+      width: half
+    schema:
+      name: car
+      table: works
+      data_type: varchar
+      default_value: null
+      max_length: 32
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: works
+    field: year
+    type: integer
+    meta:
+      collection: works
+      conditions: null
+      display: null
+      display_options: null
+      field: year
+      group: null
+      hidden: false
+      interface: input
+      note: 'Например: 2025. Можно оставить пустым'
+      options:
+        max: 2026
+        min: 2000
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Год работы
+      validation:
+        _or:
+          - year:
+              _null: true
+          - _and:
+              - year:
+                  _gte: 2000
+              - year:
+                  _lte: 2026
+      validation_message: Год от 2000 до 2026
+      width: half
+    schema:
+      name: year
+      table: works
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: works
+    field: description
+    type: text
+    meta:
+      collection: works
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: Что было сложного. Можно оставить пустым
+      options:
+        softLength: 280
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Описание
+      validation:
+        _or:
+          - description:
+              _null: true
+          - description:
+              _regex: ^[\s\S]{1,280}$
+      validation_message: Не длиннее 280 символов — на сайте это абзац под фото
+      width: full
+    schema:
+      name: description
+      table: works
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: works
+    field: post_url
+    type: string
+    meta:
+      collection: works
+      conditions: null
+      display: null
+      display_options: null
+      field: post_url
+      group: null
+      hidden: false
+      interface: input
+      note: >-
+        Например: https://t.me/GenAutoLab/120. Можно оставить пустым: останется
+        общая ссылка на канал
+      options:
+        iconLeft: link
+        trim: true
+      readonly: false
+      required: false
+      searchable: true
+      sort: 6
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Пост в Telegram-канале
+      validation:
+        _or:
+          - post_url:
+              _null: true
+          - post_url:
+              _regex: ^https://t\.me/[A-Za-z0-9_]+/\d+$
+      validation_message: 'Ссылка на пост: https://t.me/канал/номер'
+      width: full
+    schema:
+      name: post_url
+      table: works
+      data_type: varchar
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: works
+    field: cover
+    type: uuid
+    meta:
+      collection: works
+      conditions: null
+      display: image
+      display_options: null
+      field: cover
+      group: null
+      hidden: false
+      interface: file-image
+      note: >-
+        4:3, от 1200×900. С iPhone — сохраните как JPG. Пусто — возьмём «после»
+        из первой пары или первое фото галереи
+      options:
+        crop: false
+      readonly: false
+      required: false
+      searchable: true
+      sort: 7
+      special:
+        - file
+      translations:
+        - language: ru-RU
+          translation: Обложка
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: cover
+      table: works
+      data_type: char
+      default_value: null
+      max_length: 36
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: works
+    field: pairs
+    type: alias
+    meta:
+      collection: works
+      conditions: null
+      display: null
+      display_options: null
+      field: pairs
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: До 6 пар, оба кадра 4:3 от 1200×900, лучше с одного ракурса
+      options:
+        enableSelect: false
+        template: '{{after.$thumbnail}} {{caption}}'
+      readonly: false
+      required: false
+      searchable: true
+      sort: 8
+      special:
+        - o2m
+      translations:
+        - language: ru-RU
+          translation: Пары «до/после»
+      validation: null
+      validation_message: null
+      width: full
+  - collection: works
+    field: photos
+    type: alias
+    meta:
+      collection: works
+      conditions: null
+      display: null
+      display_options: null
+      field: photos
+      group: null
+      hidden: false
+      interface: files
+      note: До 20 фото, любая пропорция, от 1200 px по длинной стороне
+      options:
+        template: '{{directus_files_id.$thumbnail}} {{directus_files_id.title}}'
+      readonly: false
+      required: false
+      searchable: true
+      sort: 9
+      special:
+        - files
+      translations:
+        - language: ru-RU
+          translation: Галерея
+      validation: null
+      validation_message: null
+      width: full
+  - collection: works
+    field: status
+    type: string
+    meta:
+      collection: works
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - background: '#2ECDA7'
+            foreground: '#FFFFFF'
+            text: Опубликовано
+            value: published
+          - background: '#D3DAE4'
+            foreground: '#18222F'
+            text: Черновик
+            value: draft
+          - background: '#6B7A8F'
+            foreground: '#FFFFFF'
+            text: Архив
+            value: archived
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: >-
+        На сайт идёт только «Опубликовано». «Черновик» и «Архив» — скрыть, не
+        удаляя
+      options:
+        choices:
+          - color: '#2ECDA7'
+            text: Опубликовано
+            value: published
+          - color: '#A2B5CD'
+            text: Черновик
+            value: draft
+          - color: '#6B7A8F'
+            text: Архив
+            value: archived
+      readonly: false
+      required: true
+      searchable: true
+      sort: 10
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Статус
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: status
+      table: works
+      data_type: varchar
+      default_value: published
+      max_length: 16
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: works
+    field: sort
+    type: integer
+    meta:
+      collection: works
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: Порядок в блоке
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 11
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Порядок
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: works
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: works
+    field: is_demo
+    type: boolean
+    meta:
+      collection: works
+      conditions: null
+      display: boolean
+      display_options: null
+      field: is_demo
+      group: null
+      hidden: false
+      interface: boolean
+      note: >-
+        Отмечено — запись придумана для показа. Перед запуском таких
+        опубликованных записей быть не должно
+      options:
+        label: Демо-запись — заменить до запуска
+      readonly: false
+      required: false
+      searchable: true
+      sort: 12
+      special:
+        - cast-boolean
+      translations:
+        - language: ru-RU
+          translation: Демо-запись
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: is_demo
+      table: works
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: works
+    field: date_created
+    type: dateTime
+    meta:
+      collection: works
+      conditions: null
+      display: null
+      display_options: null
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 13
+      special:
+        - date-created
+      translations:
+        - language: ru-RU
+          translation: Создано
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: date_created
+      table: works
+      data_type: datetime
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: works
+    field: date_updated
+    type: dateTime
+    meta:
+      collection: works
+      conditions: null
+      display: null
+      display_options: null
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 14
+      special:
+        - date-updated
+      translations:
+        - language: ru-RU
+          translation: Изменено
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: date_updated
+      table: works
+      data_type: datetime
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: works_files
+    field: id
+    type: integer
+    meta:
+      collection: works_files
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: works_files
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: works_files
+    field: works_id
+    type: integer
+    meta:
+      collection: works_files
+      conditions: null
+      display: null
+      display_options: null
+      field: works_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: works_id
+      table: works_files
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: works
+      foreign_key_column: id
+  - collection: works_files
+    field: directus_files_id
+    type: string
+    meta:
+      collection: works_files
+      conditions: null
+      display: null
+      display_options: null
+      field: directus_files_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: directus_files_id
+      table: works_files
+      data_type: char
+      default_value: null
+      max_length: 36
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: works_files
+    field: sort
+    type: integer
+    meta:
+      collection: works_files
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: works_files
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+systemFields:
+  - collection: directus_activity
+    field: timestamp
+    schema:
+      is_indexed: true
+  - collection: directus_revisions
+    field: activity
+    schema:
+      is_indexed: true
+  - collection: directus_revisions
+    field: parent
+    schema:
+      is_indexed: true
+relations:
+  - collection: part_positions
+    field: section
+    related_collection: part_sections
+    meta:
+      junction_field: null
+      many_collection: part_positions
+      many_field: section
+      one_allowed_collections: null
+      one_collection: part_sections
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: part_positions
+      column: section
+      foreign_key_table: part_sections
+      foreign_key_column: id
+      constraint_name: null
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: part_positions
+    field: photo
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: part_positions
+      many_field: photo
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: part_positions
+      column: photo
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: null
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: part_positions_bmw_bodies
+    field: part_positions_id
+    related_collection: part_positions
+    meta:
+      junction_field: bmw_bodies_id
+      many_collection: part_positions_bmw_bodies
+      many_field: part_positions_id
+      one_allowed_collections: null
+      one_collection: part_positions
+      one_collection_field: null
+      one_deselect_action: delete
+      one_field: bodies
+      sort_field: null
+    schema:
+      table: part_positions_bmw_bodies
+      column: part_positions_id
+      foreign_key_table: part_positions
+      foreign_key_column: id
+      constraint_name: null
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: part_positions_bmw_bodies
+    field: bmw_bodies_id
+    related_collection: bmw_bodies
+    meta:
+      junction_field: part_positions_id
+      many_collection: part_positions_bmw_bodies
+      many_field: bmw_bodies_id
+      one_allowed_collections: null
+      one_collection: bmw_bodies
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: part_positions_bmw_bodies
+      column: bmw_bodies_id
+      foreign_key_table: bmw_bodies
+      foreign_key_column: id
+      constraint_name: null
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: part_sections
+    field: cover
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: part_sections
+      many_field: cover
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: part_sections
+      column: cover
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: null
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: site_settings
+    field: ivan_photo
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: site_settings
+      many_field: ivan_photo
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: site_settings
+      column: ivan_photo
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: null
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: site_settings
+    field: service_image
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: site_settings
+      many_field: service_image
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: site_settings
+      column: service_image
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: null
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: site_settings
+    field: custom_banner
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: site_settings
+      many_field: custom_banner
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: site_settings
+      column: custom_banner
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: null
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: work_pairs
+    field: work
+    related_collection: works
+    meta:
+      junction_field: null
+      many_collection: work_pairs
+      many_field: work
+      one_allowed_collections: null
+      one_collection: works
+      one_collection_field: null
+      one_deselect_action: delete
+      one_field: pairs
+      sort_field: sort
+    schema:
+      table: work_pairs
+      column: work
+      foreign_key_table: works
+      foreign_key_column: id
+      constraint_name: null
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: work_pairs
+    field: before
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: work_pairs
+      many_field: before
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: work_pairs
+      column: before
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: null
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: work_pairs
+    field: after
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: work_pairs
+      many_field: after
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: work_pairs
+      column: after
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: null
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: works
+    field: cover
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: works
+      many_field: cover
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: works
+      column: cover
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: null
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: works_files
+    field: works_id
+    related_collection: works
+    meta:
+      junction_field: directus_files_id
+      many_collection: works_files
+      many_field: works_id
+      one_allowed_collections: null
+      one_collection: works
+      one_collection_field: null
+      one_deselect_action: delete
+      one_field: photos
+      sort_field: sort
+    schema:
+      table: works_files
+      column: works_id
+      foreign_key_table: works
+      foreign_key_column: id
+      constraint_name: null
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: works_files
+    field: directus_files_id
+    related_collection: directus_files
+    meta:
+      junction_field: works_id
+      many_collection: works_files
+      many_field: directus_files_id
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: works_files
+      column: directus_files_id
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: null
+      on_update: NO ACTION
+      on_delete: CASCADE

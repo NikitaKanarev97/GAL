@@ -54,7 +54,7 @@ export function buildMessage(ctx: Omit<LeadContext, 'source'>, body: BodyChoice,
   const path = [TOPIC_IN_MESSAGE[ctx.topic], ctx.section, ctx.position].filter(Boolean).join(' → ')
   const parts = ['Здравствуйте! Я с сайта GAL.', `${path}.`]
   if (body?.kind === 'body') parts.push(`BMW ${body.code}.`)
-  if (body?.kind === 'other') parts.push('BMW — модель напишу.')
+  if (body?.kind === 'other') parts.push(ctx.topic === 'custom' ? 'Машина — марку и модель напишу.' : 'BMW — модель напишу.')
   if (code) parts.push(`#${code}`)
   const lines = [parts.join(' ')]
   if (ctx.topic === 'parts' && !ctx.position) lines.push('Деталь: ')
