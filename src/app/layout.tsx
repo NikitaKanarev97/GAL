@@ -8,6 +8,7 @@ import { Footer } from '@/components/blocks/Footer'
 import { DisplayLines } from '@/components/motion/DisplayLines'
 import { MotionProvider } from '@/components/motion/MotionProvider'
 import { Preloader } from '@/components/motion/Preloader'
+import { SearchHandoff } from '@/components/service/SearchHandoff'
 import '@/styles/globals.css'
 
 // visual-direction.md §8: Unbounded 800–900, Manrope 400/500/600/800; надпись — Marck Script (у Satisfy нет кириллицы)
@@ -70,6 +71,8 @@ export default async function RootLayout({ children, modal }: { children: ReactN
           {modal}
         </ContactProvider>
         <DisplayLines />
+        {/* эстафета поиска главная → /service: поле должно пережить переход */}
+        <SearchHandoff />
       </body>
     </html>
   )

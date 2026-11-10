@@ -3,8 +3,9 @@
  * Ещё выдумано: позиции и цены [долг D17], проекты Service [D23] и две работы Custom [D26] —
  * content-debt.md. Фото позиций C9 — демо и заменяются вместе с позициями.
  */
-import type { BmwBody, Faq, PartPosition, PartSection, Seed, Service, SiteSettings, Stat, Work } from '../types'
+import type { BmwBody, Faq, PartPosition, PartSection, Seed, Service, ServicePrice, SiteSettings, Stat, Work } from '../types'
 import { files, positionPhotos } from './files'
+import { estimates, priceList, type BodyPrices } from './services'
 
 const published = 'published' as const
 
@@ -104,22 +105,43 @@ export const part_sections: PartSection[] = (
   ] satisfies Omit<PartSection, 'status' | 'sort'>[]
 ).map((s, i) => ({ ...s, status: published, sort: i + 1 }))
 
-// Кузова — ответ 12: ходовые E32, E34, E38, E39. Остальные из прототипа — draft (решение 2026-09-16: на сайте только 4 ходовых)
+// Кузова — с 2026-10-04 на сайте 11, с которыми работаем (решение владельца; было 4 по ответу 12): у каждого свой прайс
+// работ (seed/services.ts). Остальные из прототипа — draft
 const bodyRows: [string, BmwBody['series'], number, number | null, number | null, 'published' | 'draft'][] = [
+  ['E36', '3', 1, 1990, 2000, 'published'],
+  ['E46', '3', 2, 1998, 2006, 'published'],
+  ['E90', '3', 3, 2005, 2012, 'published'],
   ['E34', '5', 1, 1988, 1996, 'published'],
   ['E39', '5', 2, 1995, 2003, 'published'],
+  ['E60', '5', 3, 2003, 2010, 'published'],
   ['E32', '7', 1, 1986, 1994, 'published'],
   ['E38', '7', 2, 1994, 2001, 'published'],
-  ['E28', '5', 3, 1981, 1988, 'draft'],
-  ['E60', '5', 4, 2003, 2010, 'draft'],
+  ['E65', '7', 3, 2001, 2008, 'published'],
+  ['E53', 'X', 1, 1999, 2006, 'published'],
+  ['E70', 'X', 2, 2006, 2013, 'published'],
+  ['E28', '5', 4, 1981, 1988, 'draft'],
   ['F10', '5', 5, 2009, 2017, 'draft'],
   ['G30', '5', 6, 2016, 2023, 'draft'],
-  ['E30', '3', 1, 1982, 1994, 'draft'],
-  ['F30', '3', 2, 2011, 2019, 'draft'],
-  ['G20', '3', 3, 2018, null, 'draft'],
-  ['E53', 'X', 1, 1999, 2006, 'draft'],
-  ['E70', 'X', 2, 2006, 2013, 'draft'],
+  ['E30', '3', 4, 1982, 1994, 'draft'],
+  ['F30', '3', 5, 2011, 2019, 'draft'],
+  ['G20', '3', 6, 2018, null, 'draft'],
 ]
+
+// Моторы — объём и код мотора (scripts/engine-codes.mjs): i — бензин, d/td/tds — дизель; код — из ПТС
+const engines: Record<string, string[]> = {
+  E36: ['1.6i M40', '1.6i M43', '1.8i M40', '1.8i M43', '1.8is M42', '1.8is M44', '1.8ti M42', '1.8ti M44', '2.0i M50', '2.0i M52', '2.3i M52', '2.3ti M52', '2.5i M50', '2.8i M52', 'M3 S50/S52', '1.8tds M41', '2.5tds M51'],
+  E46: ['1.6i M43', '1.6i N42/N45', '1.8i M43', '1.8i N42/N46', '2.0i M52', '2.2i M54', '2.3i M52', '2.5i M54', '2.8i M52', '3.0i M54', '1.8d M47', '2.0d M47', '3.0d M57'],
+  E90: ['1.6i N45/N43', '1.8i N46', '1.8i N43', '2.0i N46', '2.0i N43', '2.3i N52', '2.5i N52', '3.0i N52/N53', '1.8d M47', '1.8d N47', '2.0d M47', '2.0d N47', '3.0d M57', '3.0d N57'],
+  E34: ['1.8i M40', '2.0i M20', '2.0i M50', '2.5i M20', '2.5i M50', '3.0i M30', '3.0i M60', '3.5i M30', '4.0i M60', '2.4td M21', '2.5tds M51'],
+  E39: ['2.0i M52', '2.2i M54', '2.3i M52', '2.5i M54', '2.8i M52', '3.0i M54', '3.5i M62', '4.0i M62', '4.4i M62', 'M5 S62', '2.0d M47', '2.5d M57', '3.0d M57', '2.5tds M51'],
+  E60: ['2.0i N46/N43', '2.2i M54', '2.5i M54', '2.5i N52', '2.5i N53', '3.0i M54', '3.0i N52', '3.0i N53', '4.4i N62', '4.8i N62', 'M5 S85', '2.0d M47', '2.0d N47', '2.5d M57', '3.0d M57', '3.0d N57'],
+  E32: ['2.5i', '3.0i M30', '3.0i M60', '3.5i M30', '4.0i M60', '5.0i M70', '2.4td'],
+  E38: ['2.8i M52', '3.0i M60', '3.5i M62', '4.0i M60', '4.0i M62', '4.4i M62', '5.0i M73', '2.5tds M51', '3.0d M57'],
+  E65: ['3.0i M54', '3.0i N52', '3.5i N62', '4.0i N62', '4.5i N62', '5.0i N62', '6.0i N73', '3.0d M57', '4.0d M67', '4.5d M67'],
+  E53: ['3.0i M54', '4.4i M62', '4.4i N62', '4.6is M62', '4.8is N62', '3.0d M57'],
+  // E70: 3.0i — N52, 3.5i — N55 (35i), 4.4i — N63 (50i), 4.8i — N62, 3.0d — все дизели (30d, 35d, 40d)
+  E70: ['3.0i N52', '3.5i N55', '4.4i N63', '4.8i N62', '3.0d M57', '3.0d N57'],
+}
 
 export const bmw_bodies: BmwBody[] = bodyRows.map(([code, series, sort, years_from, years_to, status]) => ({
   id: code,
@@ -129,6 +151,7 @@ export const bmw_bodies: BmwBody[] = bodyRows.map(([code, series, sort, years_fr
   years_from,
   years_to,
   status,
+  engines: engines[code] ?? [],
 }))
 
 type PosRow = [name: string, bodies: string, spec: string | null, price: number | null]
@@ -201,18 +224,28 @@ export const part_positions: PartPosition[] = Object.entries(positionRows).flatM
   })),
 )
 
-// Услуги — ответ 23: сроков клиент не назвал
+const toPrices = (byBody: BodyPrices, name = ''): ServicePrice[] =>
+  Object.entries(byBody).flatMap(([body, p]): ServicePrice[] => {
+    const estimate = estimates[name]?.includes(body) ?? false
+    return typeof p === 'number' ? [{ body, motor: null, price: p, estimate }] : Object.entries(p).map(([motor, price]) => ({ body, motor, price, estimate }))
+  })
+
+// Услуги — ответ 23 (сроков клиент не назвал), за ними основные работы с ценой по кузову — seed/services.ts
 export const services: Service[] = (
   [
-    ['ТО', null, 2500, null],
-    ['Замена двигателя', null, 21000, null],
+    ['maintenance', 'ТО', 2500],
+    ['engine', 'Замена двигателя', 21000],
+    ...priceList,
   ] as const
-).map(([name, description, price_from, duration], i) => ({
+).map(([category, name, price], i) => ({
   id: `service-${i + 1}`,
+  category,
   name,
-  description,
-  price_from,
-  duration,
+  description: null,
+  prices: typeof price === 'number' ? [] : toPrices(price, name),
+  // общая «от» — самая низкая по кузовам и моторам
+  price_from: typeof price === 'number' ? price : Math.min(...toPrices(price).map((p) => p.price)),
+  duration: null,
   sort: i + 1,
   status: published,
   is_demo: false,

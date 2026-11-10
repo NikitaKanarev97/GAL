@@ -51,15 +51,17 @@ export const edge: Seed = {
   part_positions: positions,
   bmw_bodies: [
     ...demo.bmw_bodies.map((b) => ({ ...b, status: 'published' as const })),
-    { id: 'E46 M3', code: 'E46 M3', series: 'M', sort: 1, years_from: null, years_to: null, status: 'published' },
+    { id: 'E46 M3', code: 'E46 M3', series: 'M', sort: 1, years_from: null, years_to: null, status: 'published', engines: [] },
   ],
   services: [
     ...demo.services,
     ...Array.from({ length: 8 }, (_, i) => ({
       id: `svc-edge-${i}`,
+      category: i % 2 ? null : ('engine' as const),
       name: i === 0 ? 'Название услуги ровно в сорок символов ок' : `Услуга без цены ${i}`,
       description: null,
       price_from: i === 0 ? 9999999 : null,
+      prices: i === 0 ? [{ body: 'E39', motor: null, price: 9999999 }] : [],
       duration: null,
       sort: 10 + i,
       status: 'published' as const,

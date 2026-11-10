@@ -67,14 +67,44 @@ export type BmwBody = Base & {
   series: Series
   years_from: number | null
   years_to: number | null
+  /** моторы кузова для прайса ремонта (2.5i, 3.0d, M3) — ключи motor в Service.prices; пусто — шага «Мотор» нет */
+  engines: string[]
+}
+
+/** Группа услуги — фильтр в Gal service; подписи и порядок — src/lib/services.ts */
+export type ServiceCategory =
+  | 'maintenance'
+  | 'engine'
+  | 'cooling'
+  | 'fuel'
+  | 'transmission'
+  | 'suspension'
+  | 'steering'
+  | 'brakes'
+  | 'electrics'
+  | 'climate'
+  | 'exhaust'
+  | 'body'
+
+/** Цена работы: кузов (bmw_bodies.code) и мотор (bmw_bodies.engines); motor = null — одна цена на весь кузов */
+export type ServicePrice = {
+  body: string
+  motor: string | null
+  price: number
+  /** цена — оценка, не из прайса источника: в админке флажок «проверить», сайт не показывает */
+  estimate?: boolean
 }
 
 /** 4. services */
 export type Service = Base &
   Demo & {
+    /** не задана — услуга видна только во «Все» */
+    category: ServiceCategory | null
     name: string
     description: string | null
+    /** общая «от»: кузов не выбран или для кузова нет строки в prices */
     price_from: number | null
+    prices: ServicePrice[]
     duration: string | null
   }
 
@@ -151,6 +181,8 @@ export type Location = {
 /** 8. site_settings (singleton) */
 export type SiteSettings = {
   telegram_username: string
+  /** заявки по перешиву салона; пусто — ник по умолчанию из lib/message */
+  telegram_username_custom?: string | null
   contact_name: string
   contact_name_dative: string
   ivan_photo: DirectusFile | null

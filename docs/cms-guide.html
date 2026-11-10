@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>GAL — как работать с админкой</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&family=Unbounded:wght@800&display=swap" rel="stylesheet">
+<style>
+  /* Сборка в PDF: node scripts/build-cms-guide.mjs. Кадры — screenshots/cms-guide, снимает scripts/capture-cms-guide.mjs */
+  @page { size: 297mm 210mm; margin: 0; }
+  :root {
+    --ink: #0d0d0d;
+    --muted: #5c5c5c;
+    --line: #e4e0d8;
+    --paper: #ffffff;
+    --soft: #f6f3ee;
+    --accent: #ff5a00;
+    --dark: #070707;
+    --cream: #f5eedd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--paper); color: var(--ink); font: 400 11pt/1.45 Manrope, system-ui, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .slide { width: 297mm; height: 210mm; padding: 13mm 14mm 11mm; position: relative; overflow: hidden; page-break-after: always; display: flex; flex-direction: column; }
+  .slide:last-child { page-break-after: auto; }
+
+  .top { display: flex; justify-content: space-between; align-items: center; font: 600 8.5pt/1 Manrope, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6mm; }
+  .top b { color: var(--accent); }
+  h1, h2 { font-family: Unbounded, sans-serif; font-weight: 800; letter-spacing: -.01em; line-height: 1.08; }
+  h2 { font-size: 21pt; margin-bottom: 2.5mm; }
+  .lead { color: var(--muted); font-size: 11pt; margin-bottom: 6mm; max-width: 230mm; }
+
+  .body { display: grid; grid-template-columns: 76mm 1fr; gap: 9mm; flex: 1; min-height: 0; }
+  .steps { list-style: none; display: flex; flex-direction: column; gap: 4.2mm; }
+  .steps li { display: grid; grid-template-columns: 8mm 1fr; gap: 3mm; align-items: start; }
+  .steps li > i { font-style: normal; width: 7mm; height: 7mm; border-radius: 50%; background: var(--accent); color: #fff; font: 800 10pt/7mm Manrope, sans-serif; text-align: center; }
+  .steps b { font-weight: 800; }
+  .note { margin-top: auto; background: var(--soft); border-left: 1.2mm solid var(--accent); border-radius: 0 2mm 2mm 0; padding: 3.2mm 4mm; font-size: 9.6pt; }
+  .note.warn { border-color: var(--ink); }
+  .note b { font-weight: 800; }
+  .aside { display: flex; flex-direction: column; gap: 4mm; }
+
+  .shot { width: 100%; align-self: start; border: 1px solid var(--line); border-radius: 2.5mm; overflow: hidden; box-shadow: 0 1.5mm 5mm rgba(0,0,0,.08); background: var(--soft); }
+  .shot img { display: block; width: 100%; height: auto; }
+  .shot.missing { aspect-ratio: 16 / 10; display: grid; place-items: center; color: var(--muted); font-size: 10pt; border-style: dashed; }
+  kbd { font: 800 9.5pt/1 Manrope, sans-serif; background: var(--accent); color: #fff; border-radius: 1.2mm; padding: .6mm 1.6mm; }
+  kbd.ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+
+  /* обложка */
+  .cover { background: var(--dark); color: var(--cream); justify-content: space-between; padding: 18mm 18mm 16mm; }
+  .cover img.logo { height: 15mm; width: auto; align-self: flex-start; }
+  .cover h1 { font-size: 40pt; max-width: 210mm; }
+  .cover h1 span { color: var(--accent); }
+  .cover p { font-size: 13pt; color: #bdb6a8; max-width: 170mm; margin-top: 6mm; }
+  .cover .meta { display: flex; gap: 14mm; font-size: 10pt; color: #8f897d; }
+  .cover .meta b { display: block; color: var(--cream); font-size: 12pt; font-weight: 800; margin-top: 1mm; }
+
+  /* оглавление и карта разделов */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm 10mm; }
+  .toc { list-style: none; columns: 2; column-gap: 10mm; font-size: 11.5pt; }
+  .toc li { break-inside: avoid; padding: 2.2mm 0; border-bottom: 1px solid var(--line); display: flex; gap: 4mm; }
+  .toc li span { color: var(--accent); font-weight: 800; min-width: 7mm; }
+  .map { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5mm; }
+  .map section { border: 1px solid var(--line); border-radius: 2.5mm; padding: 4.5mm; }
+  .map h3 { font: 800 12pt/1.2 Manrope, sans-serif; margin-bottom: 3mm; display: flex; gap: 2mm; align-items: center; }
+  .map h3::before { content: ''; width: 2.4mm; height: 2.4mm; border-radius: 50%; background: var(--accent); }
+  .map dl { display: flex; flex-direction: column; gap: 2.6mm; font-size: 9.6pt; }
+  .map dt { font-weight: 800; }
+  .map dd { color: var(--muted); }
+
+  .rules { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm 9mm; }
+  .rules section { border-top: 2px solid var(--ink); padding-top: 3mm; }
+  .rules h3 { font: 800 12pt/1.25 Manrope, sans-serif; margin-bottom: 1.5mm; }
+  .rules p { font-size: 10pt; color: #333; }
+  .rules .no { border-color: var(--accent); }
+  .contact { margin-top: auto; display: flex; justify-content: space-between; align-items: center; background: var(--dark); color: var(--cream); border-radius: 2.5mm; padding: 5mm 7mm; }
+  .contact b { color: var(--accent); }
+  .pageno { position: absolute; right: 14mm; bottom: 7mm; font-size: 8pt; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<!-- 0. Обложка -->
+<div class="slide cover">
+  <img class="logo" src="../assets/logo/svg/gal-logo-v3-header.svg" alt="GAL">
+  <div>
+    <h1>Как работать<br>с <span>админкой</span> сайта</h1>
+    <p>Пошаговая инструкция: как войти, найти нужный раздел, поменять текст, цену или фото, добавить запись и убрать её с сайта.</p>
+  </div>
+  <div class="meta">
+    <div>Админка<b>cms.galparts.ru</b></div>
+    <div>Сайт<b>galparts.ru</b></div>
+    <div>Логин и пароль<b>в «Шпаргалке по сайту»</b></div>
+  </div>
+</div>
+
+<!-- 1. Оглавление и карта -->
+<div class="slide">
+  <div class="top"><span><b>GAL</b> · админка</span><span>Что где лежит</span></div>
+  <h2>Что где лежит</h2>
+  <p class="lead">Слева в админке — четыре папки. В каждой — списки записей. Каждая запись — это карточка или строка на сайте.</p>
+  <div class="map">
+    <section><h3>Запчасти</h3><dl>
+      <dt>Разделы запчастей</dt><dd>плитки каталога: название, описание, обложка</dd>
+      <dt>Ходовые позиции</dt><dd>детали с ценой «от», фото и кузовами</dd>
+      <dt>Кузова BMW</dt><dd>выбор «Какая у вас BMW?»</dd>
+    </dl></section>
+    <section><h3>Прайс ремонта</h3><dl>
+      <dt>Работы</dt><dd>услуги Gal service с ценой «от»</dd>
+      <dt>Цены ремонта</dt><dd>цена каждой работы для каждого кузова и мотора</dd>
+    </dl></section>
+    <section><h3>Service и Custom</h3><dl>
+      <dt>Проекты</dt><dd>работы Gal custom: обложка, шторка «до/после», галерея</dd>
+    </dl></section>
+    <section><h3>Сайт</h3><dl>
+      <dt>Вопросы</dt><dd>вопросы и ответы внизу страницы</dd>
+      <dt>Цифры</dt><dd>блок с цифрами</dd>
+      <dt>Настройки сайта</dt><dd>телефон, соцсети, адреса, часы, реквизиты, фото блоков</dd>
+    </dl></section>
+  </div>
+  <h2 style="font-size:14pt;margin:9mm 0 3mm">Шаги</h2>
+  <ol class="toc">
+    <li><span>1</span>Войти в админку</li>
+    <li><span>2</span>Меню и разделы</li>
+    <li><span>3</span>Список записей</li>
+    <li><span>4</span>Поменять текст или цену</li>
+    <li><span>5</span>Фото</li>
+    <li><span>6</span>Скрыть запись с сайта</li>
+    <li><span>7</span>Добавить новую запись</li>
+    <li><span>8</span>Окно выбора</li>
+    <li><span>9</span>Прайс ремонта</li>
+    <li><span>10</span>Вопросы и настройки сайта</li>
+    <li><span>11</span>Сменить свой пароль</li>
+    <li><span>12</span>Правила и если что-то не так</li>
+  </ol>
+</div>
+
+<!-- 2. Вход -->
+<div class="slide">
+  <div class="top"><span><b>GAL</b> · админка</span><span>Шаг 1</span></div>
+  <h2>Войти в админку</h2>
+  <p class="lead">Админка работает в обычном браузере — на компьютере удобнее всего, с телефона тоже можно.</p>
+  <div class="body">
+    <div class="aside">
+      <ol class="steps">
+        <li><i>1</i><div>Откройте <b>cms.galparts.ru</b> и впишите свою почту.</div></li>
+        <li><i>2</i><div>Впишите пароль. Точки вместо букв — так и должно быть.</div></li>
+        <li><i>3</i><div>Нажмите <b>«Войти»</b>.</div></li>
+      </ol>
+      <div class="note">Логин и пароль — в «Шпаргалке по сайту». Добавьте адрес админки в закладки браузера, чтобы не вводить его каждый раз.</div>
+    </div>
+    <figure class="shot"><img src="../screenshots/cms-guide/01-login.jpg" alt=""></figure>
+  </div>
+</div>
+
+<!-- 3. Меню -->
+<div class="slide">
+  <div class="top"><span><b>GAL</b> · админка</span><span>Шаг 2</span></div>
+  <h2>Меню и разделы</h2>
+  <p class="lead">После входа слева видно меню. Нажмите на название — справа откроется список записей.</p>
+  <div class="body">
+    <div class="aside">
+      <ol class="steps">
+        <li><i>1</i><div><b>Запчасти</b> — разделы каталога, ходовые позиции, кузова.</div></li>
+        <li><i>2</i><div><b>Прайс ремонта</b> — работы Gal service и их цены по кузовам.</div></li>
+        <li><i>3</i><div><b>Service и Custom</b> — проекты Gal custom с фото «до/после».</div></li>
+        <li><i>4</i><div><b>Сайт</b> — вопросы, цифры и общие настройки: телефон, адреса, соцсети.</div></li>
+      </ol>
+      <div class="note">Папку можно свернуть и развернуть, нажав на её название.</div>
+    </div>
+    <figure class="shot"><img src="../screenshots/cms-guide/02-menu.jpg" alt=""></figure>
+  </div>
+</div>
+
+<!-- 4. Список -->
+<div class="slide">
+  <div class="top"><span><b>GAL</b> · админка</span><span>Шаг 3</span></div>
+  <h2>Список записей</h2>
+  <p class="lead">Каждая строка — одна запись на сайте. На примере ходовых позиций.</p>
+  <div class="body">
+    <div class="aside">
+      <ol class="steps">
+        <li><i>1</i><div><b>Ходовые позиции</b> — все детали сразу.</div></li>
+        <li><i>2</i><div><b>Закладки</b> под ним: «Оптика», «Кузов» и другие — только детали этого раздела.</div></li>
+        <li><i>3</i><div><b>Поиск</b> — начните вводить название.</div></li>
+        <li><i>4</i><div>Оранжевый <kbd>+</kbd> — добавить новую запись.</div></li>
+        <li><i>5</i><div>Значок <b>≡</b> слева от строки — потяните вверх или вниз, чтобы поменять порядок на сайте.</div></li>
+      </ol>
+      <div class="note">Чтобы открыть запись, нажмите на строку.</div>
+    </div>
+    <figure class="shot"><img src="../screenshots/cms-guide/03-list.jpg" alt=""></figure>
+  </div>
+</div>
+
+<!-- 5. Правка -->
+<div class="slide">
+  <div class="top"><span><b>GAL</b> · админка</span><span>Шаг 4</span></div>
+  <h2>Поменять текст или цену</h2>
+  <p class="lead">Откройте запись — это её карточка. Все поля можно править прямо здесь.</p>
+  <div class="body">
+    <div class="aside">
+      <ol class="steps">
+        <li><i>1</i><div>Нажмите в поле и исправьте текст. Под каждым полем серым — подсказка с примером и лимитом букв.</div></li>
+        <li><i>2</i><div>Сохраните — галочка <kbd>✓</kbd> справа вверху. Пока ничего не поменяли, она серая; после правки станет оранжевой.</div></li>
+        <li><i>3</i><div>Стрелка слева вверху — назад к списку.</div></li>
+      </ol>
+      <div class="note"><b>Через пару секунд</b> правка появится на сайте — обновите страницу galparts.ru. Публиковать отдельно ничего не нужно.</div>
+    </div>
+    <figure class="shot"><img src="../screenshots/cms-guide/04-edit.jpg" alt=""></figure>
+  </div>
+</div>
+
+<!-- 6. Фото -->
+<div class="slide">
+  <div class="top"><span><b>GAL</b> · админка</span><span>Шаг 5</span></div>
+  <h2>Фото</h2>
+  <p class="lead">Фото загружаются в поле карточки. Какой кадр нужен — написано в подсказке под полем.</p>
+  <div class="body">
+    <div class="aside">
+      <ol class="steps">
+        <li><i>1</i><div><b>Добавить:</b> перетащите файл в поле или нажмите на стрелку загрузки и выберите фото на компьютере или телефоне.</div></li>
+        <li><i>2</i><div><b>Заменить:</b> наведите на фото, уберите его крестиком и загрузите новое.</div></li>
+        <li><i>3</i><div>Сохраните галочкой <kbd>✓</kbd>.</div></li>
+      </ol>
+      <div class="note">JPG, PNG или WebP до 20 МБ. Фото с iPhone загружаются как обычно. Слишком большие фото сайт уменьшит сам.</div>
+    </div>
+    <figure class="shot"><img src="../screenshots/cms-guide/05-photo.jpg" alt=""></figure>
+  </div>
+</div>
+
+<!-- 7. Статус -->
+<div class="slide">
+  <div class="top"><span><b>GAL</b> · админка</span><span>Шаг 6</span></div>
+  <h2>Скрыть запись с сайта</h2>
+  <p class="lead">Деталь кончилась, услугу временно не делаете — не удаляйте, а спрячьте. Потом вернёте одним щелчком.</p>
+  <div class="body">
+    <div class="aside">
+      <ol class="steps">
+        <li><i>1</i><div>В карточке найдите поле <b>«Статус»</b>.</div></li>
+        <li><i>2</i><div>Выберите <b>«Черновик»</b> — запись пропадёт с сайта, но останется в админке. Вернуть — <b>«Опубликовано»</b>. Сохраните галочкой <kbd>✓</kbd>.</div></li>
+      </ol>
+      <div class="note warn"><b>Не удаляйте разделы запчастей.</b> Вместе с разделом удалятся все его позиции. Ненужный раздел — тоже в «Черновик».</div>
+    </div>
+    <figure class="shot"><img src="../screenshots/cms-guide/06-status.jpg" alt=""></figure>
+  </div>
+</div>
+
+<!-- 8. Новая запись -->
+<div class="slide">
+  <div class="top"><span><b>GAL</b> · админка</span><span>Шаг 7</span></div>
+  <h2>Добавить новую запись</h2>
+  <p class="lead">В нужном списке нажмите оранжевый <kbd>+</kbd> справа вверху. Откроется пустая карточка.</p>
+  <div class="body">
+    <div class="aside">
+      <ol class="steps">
+        <li><i>1</i><div>Выберите, к чему относится запись, — например, <b>раздел</b> для детали: нажмите на поле и выберите из списка.</div></li>
+        <li><i>2</i><div>Заполните поля. Звёздочка * — поле обязательное, без него запись не сохранится.</div></li>
+        <li><i>3</i><div>Заполните остальное и сохраните галочкой <kbd>✓</kbd>.</div></li>
+      </ol>
+      <div class="note">Новая запись сразу появляется на сайте и встаёт <b>первой</b> в списке. Передвинуть — значком ≡ в списке (шаг 3).</div>
+    </div>
+    <figure class="shot"><img src="../screenshots/cms-guide/07-new.jpg" alt=""></figure>
+  </div>
+</div>
+
+<!-- 9. Окно выбора -->
+<div class="slide">
+  <div class="top"><span><b>GAL</b> · админка</span><span>Шаг 8</span></div>
+  <h2>Окно выбора</h2>
+  <p class="lead">Раздел детали, кузова BMW, работу в прайсе не пишут руками, а выбирают из списка. Например, кузова: нажмите <b>«Добавить существующий»</b> — справа выедет окно.</p>
+  <div class="body">
+    <div class="aside">
+      <ol class="steps">
+        <li><i>1</i><div>Отметьте галочкой нужную строку. Кузовов можно отметить несколько.</div></li>
+        <li><i>2</i><div>Нажмите оранжевую галочку <kbd>✓</kbd> вверху окна — выбор встанет в поле.</div></li>
+      </ol>
+      <div class="note">Окно — это ещё не сохранение. После выбора сохраните саму карточку галочкой справа вверху.</div>
+    </div>
+    <figure class="shot"><img src="../screenshots/cms-guide/08-picker.jpg" alt=""></figure>
+  </div>
+</div>
+
+<!-- 10. Прайс -->
+<div class="slide">
+  <div class="top"><span><b>GAL</b> · админка</span><span>Шаг 9</span></div>
+  <h2>Прайс ремонта</h2>
+  <p class="lead">Цена работы зависит от кузова и мотора, поэтому у каждой работы много строк цен. Чтобы не листать тысячи строк — закладки.</p>
+  <div class="body">
+    <div class="aside">
+      <ol class="steps">
+        <li><i>1</i><div><b>Цены ремонта</b> — все цены: работа · кузов · мотор · цена.</div></li>
+        <li><i>2</i><div><b>Проверить оценки</b> — цены, взятые у соседней модели. Проверьте, поправьте цену и снимите флажок «Оценка».</div></li>
+        <li><i>3</i><div><b>Цены E39, Цены E60…</b> — только один кузов.</div></li>
+      </ol>
+      <div class="note">Цену «от» на плитке работы правят в <b>«Работы»</b>. Пустая цена — на сайте «по запросу».</div>
+    </div>
+    <figure class="shot"><img src="../screenshots/cms-guide/09-prices.jpg" alt=""></figure>
+  </div>
+</div>
+
+<!-- 11. Вопросы и настройки -->
+<div class="slide">
+  <div class="top"><span><b>GAL</b> · админка</span><span>Шаг 10</span></div>
+  <h2>Вопросы и настройки сайта</h2>
+  <p class="lead">Папка «Сайт» — то, что видно на всей странице сразу.</p>
+  <div class="body" style="grid-template-columns:1fr 1fr">
+    <div class="aside">
+      <figure class="shot"><img src="../screenshots/cms-guide/10-faq.jpg" alt=""></figure>
+      <ol class="steps">
+        <li><i>1</i><div><b>Вопросы</b> — блок внизу страницы. Вопрос должен заканчиваться на «?», иначе не сохранится.</div></li>
+        <li><i>2</i><div>Новый вопрос — <kbd>+</kbd>.</div></li>
+      </ol>
+    </div>
+    <div class="aside">
+      <figure class="shot"><img src="../screenshots/cms-guide/11-settings.jpg" alt=""></figure>
+      <ol class="steps">
+        <li><i>1</i><div><b>Настройки сайта</b> — одна карточка, разбитая на группы: контакт, соцсети, адреса и часы, реквизиты, фото блоков. Группа раскрывается щелчком по заголовку.</div></li>
+        <li><i>2</i><div>Сохранить — <kbd>✓</kbd>.</div></li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- 12. Пароль -->
+<div class="slide">
+  <div class="top"><span><b>GAL</b> · админка</span><span>Шаг 11</span></div>
+  <h2>Сменить свой пароль</h2>
+  <p class="lead">Сделайте это после первого входа, чтобы пароль знали только вы.</p>
+  <div class="body">
+    <div class="aside">
+      <ol class="steps">
+        <li><i>1</i><div>Нажмите на свой значок внизу левой тёмной полосы.</div></li>
+        <li><i>2</i><div>Впишите новый пароль в поле <b>«Пароль»</b>.</div></li>
+        <li><i>3</i><div>Сохраните галочкой <kbd>✓</kbd>.</div></li>
+      </ol>
+      <div class="note">Новый пароль запишите в «Шпаргалку по сайту». Забыли — войдите под запасным логином из шпаргалки, откройте «Пользователи» и задайте себе новый.</div>
+    </div>
+    <figure class="shot"><img src="../screenshots/cms-guide/12-profile.jpg" alt=""></figure>
+  </div>
+</div>
+
+<!-- 13. Правила -->
+<div class="slide">
+  <div class="top"><span><b>GAL</b> · админка</span><span>Шаг 12</span></div>
+  <h2>Правила и если что-то не так</h2>
+  <p class="lead" style="margin-bottom:7mm">Сломать сайт из админки почти невозможно: лишнее она просто не сохранит и объяснит почему.</p>
+  <div class="rules">
+    <section><h3>Не сохраняется?</h3><p>Админка покажет причину красным: длинный текст, маленькое фото, пустое обязательное поле, нет «?» в вопросе. Исправьте и нажмите <kbd>✓</kbd> ещё раз.</p></section>
+    <section><h3>Ушли, не сохранив</h3><p>Админка спросит, сохранить ли изменения. Если закрыли вкладку — правка не применилась, сделайте её заново.</p></section>
+    <section><h3>Не видно на сайте</h3><p>Обновите страницу galparts.ru. Проверьте, что у записи статус «Опубликовано», а не «Черновик».</p></section>
+    <section><h3>Серые поля не меняются</h3><p>Ник Telegram для заявок и адреса разделов закрыты нарочно: опечатка в нике отключит все заявки.</p></section>
+    <section class="no"><h3>Не удаляйте разделы</h3><p>Вместе с разделом удалятся все его позиции. Вместо удаления — «Черновик».</p></section>
+    <section class="no"><h3>Чего в админке нет</h3><p>Заголовки блоков, шаги «Как заказать» и тексты «Почему GAL» меняются в коде — напишите Никите.</p></section>
+  </div>
+  <div class="contact"><span>Что-то не получается или нужно поменять то, чего нет в админке</span><b>Напишите Никите</b></div>
+</div>
+
+<script>
+  // Нет кадра — рамка-заглушка, чтобы черновик PDF собирался и без съёмки
+  const missing = (img) => {
+    const f = img.parentElement
+    f.classList.add('missing')
+    f.textContent = 'Кадр ' + img.getAttribute('src').split('/').pop() + ' ещё не снят'
+  }
+  for (const img of document.querySelectorAll('.shot img')) {
+    if (img.complete && !img.naturalWidth) missing(img)
+    else img.addEventListener('error', () => missing(img))
+  }
+  document.querySelectorAll('.slide:not(.cover)').forEach((s, i) => {
+    const n = document.createElement('div'); n.className = 'pageno'; n.textContent = i + 2; s.append(n)
+  })
+</script>
+</body>
+</html>

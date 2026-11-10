@@ -102,6 +102,10 @@
   border-bottom: 1px solid var(--line);
 }
 
+.menuLink[aria-current] {
+  color: var(--accent);
+}
+
 .menuFooter {
   display: grid;
   gap: var(--space-3);
@@ -168,6 +172,32 @@
 
   .navLink:hover {
     color: var(--accent);
+  }
+
+  /* активный пункт: белый текст и оранжевая черта под ним */
+  .navLink {
+    position: relative;
+  }
+
+  .navLink::after {
+    content: '';
+    position: absolute;
+    left: var(--space-3);
+    right: var(--space-3);
+    bottom: calc(var(--space-2) - 2px);
+    height: 2px;
+    border-radius: 1px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform var(--dur-state) ease;
+  }
+
+  .navLink[aria-current] {
+    color: var(--text);
+  }
+
+  .navLink[aria-current]::after {
+    transform: scaleX(1);
   }
 
   .actions {

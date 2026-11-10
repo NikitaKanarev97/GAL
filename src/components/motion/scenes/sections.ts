@@ -225,7 +225,31 @@ export const why: Scene = (root, isDesktop) => {
   }
 }
 
-/* 7. Gal service: фото мастерской открывается справа и дышит параллаксом, услуги строками, проекты подъёмом */
+/* 7a. Поиск по прайсу внутри Gal service: блок по левому краю — шторка поля уходит вправо */
+function priceSearch(block: HTMLElement) {
+  const field = $(block, '[data-anim="field"]')
+  const icon = $(block, '[data-anim="field-icon"]')
+  const chips = $$(block, '[data-anim="chips"] > li')
+
+  const tl = gsap.timeline({ scrollTrigger: { trigger: field ?? block, start: START, toggleActions: 'play none none none' } })
+  if (field) {
+    // шторка снимается в конце: clip-path обрезал бы оранжевое свечение поля в фокусе
+    tl.fromTo(
+      field,
+      { clipPath: 'inset(0% 76% 0% 0% round 12px)', autoAlpha: 0 },
+      { clipPath: 'inset(0% 0% 0% 0% round 12px)', autoAlpha: 1, duration: DUR.long, ease: EASE.reveal, clearProps: 'clipPath' },
+      0.15,
+    )
+  }
+  if (icon) tl.from(icon, { scale: 0.3, rotate: -90, autoAlpha: 0, duration: DUR.base, ease: 'back.out(2)' }, 0.45)
+  if (chips.length) tl.from(chips, { y: 18, autoAlpha: 0, duration: DUR.base, ease: EASE.out, stagger: 0.05 }, 0.6)
+}
+
+/*
+ * 7. Gal service: фото мастерской открывается справа и дышит параллаксом, проекты подъёмом.
+ * Поиск по прайсу (blocks/PriceSearch): поле раскрывается шторкой, лупа «вкручивается», частые запросы поднимаются лесенкой.
+ * Пример в подсказке печатается в самом компоненте — анимация показывает, что сюда пишут.
+ */
 export const service: Scene = (root) => {
   const section = $(root, '#service')
   if (!section) return
@@ -235,8 +259,8 @@ export const service: Scene = (root) => {
   }
   const intro = $$(section, '[data-anim="intro"] > :not([data-anim="title"])')
   if (intro.length) rise(intro, intro[0], { delay: 0.2 })
-  const rows = $$(section, '[data-anim="stagger"] > li')
-  if (rows.length) rise(rows, rows[0], { y: 24, stagger: 0.06, x: -12 })
+  const price = $(section, '[data-anim="price"]')
+  if (price) priceSearch(price)
   const works = $$(section, '[data-anim="works"] > li')
   if (works.length) rise(works, works[0], { y: 80, stagger: 0.12 })
 }
@@ -392,3 +416,4 @@ export const marquee: Scene = (root) => {
     },
   })
 }
+

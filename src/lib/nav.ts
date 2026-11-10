@@ -3,6 +3,7 @@ export const NAV = [
   { href: '/#parts', label: 'Запчасти' },
   { href: '/#how', label: 'Как заказать' },
   { href: '/#service', label: 'Service' },
+  { href: '/service', label: 'Прайс' },
   { href: '/#custom', label: 'Custom' },
   { href: '/#contacts', label: 'Контакты' },
 ]

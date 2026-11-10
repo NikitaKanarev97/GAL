@@ -8,7 +8,7 @@
 import { useId, useState, useSyncExternalStore } from 'react'
 import { Icon } from '../icons/Icon'
 import { formatPhone } from '@/lib/format'
-import { isInAppBrowser, telegramWebUrl } from '@/lib/message'
+import { isInAppBrowser, prefillSupported, telegramWebUrl } from '@/lib/message'
 import { useContact } from './ContactProvider'
 import { CopyButton } from './CopyButton'
 import styles from './TelegramFallback.module.css'
@@ -16,14 +16,25 @@ import styles from './TelegramFallback.module.css'
 const noop = () => () => {}
 
 export function TelegramFallback({ message }: { message: string }) {
-  const { settings } = useContact()
+  const { settings, copied, recipient } = useContact()
   const inApp = useSyncExternalStore(noop, isInAppBrowser, () => false)
-  const nick = `@${settings.telegram_username}`
+  const prefill = useSyncExternalStore(noop, prefillSupported, () => false)
+  const nick = `@${recipient}`
   const [open, setOpen] = useState(false)
   const uid = useId()
 
   return (
     <div className={styles.root}>
+      {copied === message ? (
+        <p className={styles.copied} role="status">
+          <Icon name="check" className={styles.copiedIcon} />
+          <span>
+            {prefill
+              ? 'Сообщение скопировано. Если чат открылся пустым, удержите поле ввода → «Вставить»'
+              : 'Сообщение скопировано — вставьте его в чат: Ctrl+V (на Mac — ⌘V)'}
+          </span>
+        </p>
+      ) : null}
       <button
         type="button"
         className={styles.toggle}
@@ -49,7 +60,7 @@ export function TelegramFallback({ message }: { message: string }) {
           <CopyButton value={nick} label="Скопировать ник" labelShort="Ник" />
           <a
             className={styles.link}
-            href={telegramWebUrl(settings.telegram_username)}
+            href={telegramWebUrl(recipient)}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Открыть Telegram в браузере — откроется в новой вкладке"

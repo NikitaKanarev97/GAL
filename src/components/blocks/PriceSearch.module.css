@@ -1,0 +1,143 @@
+/* Вход в прайс внутри Gal service: подпись, поле, частые запросы — по левому краю, как остальной блок */
+.root {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-4);
+}
+
+.lead {
+  color: var(--text-soft);
+}
+
+.field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 720px;
+}
+
+.icon {
+  position: absolute;
+  left: var(--space-5);
+  width: var(--icon-md);
+  height: var(--icon-md);
+  color: var(--accent);
+  pointer-events: none;
+}
+
+.field input {
+  width: 100%;
+  min-height: calc(var(--tap) * 1.4);
+  padding: 0 calc(var(--space-5) + 7em) 0 calc(var(--space-5) + var(--icon-md) + var(--space-3));
+  background: var(--bg-elevated);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-tile);
+  color: var(--text);
+  font: inherit;
+  font-size: max(16px, var(--fs-body));
+  font-weight: var(--weight-600);
+  transition:
+    border-color var(--dur-state) ease,
+    box-shadow var(--dur-state) ease;
+}
+
+.field input::placeholder {
+  color: var(--text-muted);
+  font-weight: var(--weight-400);
+}
+
+.field input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.field input:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: var(--glow-accent);
+}
+
+/* чей прайс откроется: выбранный кузов или все */
+.hint {
+  position: absolute;
+  right: var(--space-5);
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-600);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip,
+.all {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: calc(var(--tap) - var(--space-2));
+  padding: 0 var(--space-3);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-pill);
+  color: var(--text-soft);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-600);
+  transition:
+    border-color var(--dur-state) ease,
+    color var(--dur-state) ease;
+}
+
+.all {
+  border-style: solid;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.all svg {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+  transition: transform var(--dur-state) var(--ease-out);
+}
+
+@media (max-width: 767.98px) {
+  .field input {
+    padding-right: var(--space-4);
+  }
+
+  .hint {
+    display: none;
+  }
+
+  /* частые запросы — лента со свайпом, а не три ряда */
+  .quick {
+    flex-wrap: nowrap;
+    width: calc(100% + 2 * var(--gutter));
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .quick::-webkit-scrollbar {
+    display: none;
+  }
+
+  .quick > li {
+    flex: none;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .chip:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  .all:hover svg {
+    transform: translateX(var(--space-1));
+  }
+}

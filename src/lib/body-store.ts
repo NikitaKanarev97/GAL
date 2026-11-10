@@ -60,3 +60,50 @@ export function useBodyChoice(validCodes: string[]): [BodyChoice, (choice: BodyC
 
   return [choice, set]
 }
+
+/*
+ * Мотор выбранного кузова — второй шаг прайса /service: точная цена работы (Service.prices с motor).
+ * Хранится вместе с кузовом («E36:2.5i»): сменили кузов — мотор сброшен.
+ */
+const MOTOR_KEY = 'gal:motor'
+const motorListeners = new Set<() => void>()
+let motorMemory: string | null = null
+
+function readMotor(): string | null {
+  try {
+    return window.localStorage.getItem(MOTOR_KEY)
+  } catch {
+    return motorMemory
+  }
+}
+
+function subscribeMotor(listener: () => void) {
+  motorListeners.add(listener)
+  const onStorage = (e: StorageEvent) => e.key === MOTOR_KEY && listener()
+  window.addEventListener('storage', onStorage)
+  return () => {
+    motorListeners.delete(listener)
+    window.removeEventListener('storage', onStorage)
+  }
+}
+
+/** Записать мотор кузова вне хука — заход по ссылке /service?body=E36&motor=2.5i */
+export function saveMotor(body: string, motor: string | null) {
+  const stored = motor ? `${body}:${motor}` : null
+  try {
+    if (stored) window.localStorage.setItem(MOTOR_KEY, stored)
+    else window.localStorage.removeItem(MOTOR_KEY)
+  } catch {}
+  motorMemory = stored
+  motorListeners.forEach((l) => l())
+}
+
+export function useMotorChoice(body: string | null, validMotors: string[]): [string | null, (motor: string | null) => void] {
+  const raw = useSyncExternalStore(subscribeMotor, readMotor, () => null)
+  const [savedBody, motor] = raw?.split(':') ?? []
+  const value = body && savedBody === body && motor && validMotors.includes(motor) ? motor : null
+
+  const set = useCallback((next: string | null) => (body ? saveMotor(body, next) : undefined), [body])
+
+  return [value, set]
+}

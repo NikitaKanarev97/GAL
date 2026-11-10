@@ -5,6 +5,8 @@
  * 1. Чистка текста: обрезка пробелов, схлопывание двойных, пустая строка → null.
  * 2. Проверки, которых нет в валидации полей: минимум фото по месту, работа без фото,
  *    годы кузова, телефон/WhatsApp и списки соцсетей и мест в настройках.
+ * 2a. Цены ремонта (service_prices): мотор — из моторов кузова, без дублей «работа + кузов + мотор»,
+ *     у кузова либо одна цена на всё, либо по моторам; подпись «работа · кузов · мотор» для поиска собирается сама.
  * 3. Фото больше 3200 px по длинной стороне уменьшаются сразу после загрузки —
  *    на сервере 1 ГБ памяти и 10 ГБ диска, а сайт всё равно не показывает больше.
  */
@@ -17,6 +19,7 @@ const COLLECTIONS = [
   'part_positions',
   'bmw_bodies',
   'services',
+  'service_prices',
   'works',
   'work_pairs',
   'faq',
@@ -113,6 +116,42 @@ export default ({ filter, action }, { env, logger }) => {
     return (await database(collection).where({ id: key }).first()) ?? null
   }
 
+  const asList = (v) => (Array.isArray(v) ? v : typeof v === 'string' ? JSON.parse(v || '[]') : [])
+
+  async function checkPrice(payload, merged, key, database) {
+    const serviceId = fileId(merged.service)
+    const bodyId = fileId(merged.body)
+    if (!serviceId || !bodyId) return
+    const [service, body] = await Promise.all([
+      database('services').select('name').where({ id: serviceId }).first(),
+      database('bmw_bodies').select('code', 'engines').where({ id: bodyId }).first(),
+    ])
+    if (!service || !body) return
+    const motor = merged.motor || null
+    const engines = asList(body.engines)
+    if (motor && !engines.includes(motor)) {
+      fail(engines.length ? `У ${body.code} нет мотора ${motor}. Моторы кузова: ${engines.join(', ')} — или оставьте мотор пустым` : `У ${body.code} не заданы моторы — оставьте мотор пустым или добавьте мотор в «Кузова BMW»`)
+    }
+    const siblings = await database('service_prices').select('id', 'motor').where({ service: serviceId, body: bodyId }).whereNot('id', key ?? -1)
+    if (siblings.some((r) => (r.motor || null) === motor)) fail(`Цена «${service.name} · ${body.code}${motor ? ` ${motor}` : ''}» уже есть — поправьте её, а не заводите вторую`)
+    if (motor && siblings.some((r) => !r.motor)) fail(`У работы «${service.name}» для ${body.code} уже есть одна цена на все моторы. Удалите её или поставьте мотор и ей`)
+    if (!motor && siblings.length) fail(`У работы «${service.name}» для ${body.code} цены заданы по моторам — укажите мотор`)
+  }
+
+  /* Подпись цены — после сохранения и по каждой строке: при правке многих строк разом payload один на всех */
+  async function refreshLabels(database, where) {
+    const rows = await database('service_prices as p')
+      .join('services as s', 's.id', 'p.service')
+      .join('bmw_bodies as b', 'b.id', 'p.body')
+      .select('p.id', 'p.motor', 'p.label', 's.name', 'b.code')
+      .where(where)
+    for (const r of rows) {
+      // кузов и мотор через пробел: поиск админки ищет фразу целиком — «E39 M5» находит «Замена помпы · E39 M5»
+      const label = `${r.name} · ${[r.code, r.motor].filter(Boolean).join(' ')}`
+      if (label !== r.label) await database('service_prices').update({ label }).where({ id: r.id })
+    }
+  }
+
   async function checkItem(collection, payload, key, database) {
     await checkPhotos(collection, payload, database)
     const before = await current(collection, key, database)
@@ -129,6 +168,8 @@ export default ({ filter, action }, { env, logger }) => {
         if (!hasCover && pairs <= 0 && photos <= 0) fail('Добавьте хотя бы одно фото — обложку, пару «до/после» или фото в галерею. Без фото работу не показать')
       }
     }
+
+    if (collection === 'service_prices') await checkPrice(payload, merged, key, database)
 
     if (collection === 'bmw_bodies') {
       const { years_from: from, years_to: to } = merged
@@ -206,6 +247,16 @@ export default ({ filter, action }, { env, logger }) => {
     })
   }
   for (const event of ['files.update', 'files.delete']) action(event, () => revalidate('directus_files'))
+
+  action('items.create', async ({ collection, key }, { database }) => {
+    if (collection === 'service_prices') await refreshLabels(database, (q) => q.where('p.id', key))
+  })
+  action('items.update', async ({ collection, keys }, { database }) => {
+    if (collection === 'service_prices') await refreshLabels(database, (q) => q.whereIn('p.id', keys))
+    // переименовали работу или кузов — подписи их цен устарели
+    if (collection === 'services') await refreshLabels(database, (q) => q.whereIn('p.service', keys))
+    if (collection === 'bmw_bodies') await refreshLabels(database, (q) => q.whereIn('p.body', keys))
+  })
 
   action('files.upload', async ({ key }, { database }) => {
     try {

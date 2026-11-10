@@ -6,7 +6,9 @@
  * «Перешив салона» — Что хотите изменить:; «Вопрос» — Вопрос:
  */
 
-export type Topic = 'parts' | 'repair' | 'custom' | 'other'
+import type { SiteSettings } from '@/data/types'
+
+export type Topic ='parts' | 'repair' | 'custom' | 'other'
 
 export const TOPIC_IN_MESSAGE: Record<Topic, string> = {
   parts: 'Запчасти',
@@ -27,6 +29,7 @@ export type LeadSource =
   | 'Как заказать'
   | 'Gal service'
   | 'услуга Gal service'
+  | 'прайс Gal service'
   | 'Gal custom'
   | 'вопросы'
   | 'финальный блок'
@@ -76,9 +79,27 @@ export const MESSAGE_HINT: Record<Topic, { full: string; short: string }> = {
   other: { full: 'Напишите вопрос — ответим в Telegram', short: 'Напишите вопрос' },
 }
 
+/** Перешив салона ведёт Диана — заявки по нему идут ей, остальное Ивану */
+const CUSTOM_TELEGRAM_FALLBACK = 'Di_S69'
+
+export function recipientFor(settings: Pick<SiteSettings, 'telegram_username' | 'telegram_username_custom'>, topic?: Topic) {
+  if (topic === 'custom') return settings.telegram_username_custom || CUSTOM_TELEGRAM_FALLBACK
+  return settings.telegram_username
+}
+
 export function telegramUrl(username: string, text?: string) {
   const base = `https://t.me/${username}`
   return text ? `${base}?text=${encodeURIComponent(text)}` : base
+}
+
+/**
+ * Телефон — текст уходит в ?text= и сам встаёт в поле ввода. Компьютер — только буфер:
+ * Telegram Desktop под Windows вставляет кириллицу из ?text= как %D0%97…
+ * Телефон определяем по сенсорному экрану, поэтому мобильный режим DevTools на компьютере
+ * сайт считает телефоном и абракадабра там возвращается — у настоящих посетителей её нет.
+ */
+export function prefillSupported() {
+  return typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches
 }
 
 export function telegramWebUrl(username: string) {

@@ -70,8 +70,8 @@ export async function getSettings(): Promise<SiteSettings> {
 
 /** Порядок серий и кузовов — как у моков: серия по SERIES_ORDER, внутри — sort */
 export async function getBodiesRaw(): Promise<BmwBody[]> {
-  const rows = await get(`/items/bmw_bodies?fields=code,series,years_from,years_to,status,sort&${published}&sort=sort,id&limit=-1`)
-  return rows.map((b) => ({ id: b.code, code: b.code, series: b.series, years_from: b.years_from, years_to: b.years_to, status: b.status, sort: b.sort ?? 0 }))
+  const rows = await get(`/items/bmw_bodies?fields=code,series,years_from,years_to,engines,status,sort&${published}&sort=sort,id&limit=-1`)
+  return rows.map((b) => ({ id: b.code, code: b.code, series: b.series, years_from: b.years_from, years_to: b.years_to, status: b.status, sort: b.sort ?? 0, engines: Array.isArray(b.engines) ? b.engines : [] }))
 }
 
 const toSection = (s: Raw): PartSection => ({
@@ -134,8 +134,11 @@ export async function getPositions(sectionSlug: string, bodyOrder: string[]): Pr
 }
 
 export async function getServices(): Promise<Service[]> {
-  const rows = await get(`/items/services?fields=id,name,description,price_from,duration,status,sort,is_demo&${published}&sort=sort,id&limit=-1`)
-  return rows.map((s) => ({ ...s, id: String(s.id), sort: s.sort ?? 0, is_demo: Boolean(s.is_demo) }) as Service)
+  // цены — таблица service_prices (O2M prices); у связи свой лимит строк — снимаем, у работы их до сотни
+  const rows = await get(
+    `/items/services?fields=id,category,name,description,price_from,duration,status,sort,is_demo,prices.motor,prices.price,prices.body.code&${published}&sort=sort,id&limit=-1&deep[prices][_limit]=-1`,
+  )
+  return rows.map((s) => ({ ...s, id: String(s.id), sort: s.sort ?? 0, is_demo: Boolean(s.is_demo), prices: Array.isArray(s.prices) ? s.prices.filter((p: Raw) => p.body?.code && p.price).map((p: Raw) => ({ body: p.body.code, motor: p.motor || null, price: p.price })) : [] }) as Service)
 }
 
 export async function getWorksRaw(direction: Work['direction'], limit: number): Promise<Work[]> {

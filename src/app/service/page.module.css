@@ -1,0 +1,77 @@
+.page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-7);
+  padding-block: var(--space-6) var(--section-y);
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  justify-self: start;
+  min-height: var(--tap);
+  font-weight: var(--weight-600);
+  color: var(--text-soft);
+  transition: color var(--dur-state) ease;
+}
+
+.backIcon {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+  color: var(--accent);
+}
+
+.head {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.lead {
+  max-width: var(--text-max);
+  color: var(--text-soft);
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-soft);
+}
+
+.cta {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background: var(--bg-elevated);
+  border: 1px solid var(--line-warm);
+  border-radius: var(--radius-card);
+}
+
+.ctaTitle {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: var(--weight-800);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-display);
+}
+
+.ctaText {
+  max-width: var(--text-max);
+  margin-top: var(--space-2);
+  color: var(--text-soft);
+}
+
+@media (min-width: 768px) {
+  .cta {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    padding: var(--space-7);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .back:hover {
+    color: var(--accent);
+  }
+}

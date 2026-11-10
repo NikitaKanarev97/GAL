@@ -40,7 +40,24 @@ export function MotionProvider() {
     const observer = new MutationObserver(sync)
     observer.observe(html, { attributes: true, attributeFilter: ['class', 'data-scroll-locked'] })
 
+    // Переход на другую страницу посреди плавной прокрутки: Lenis догонял старую цель и перебивал
+    // прокрутку наверх от Next — /service открывался с середины. stop() сбрасывает цель на текущую позицию.
+    const halt = () => {
+      if (!lenis.isScrolling) return
+      lenis.stop()
+      sync()
+    }
+    const onClick = (e: MouseEvent) => {
+      const a = (e.target as Element | null)?.closest?.('a[href]') as HTMLAnchorElement | null
+      if (!a || a.target === '_blank' || a.origin !== location.origin || a.pathname === location.pathname) return
+      halt()
+    }
+    document.addEventListener('click', onClick, true)
+    window.addEventListener('popstate', halt)
+
     return () => {
+      document.removeEventListener('click', onClick, true)
+      window.removeEventListener('popstate', halt)
       observer.disconnect()
       gsap.ticker.remove(raf)
       lenis.destroy()

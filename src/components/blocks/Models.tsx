@@ -16,7 +16,7 @@ export function Models() {
           id="models-title"
           title="Какая у вас BMW?"
           titleShort="Ваша BMW"
-          subtitle="Выберите кузов — в разделах первыми встанут детали для него, а мы сразу поймём, о какой машине речь."
+          subtitle="Выберите кузов — в разделах первыми встанут детали для него, в прайсе ремонта появятся цены под него, а мы сразу поймём, о какой машине речь."
           subtitleShort="Детали под ваш кузов — первыми"
         />
         <BodyPicker bodies={bodies} value={body} onChange={setBody} />

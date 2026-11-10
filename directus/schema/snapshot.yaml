@@ -84,6 +84,32 @@ collections:
           translation: Запчасти
       unarchive_value: null
       versioning: false
+  - collection: folder_price
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: folder_price
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: request_quote
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: 2
+      sort_field: null
+      translations:
+        - language: ru-RU
+          plural: Прайс ремонта
+          singular: Прайс ремонта
+          translation: Прайс ремонта
+      unarchive_value: null
+      versioning: false
   - collection: folder_site
     meta:
       accountability: all
@@ -101,7 +127,7 @@ collections:
       note: null
       preview_url: null
       singleton: false
-      sort: 3
+      sort: 4
       sort_field: null
       translations:
         - language: ru-RU
@@ -127,7 +153,7 @@ collections:
       note: null
       preview_url: null
       singleton: false
-      sort: 2
+      sort: 3
       sort_field: null
       translations:
         - language: ru-RU
@@ -216,6 +242,36 @@ collections:
       versioning: false
     schema:
       name: part_sections
+  - collection: service_prices
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: service_prices
+      color: null
+      display_template: '{{label}}'
+      group: folder_price
+      hidden: false
+      icon: price_change
+      item_duplication_fields: null
+      note: >-
+        Все цены работ по кузовам и моторам. Фильтр и поиск: «помпа», «E39 M5».
+        Закладки слева — по кузову и «Проверить оценки»
+      preview_url: null
+      singleton: false
+      sort: 1
+      sort_field: null
+      translations:
+        - language: ru-RU
+          plural: Цены ремонта
+          singular: Цена
+          translation: Цены ремонта
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: service_prices
   - collection: services
     meta:
       accountability: all
@@ -226,20 +282,22 @@ collections:
       collection: services
       color: null
       display_template: '{{name}}'
-      group: folder_work
+      group: folder_price
       hidden: false
       icon: handyman
       item_duplication_fields: null
-      note: Список услуг в блоке Gal service
+      note: >-
+        Работы прайса /service и первые 8 — в блоке Gal service на главной. Цены
+        по кузовам — внизу карточки
       preview_url: null
       singleton: false
-      sort: 1
+      sort: 2
       sort_field: sort
       translations:
         - language: ru-RU
-          plural: Услуги Gal service
-          singular: Услуга
-          translation: Услуги Gal service
+          plural: Работы
+          singular: Работа
+          translation: Работы
       unarchive_value: draft
       versioning: false
     schema:
@@ -345,13 +403,13 @@ collections:
       note: Проекты Service (первые 3) и лента Gal custom (первые 12)
       preview_url: null
       singleton: false
-      sort: 2
+      sort: 1
       sort_field: sort
       translations:
         - language: ru-RU
-          plural: Работы
-          singular: Работа
-          translation: Работы
+          plural: Проекты
+          singular: Проект
+          translation: Проекты
       unarchive_value: draft
       versioning: false
     schema:
@@ -665,6 +723,54 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: bmw_bodies
+    field: engines
+    type: json
+    meta:
+      collection: bmw_bodies
+      conditions: null
+      display: labels
+      display_options: null
+      field: engines
+      group: null
+      hidden: false
+      interface: tags
+      note: >-
+        Для прайса ремонта: 2.5i, 3.0d, M3 — как в «Ценах ремонта». Пусто — на
+        сайте цена без выбора мотора. Убрали мотор — сначала удалите его цены
+      options:
+        allowCustom: true
+        alphabetize: false
+        placeholder: 'Например: 2.5i — Enter'
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special:
+        - cast-json
+      translations:
+        - language: ru-RU
+          translation: Моторы
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: engines
+      table: bmw_bodies
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: bmw_bodies
     field: status
     type: string
     meta:
@@ -707,7 +813,7 @@ fields:
       readonly: false
       required: true
       searchable: true
-      sort: 5
+      sort: 6
       special: null
       translations:
         - language: ru-RU
@@ -749,7 +855,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 6
+      sort: 7
       special: null
       translations:
         - language: ru-RU
@@ -791,7 +897,7 @@ fields:
       readonly: true
       required: false
       searchable: true
-      sort: 7
+      sort: 8
       special:
         - date-created
       translations:
@@ -834,7 +940,7 @@ fields:
       readonly: true
       required: false
       searchable: true
-      sort: 8
+      sort: 9
       special:
         - date-updated
       translations:
@@ -2565,6 +2671,412 @@ fields:
       has_auto_increment: false
       foreign_key_table: null
       foreign_key_column: null
+  - collection: service_prices
+    field: id
+    type: integer
+    meta:
+      collection: service_prices
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: service_prices
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: service_prices
+    field: service
+    type: integer
+    meta:
+      collection: service_prices
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{name}}'
+      field: service
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: Работа из «Работ»
+      options:
+        enableCreate: false
+        template: '{{name}}'
+      readonly: false
+      required: true
+      searchable: true
+      sort: 1
+      special:
+        - m2o
+      translations:
+        - language: ru-RU
+          translation: Работа
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: service
+      table: service_prices
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: services
+      foreign_key_column: id
+  - collection: service_prices
+    field: body
+    type: integer
+    meta:
+      collection: service_prices
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{code}}'
+      field: body
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: Кузов из «Кузовов BMW»
+      options:
+        enableCreate: false
+        template: '{{code}}'
+      readonly: false
+      required: true
+      searchable: true
+      sort: 2
+      special:
+        - m2o
+      translations:
+        - language: ru-RU
+          translation: Кузов
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: body
+      table: service_prices
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: bmw_bodies
+      foreign_key_column: id
+  - collection: service_prices
+    field: motor
+    type: string
+    meta:
+      collection: service_prices
+      conditions: null
+      display: null
+      display_options: null
+      field: motor
+      group: null
+      hidden: false
+      interface: input
+      note: 'Как в «Моторах» кузова: 2.5i. Пусто — цена для всех моторов кузова'
+      options:
+        softLength: 8
+        trim: true
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Мотор
+      validation:
+        _or:
+          - motor:
+              _null: true
+          - motor:
+              _regex: ^[0-9A-Za-z.]{1,8}$
+      validation_message: 'Мотор — как в списке моторов кузова: 2.5i, 3.0d, M3'
+      width: half
+    schema:
+      name: motor
+      table: service_prices
+      data_type: varchar
+      default_value: null
+      max_length: 8
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: service_prices
+    field: price
+    type: integer
+    meta:
+      collection: service_prices
+      conditions: null
+      display: formatted-value
+      display_options:
+        format: true
+        suffix: ' ₽'
+      field: price
+      group: null
+      hidden: false
+      interface: input
+      note: 'За работу, в рублях: 15060. На сайте — «15 060 ₽»'
+      options:
+        max: 9999999
+        min: 1
+      readonly: false
+      required: true
+      searchable: true
+      sort: 4
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Цена, ₽
+      validation:
+        _and:
+          - price:
+              _gte: 1
+          - price:
+              _lte: 9999999
+      validation_message: Цена от 1 до 9 999 999 ₽
+      width: half
+    schema:
+      name: price
+      table: service_prices
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: service_prices
+    field: estimate
+    type: boolean
+    meta:
+      collection: service_prices
+      conditions: null
+      display: boolean
+      display_options: null
+      field: estimate
+      group: null
+      hidden: false
+      interface: boolean
+      note: >-
+        Цены не было в прайсе источника — взяли у соседнего кузова серии. На
+        сайте не видно
+      options:
+        label: Оценка — проверить цену и снять флажок
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special:
+        - cast-boolean
+      translations:
+        - language: ru-RU
+          translation: Оценка
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: estimate
+      table: service_prices
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: service_prices
+    field: label
+    type: string
+    meta:
+      collection: service_prices
+      conditions: null
+      display: null
+      display_options: null
+      field: label
+      group: null
+      hidden: false
+      interface: input
+      note: 'Заполняется сама: работа · кузов · мотор. По ней ищет поиск'
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 6
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Подпись
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: label
+      table: service_prices
+      data_type: varchar
+      default_value: null
+      max_length: 120
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: service_prices
+    field: date_created
+    type: dateTime
+    meta:
+      collection: service_prices
+      conditions: null
+      display: null
+      display_options: null
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 7
+      special:
+        - date-created
+      translations:
+        - language: ru-RU
+          translation: Создано
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: date_created
+      table: service_prices
+      data_type: datetime
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: service_prices
+    field: date_updated
+    type: dateTime
+    meta:
+      collection: service_prices
+      conditions: null
+      display: null
+      display_options: null
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 8
+      special:
+        - date-updated
+      translations:
+        - language: ru-RU
+          translation: Изменено
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: date_updated
+      table: service_prices
+      data_type: datetime
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
   - collection: services
     field: id
     type: integer
@@ -2653,6 +3165,100 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: services
+    field: category
+    type: string
+    meta:
+      collection: services
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: ТО и расходники
+            value: maintenance
+          - text: Двигатель
+            value: engine
+          - text: Охлаждение
+            value: cooling
+          - text: Зажигание и топливо
+            value: fuel
+          - text: Сцепление и КПП
+            value: transmission
+          - text: Подвеска
+            value: suspension
+          - text: Рулевое
+            value: steering
+          - text: Тормоза
+            value: brakes
+          - text: Электрика
+            value: electrics
+          - text: Печка и кондиционер
+            value: climate
+          - text: Выхлоп
+            value: exhaust
+          - text: Кузов и стёкла
+            value: body
+      field: category
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: >-
+        Плитка и фильтр в прайсе. Пусто — работа в группе «Другое» в конце
+        прайса
+      options:
+        choices:
+          - text: ТО и расходники
+            value: maintenance
+          - text: Двигатель
+            value: engine
+          - text: Охлаждение
+            value: cooling
+          - text: Зажигание и топливо
+            value: fuel
+          - text: Сцепление и КПП
+            value: transmission
+          - text: Подвеска
+            value: suspension
+          - text: Рулевое
+            value: steering
+          - text: Тормоза
+            value: brakes
+          - text: Электрика
+            value: electrics
+          - text: Печка и кондиционер
+            value: climate
+          - text: Выхлоп
+            value: exhaust
+          - text: Кузов и стёкла
+            value: body
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Группа
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: category
+      table: services
+      data_type: varchar
+      default_value: null
+      max_length: 32
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: services
     field: description
     type: string
     meta:
@@ -2671,7 +3277,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 2
+      sort: 3
       special: null
       translations:
         - language: ru-RU
@@ -2715,14 +3321,16 @@ fields:
       group: null
       hidden: false
       interface: input
-      note: 'В рублях: 50000. На сайте: «от 50 000 ₽». Можно оставить пустым'
+      note: >-
+        Общая цена: если кузов не выбран или для него нет строки ниже. В рублях:
+        50000. Можно оставить пустым
       options:
         max: 9999999
         min: 1
       readonly: false
       required: false
       searchable: true
-      sort: 3
+      sort: 4
       special: null
       translations:
         - language: ru-RU
@@ -2756,6 +3364,45 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: services
+    field: prices
+    type: alias
+    meta:
+      collection: services
+      conditions: null
+      display: null
+      display_options: null
+      field: prices
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: >-
+        Строка — кузов и мотор. Мотор пустой — одна цена на весь кузов. Удобнее
+        искать и править все цены — «Прайс ремонта → Цены ремонта»
+      options:
+        enableSearchFilter: true
+        enableSelect: false
+        fields:
+          - body.code
+          - motor
+          - price
+          - estimate
+        layout: table
+        limit: 100
+        tableSpacing: compact
+        template: '{{body.code}} {{motor}} — {{price}} ₽'
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special:
+        - o2m
+      translations:
+        - language: ru-RU
+          translation: Цены по кузовам
+      validation: null
+      validation_message: null
+      width: full
+  - collection: services
     field: duration
     type: string
     meta:
@@ -2774,7 +3421,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 4
+      sort: 6
       special: null
       translations:
         - language: ru-RU
@@ -2847,7 +3494,7 @@ fields:
       readonly: false
       required: true
       searchable: true
-      sort: 5
+      sort: 7
       special: null
       translations:
         - language: ru-RU
@@ -2889,7 +3536,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 6
+      sort: 8
       special: null
       translations:
         - language: ru-RU
@@ -2934,7 +3581,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 7
+      sort: 9
       special:
         - cast-boolean
       translations:
@@ -2977,7 +3624,7 @@ fields:
       readonly: true
       required: false
       searchable: true
-      sort: 8
+      sort: 10
       special:
         - date-created
       translations:
@@ -3020,7 +3667,7 @@ fields:
       readonly: true
       required: false
       searchable: true
-      sort: 9
+      sort: 11
       special:
         - date-updated
       translations:
@@ -3166,6 +3813,57 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: site_settings
+    field: telegram_username_custom
+    type: string
+    meta:
+      collection: site_settings
+      conditions: null
+      display: null
+      display_options: null
+      field: telegram_username_custom
+      group: group_contact
+      hidden: false
+      interface: input
+      note: >-
+        Без @: Di_S69. Сюда ведут заявки «Перешив салона». Пусто — Di_S69 из
+        кода
+      options:
+        softLength: 32
+        trim: true
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations:
+        - language: ru-RU
+          translation: Telegram для перешива
+      validation:
+        _or:
+          - telegram_username_custom:
+              _null: true
+          - telegram_username_custom:
+              _regex: ^[A-Za-z][A-Za-z0-9_]{4,31}$
+      validation_message: 'Ник Telegram без @: латиница, цифры и _, от 5 символов'
+      width: half
+    schema:
+      name: telegram_username_custom
+      table: site_settings
+      data_type: varchar
+      default_value: null
+      max_length: 32
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: site_settings
     field: contact_name
     type: string
     meta:
@@ -3184,7 +3882,7 @@ fields:
       readonly: false
       required: true
       searchable: true
-      sort: 3
+      sort: 4
       special: null
       translations:
         - language: ru-RU
@@ -3231,7 +3929,7 @@ fields:
       readonly: false
       required: true
       searchable: true
-      sort: 4
+      sort: 5
       special: null
       translations:
         - language: ru-RU
@@ -3279,7 +3977,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 5
+      sort: 6
       special:
         - file
       translations:
@@ -3323,7 +4021,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 6
+      sort: 7
       special:
         - cast-boolean
       translations:
@@ -3367,7 +4065,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 7
+      sort: 8
       special: null
       translations:
         - language: ru-RU
@@ -3416,7 +4114,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 8
+      sort: 9
       special: null
       translations:
         - language: ru-RU
@@ -3465,7 +4163,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 9
+      sort: 10
       special: null
       translations:
         - language: ru-RU
@@ -3514,7 +4212,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 10
+      sort: 11
       special:
         - alias
         - no-data
@@ -3544,7 +4242,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 11
+      sort: 12
       special: null
       translations:
         - language: ru-RU
@@ -3592,7 +4290,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 12
+      sort: 13
       special:
         - cast-boolean
       translations:
@@ -3636,7 +4334,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 13
+      sort: 14
       special:
         - cast-boolean
       translations:
@@ -3738,7 +4436,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 14
+      sort: 15
       special:
         - cast-json
       translations:
@@ -3783,7 +4481,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 15
+      sort: 16
       special: null
       translations:
         - language: ru-RU
@@ -3832,7 +4530,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 16
+      sort: 17
       special:
         - alias
         - no-data
@@ -3862,7 +4560,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 17
+      sort: 18
       special: null
       translations:
         - language: ru-RU
@@ -4013,7 +4711,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 18
+      sort: 19
       special:
         - cast-json
       translations:
@@ -4074,7 +4772,7 @@ fields:
       readonly: false
       required: true
       searchable: true
-      sort: 19
+      sort: 20
       special: null
       translations:
         - language: ru-RU
@@ -4118,7 +4816,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 20
+      sort: 21
       special:
         - alias
         - no-data
@@ -4160,7 +4858,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 21
+      sort: 22
       special: null
       translations:
         - language: ru-RU
@@ -4204,7 +4902,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 22
+      sort: 23
       special: null
       translations:
         - language: ru-RU
@@ -4253,7 +4951,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 23
+      sort: 24
       special: null
       translations:
         - language: ru-RU
@@ -4302,7 +5000,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 24
+      sort: 25
       special: null
       translations:
         - language: ru-RU
@@ -4351,7 +5049,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 25
+      sort: 26
       special:
         - alias
         - no-data
@@ -4381,7 +5079,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 26
+      sort: 27
       special: null
       translations:
         - language: ru-RU
@@ -4433,7 +5131,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 27
+      sort: 28
       special: null
       translations:
         - language: ru-RU
@@ -4482,7 +5180,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 28
+      sort: 29
       special: null
       translations:
         - language: ru-RU
@@ -4530,7 +5228,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 29
+      sort: 30
       special:
         - file
       translations:
@@ -4576,7 +5274,7 @@ fields:
       readonly: false
       required: false
       searchable: true
-      sort: 30
+      sort: 31
       special:
         - file
       translations:
@@ -6297,6 +6995,48 @@ relations:
       constraint_name: null
       on_update: NO ACTION
       on_delete: SET NULL
+  - collection: service_prices
+    field: service
+    related_collection: services
+    meta:
+      junction_field: null
+      many_collection: service_prices
+      many_field: service
+      one_allowed_collections: null
+      one_collection: services
+      one_collection_field: null
+      one_deselect_action: delete
+      one_field: prices
+      sort_field: null
+    schema:
+      table: service_prices
+      column: service
+      foreign_key_table: services
+      foreign_key_column: id
+      constraint_name: null
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: service_prices
+    field: body
+    related_collection: bmw_bodies
+    meta:
+      junction_field: null
+      many_collection: service_prices
+      many_field: body
+      one_allowed_collections: null
+      one_collection: bmw_bodies
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: service_prices
+      column: body
+      foreign_key_table: bmw_bodies
+      foreign_key_column: id
+      constraint_name: null
+      on_update: NO ACTION
+      on_delete: CASCADE
   - collection: site_settings
     field: ivan_photo
     related_collection: directus_files

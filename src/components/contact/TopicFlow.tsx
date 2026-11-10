@@ -10,6 +10,7 @@ import {
   MESSAGE_HINT,
   buildMessage,
   generateCode,
+  prefillSupported,
   type BodyChoice,
   type LeadContext,
   type LeadSource,
@@ -47,6 +48,8 @@ const subscribePhone = (cb: () => void) => {
   return () => mq.removeEventListener('change', cb)
 }
 
+const noopSubscribe = () => () => {}
+
 export function TopicFlow({ preset, mode }: Props) {
   const { bodies, body, setBody, sendLead } = useContact()
   const uid = useId()
@@ -72,6 +75,8 @@ export function TopicFlow({ preset, mode }: Props) {
   const topicRefs = useRef<(HTMLButtonElement | null)[]>([])
   const headerSlot = useDialogHeaderSlot()
   const isPhone = useSyncExternalStore(subscribePhone, () => window.matchMedia(PHONE).matches, () => false)
+  // телефон: текст встанет в поле сам; компьютер: только буфер — prefillSupported
+  const prefill = useSyncExternalStore(noopSubscribe, prefillSupported, () => false)
 
   useEffect(() => {
     if (step === 'message' && !code) setCode(generateCode())
@@ -274,8 +279,9 @@ export function TopicFlow({ preset, mode }: Props) {
         <section aria-labelledby={`${uid}-title`} className={styles.step}>
           {heading('Ваше сообщение')}
           <p className={`t-small ${styles.sub}`}>
-            <span className="only-desktop">Откроется черновик в Telegram — допишите его и нажмите «Отправить»</span>
-            <span className="only-mobile">Допишите в Telegram и нажмите «Отправить»</span>
+            {prefill
+              ? 'Допишите в Telegram и нажмите «Отправить»'
+              : 'Кнопка скопирует текст и откроет чат. Поле ввода в Telegram будет пустым — вставьте текст (Ctrl+V, на Mac ⌘V), допишите и нажмите «Отправить»'}
           </p>
           <p className={styles.preview} aria-live="polite">
             {message}
@@ -311,7 +317,7 @@ export function TopicFlow({ preset, mode }: Props) {
                 setSent(sendLead({ ...ctx, source: preset.source }, body as BodyChoice, used))
               }}
             >
-              Открыть Telegram
+              {prefill ? 'Открыть Telegram' : 'Скопировать и открыть Telegram'}
             </Button>
           </div>
           {sent ? <TelegramFallback message={sent} /> : null}

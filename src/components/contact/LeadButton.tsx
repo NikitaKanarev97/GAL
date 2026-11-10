@@ -7,7 +7,7 @@
 import type { ReactNode } from 'react'
 import type { IconName } from '../icons/Icon'
 import type { LeadContext, LeadSource } from '@/lib/message'
-import { telegramUrl } from '@/lib/message'
+import { recipientFor, telegramUrl } from '@/lib/message'
 import { Button } from '../ui/Button'
 import { useContact } from './ContactProvider'
 
@@ -30,7 +30,7 @@ export function LeadButton({ lead, children, icon = 'arrowRight', ...rest }: Pro
 
   return (
     <Button
-      href={telegramUrl(settings.telegram_username)}
+      href={telegramUrl(recipientFor(settings, 'topic' in lead ? lead.topic : undefined))}
       icon={icon}
       aria-haspopup={general ? 'dialog' : undefined}
       data-lead=""

@@ -46,5 +46,7 @@ export function formatPhone(phone: string) {
 }
 
 export function seriesLabel(series: string) {
+  // в X-серии у нас только X5 (E53, E70) — так её и называют
+  if (series === 'X') return 'X5'
   return /^\d$/.test(series) ? `${series} серия` : series
 }

@@ -1,6 +1,7 @@
 /*
  * 7. Gal service — structure.md §2, content.md «7. Gal service».
- * Пустые: нет проектов — только услуги; нет услуг — текст и кнопка. Больше 8 услуг — «Все услуги (n)».
+ * Пустые: нет проектов — только услуги; нет услуг — без поиска, остаются текст и кнопка.
+ * Цены на работы — поле поиска (PriceSearch): первая буква ведёт на /service. Списка работ здесь нет, весь прайс — там.
  */
 import type { Service as ServiceItem, SiteSettings } from '@/data/types'
 import type { WorkView } from '@/data'
@@ -10,22 +11,15 @@ import { HexBadge } from '../icons/HexBadge'
 import { Icon } from '../icons/Icon'
 import { Photo } from '../ui/Photo'
 import { SectionTitle } from '../ui/SectionTitle'
-import { ServiceRow } from './ServiceRow'
+import { PriceSearch } from './PriceSearch'
 import { WorkCard } from './WorkCard'
 import styles from './Service.module.css'
 
 type Props = { services: ServiceItem[]; works: WorkView[]; settings: SiteSettings }
 
-const VISIBLE = 8
-
-/* строка кликабельна — ServiceRow: сообщение «Ремонт → услуга» */
-const serviceRow = (s: ServiceItem) => <ServiceRow key={s.id} service={s} />
-
 export function Service({ services, works, settings }: Props) {
   const image = settings.service_image ?? files.serviceWorkshop
   const workshop = settings.locations.find((l) => l.kind === 'workshop')
-  const head = services.slice(0, VISIBLE)
-  const rest = services.slice(VISIBLE)
   const channel = settings.socials.find((s) => s.type === 'telegram_channel')
 
   return (
@@ -67,19 +61,8 @@ export function Service({ services, works, settings }: Props) {
 
         {services.length > 0 ? (
           <div className={styles.block}>
-            <h3 className={`t-eyebrow ${styles.subhead}`}>Что делаем</h3>
-            <ul className={styles.list} data-anim="stagger">
-              {head.map(serviceRow)}
-            </ul>
-            {rest.length > 0 ? (
-              <details className={styles.more}>
-                <summary className={styles.moreToggle}>
-                  <span className={styles.moreOpen}>Все услуги ({services.length})</span>
-                  <span className={styles.moreClose}>Свернуть</span>
-                </summary>
-                <ul className={styles.list}>{rest.map(serviceRow)}</ul>
-              </details>
-            ) : null}
+            <h3 className={`t-eyebrow ${styles.subhead}`}>Цены на работы</h3>
+            <PriceSearch count={services.length} />
           </div>
         ) : null}
 

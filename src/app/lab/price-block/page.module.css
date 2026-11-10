@@ -1,0 +1,134 @@
+.page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  padding-block: var(--space-6) var(--section-y);
+}
+
+.head {
+  display: grid;
+  gap: var(--space-4);
+  padding-bottom: var(--space-7);
+}
+
+.head > .t-eyebrow,
+.head > p:first-child {
+  color: var(--accent);
+}
+
+.lead {
+  max-width: var(--text-max);
+  color: var(--text-soft);
+}
+
+.toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.tocLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0 var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-600);
+}
+
+.tocLink b {
+  color: var(--accent);
+}
+
+.variant {
+  border-top: 1px dashed var(--line-strong);
+  scroll-margin-top: var(--header-offset);
+}
+
+.meta {
+  display: grid;
+  gap: var(--space-3);
+  padding-top: var(--space-6);
+}
+
+.label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: var(--weight-800);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-display);
+}
+
+.letter {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-btn);
+  background: var(--accent);
+  color: var(--on-accent);
+  letter-spacing: 0;
+}
+
+.pickBadge {
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-pill);
+  color: var(--accent);
+  font-family: var(--font-text);
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--weight-800);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.where {
+  color: var(--text-soft);
+}
+
+.pm {
+  display: grid;
+  gap: var(--space-2) var(--space-6);
+  font-size: var(--fs-small);
+}
+
+.pm li {
+  position: relative;
+  padding-left: var(--space-5);
+  color: var(--text-soft);
+  line-height: var(--lh-body);
+}
+
+.pm li::before {
+  position: absolute;
+  left: 0;
+  font-weight: var(--weight-800);
+}
+
+.plus::before {
+  content: '+';
+  color: var(--accent);
+}
+
+.minus::before {
+  content: '−';
+  color: var(--text-muted);
+}
+
+/* Вариант стоит как на главной: своя секция с отступами */
+.stage {
+  border-top: 1px solid var(--line);
+  margin-top: var(--space-5);
+}
+
+@media (min-width: 768px) {
+  .pm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
